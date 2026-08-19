@@ -1,0 +1,953 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 15">
+<meta name="Originator" content="Microsoft Word 15">
+<!--[if gte mso 9]>
+<xml>
+<o:DocumentProperties>
+  <o:Author>FWMS Development Team</o:Author>
+  <o:LastAuthor>FWMS Development Team</o:LastAuthor>
+  <o:Company>MGM University</o:Company>
+  <o:Version>16.00</o:Version>
+</o:DocumentProperties>
+<w:WordDocument>
+  <w:View>Print</w:View>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+    <w:BreakWrappedTables/>
+    <w:SnapToGridInCell/>
+    <w:WrapTextWithPunct/>
+    <w:UseAsianBreakRules/>
+    <w:DontGrowAutofit/>
+  </w:Compatibility>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page {
+    size: A4;
+    margin: 2.54cm 2.54cm 2.54cm 2.54cm;
+    mso-header-margin: 1.27cm;
+    mso-footer-margin: 1.27cm;
+    mso-page-orientation: portrait;
+  }
+  @page Section1 { mso-header-margin:1.27cm; mso-footer-margin:1.27cm; }
+  div.Section1 { page:Section1; }
+
+  body {
+    font-family: 'Calibri', 'Segoe UI', sans-serif;
+    font-size: 11pt;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  /* Cover page styles */
+  .cover-page {
+    text-align: center;
+    page-break-after: always;
+    padding-top: 120pt;
+  }
+  .cover-title {
+    font-size: 28pt;
+    font-weight: bold;
+    color: #202020;
+    letter-spacing: -0.5pt;
+    margin-bottom: 6pt;
+  }
+  .cover-subtitle {
+    font-size: 16pt;
+    color: #4d4d4d;
+    margin-bottom: 30pt;
+  }
+  .cover-line {
+    width: 120pt;
+    border-top: 3pt solid #ff682c;
+    margin: 24pt auto;
+  }
+  .cover-meta {
+    font-size: 12pt;
+    color: #828282;
+    margin-top: 8pt;
+  }
+  .cover-institution {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #202020;
+    margin-top: 60pt;
+  }
+
+  /* Heading styles */
+  h1 {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #202020;
+    border-bottom: 2pt solid #ff682c;
+    padding-bottom: 6pt;
+    margin-top: 24pt;
+    margin-bottom: 12pt;
+    page-break-after: avoid;
+  }
+  h2 {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #202020;
+    border-bottom: 1pt solid #e8e8e8;
+    padding-bottom: 4pt;
+    margin-top: 20pt;
+    margin-bottom: 10pt;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #4d4d4d;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+    page-break-after: avoid;
+  }
+  h4 {
+    font-size: 11pt;
+    font-weight: bold;
+    color: #4d4d4d;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+  }
+
+  p {
+    margin-bottom: 8pt;
+    text-align: justify;
+  }
+
+  /* Table styles */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10pt 0 16pt 0;
+    font-size: 10pt;
+  }
+  table th {
+    background-color: #202020;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 6pt 8pt;
+    text-align: left;
+    border: 1pt solid #4d4d4d;
+  }
+  table td {
+    padding: 5pt 8pt;
+    border: 1pt solid #e8e8e8;
+    vertical-align: top;
+  }
+  table tr:nth-child(even) td {
+    background-color: #f5f5f5;
+  }
+
+  /* Code block */
+  .code-block {
+    background-color: #f5f5f5;
+    border: 1pt solid #e8e8e8;
+    border-left: 3pt solid #ff682c;
+    padding: 8pt 12pt;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 9pt;
+    margin: 8pt 0 12pt 0;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    color: #202020;
+  }
+
+  /* Callout box */
+  .callout {
+    background-color: #fff7ed;
+    border-left: 4pt solid #ff682c;
+    padding: 10pt 14pt;
+    margin: 10pt 0;
+    font-size: 10pt;
+  }
+  .callout-title {
+    font-weight: bold;
+    color: #ff682c;
+    margin-bottom: 4pt;
+  }
+
+  .info-box {
+    background-color: #eff6ff;
+    border-left: 4pt solid #3B82F6;
+    padding: 10pt 14pt;
+    margin: 10pt 0;
+    font-size: 10pt;
+  }
+  .info-title {
+    font-weight: bold;
+    color: #3B82F6;
+    margin-bottom: 4pt;
+  }
+
+  ul, ol {
+    margin-bottom: 8pt;
+    padding-left: 20pt;
+  }
+  li {
+    margin-bottom: 4pt;
+  }
+
+  .toc-title {
+    font-size: 20pt;
+    font-weight: bold;
+    color: #202020;
+    margin-bottom: 18pt;
+    text-align: center;
+  }
+  .toc-entry {
+    margin: 6pt 0;
+    font-size: 11pt;
+  }
+  .toc-entry a {
+    text-decoration: none;
+    color: #202020;
+  }
+  .toc-h2 { padding-left: 20pt; font-size: 10.5pt; color: #4d4d4d; }
+
+  .badge {
+    display: inline-block;
+    background-color: #f5f5f5;
+    border: 1pt solid #e8e8e8;
+    padding: 1pt 6pt;
+    border-radius: 3pt;
+    font-size: 9pt;
+    font-family: 'Consolas', monospace;
+    color: #4d4d4d;
+  }
+  .badge-orange {
+    background-color: #fff7ed;
+    border-color: #ff682c;
+    color: #ff682c;
+  }
+</style>
+</head>
+<body>
+<div class="Section1">
+
+<!-- ═══════════════════ COVER PAGE ═══════════════════ -->
+<div class="cover-page">
+  <p style="font-size:10pt; color:#828282; letter-spacing:2pt; text-transform:uppercase;">Technical Project Report</p>
+  <div class="cover-line"></div>
+  <p class="cover-title">Paperless SOET</p>
+  <p class="cover-subtitle">Faculty Workload Management System (FWMS)</p>
+  <p style="font-size:12pt; color:#828282; margin-top:12pt;">A Campus-Wide Digital Platform for Automated Teaching Workload<br>Distribution, Tracking, Approval &amp; Reporting</p>
+  <div class="cover-line"></div>
+  <p class="cover-institution">MGM University</p>
+  <p class="cover-meta">School of Engineering and Technology (SOET)</p>
+  <p class="cover-meta" style="margin-top:40pt;">Document Version: 1.0</p>
+  <p class="cover-meta">Date: July 2026</p>
+</div>
+
+<!-- ═══════════════════ TABLE OF CONTENTS ═══════════════════ -->
+<p class="toc-title">Table of Contents</p>
+
+<p class="toc-entry"><b>1.</b> Executive Summary</p>
+<p class="toc-entry"><b>2.</b> Problem Statement &amp; Objectives</p>
+<p class="toc-entry"><b>3.</b> Technology Stack</p>
+<p class="toc-entry"><b>4.</b> System Architecture</p>
+<p class="toc-entry toc-h2">4.1 Monorepo Structure</p>
+<p class="toc-entry toc-h2">4.2 Backend Architecture</p>
+<p class="toc-entry toc-h2">4.3 Frontend Architecture</p>
+<p class="toc-entry toc-h2">4.4 Shared Package</p>
+<p class="toc-entry"><b>5.</b> Database Design</p>
+<p class="toc-entry toc-h2">5.1 Entity-Relationship Overview</p>
+<p class="toc-entry toc-h2">5.2 Model Descriptions</p>
+<p class="toc-entry toc-h2">5.3 Enumerations</p>
+<p class="toc-entry"><b>6.</b> Authentication &amp; Security</p>
+<p class="toc-entry toc-h2">6.1 JWT Token Architecture</p>
+<p class="toc-entry toc-h2">6.2 Account Lockout &amp; Brute Force Protection</p>
+<p class="toc-entry toc-h2">6.3 Role-Based Access Control</p>
+<p class="toc-entry toc-h2">6.4 Forced Password Change</p>
+<p class="toc-entry"><b>7.</b> Feature Catalogue</p>
+<p class="toc-entry toc-h2">7.1 Institutional Configuration</p>
+<p class="toc-entry toc-h2">7.2 Faculty Management</p>
+<p class="toc-entry toc-h2">7.3 Subject &amp; Class Management</p>
+<p class="toc-entry toc-h2">7.4 Workload Calculation Engine</p>
+<p class="toc-entry toc-h2">7.5 Conflict Detection Engine</p>
+<p class="toc-entry toc-h2">7.6 Allocation Management</p>
+<p class="toc-entry toc-h2">7.7 Approval Workflow</p>
+<p class="toc-entry toc-h2">7.8 SLA Escalation (Automated Cron)</p>
+<p class="toc-entry toc-h2">7.9 Role-Specific Dashboards</p>
+<p class="toc-entry toc-h2">7.10 Workload Report Generation</p>
+<p class="toc-entry toc-h2">7.11 AI-Powered Document Ingestion</p>
+<p class="toc-entry"><b>8.</b> API Endpoint Reference</p>
+<p class="toc-entry"><b>9.</b> Frontend Pages &amp; Navigation</p>
+<p class="toc-entry"><b>10.</b> UI/UX Design System</p>
+<p class="toc-entry"><b>11.</b> Validation &amp; Error Handling</p>
+<p class="toc-entry"><b>12.</b> Seed Data &amp; Initial Configuration</p>
+<p class="toc-entry"><b>13.</b> Setup &amp; Deployment Guide</p>
+<p class="toc-entry"><b>14.</b> Future Scope</p>
+
+<br clear="all" style="page-break-before:always">
+
+<!-- ═══════════════════ CHAPTER 1 ═══════════════════ -->
+<h1>1. Executive Summary</h1>
+<p>The <b>Paperless SOET — Faculty Workload Management System (FWMS)</b> is a full-stack web application built for MGM University's School of Engineering and Technology. The platform digitises the entire lifecycle of academic teaching workload management — from defining institutional hierarchies and configuring workload norms, through assigning faculty to subjects/classes/batches, computing weekly teaching hours automatically, enforcing conflict detection and norm compliance, managing multi-level approval workflows, to generating printable workload distribution reports.</p>
+
+<p>The system serves three user roles — <b>Super Admin</b>, <b>Department Admin (HOD)</b>, and <b>Faculty</b> — each with a tailored dashboard providing real-time analytics on workload distribution. A standout feature is the integration of <b>Google Gemini 2.5 Flash AI</b> for ingesting physical (scanned or photographed) teaching workload spreadsheets, extracting tabular data via multimodal vision, and converting them into structured digital records.</p>
+
+<!-- ═══════════════════ CHAPTER 2 ═══════════════════ -->
+<h1>2. Problem Statement &amp; Objectives</h1>
+
+<h2>2.1 Problem Statement</h2>
+<p>Traditional university workload distribution relies on paper-based spreadsheets circulated manually between department heads, deans, and administration. This process suffers from:</p>
+<ul>
+  <li>Manual calculation errors in teaching hours and credit allocations</li>
+  <li>No real-time visibility into faculty overload/underload conditions</li>
+  <li>Duplicate or conflicting subject-class-faculty assignments across departments</li>
+  <li>Delayed approval cycles with no audit trail</li>
+  <li>Difficulty producing consolidated reports across multiple departments</li>
+  <li>No mechanism to enforce UGC workload norms programmatically</li>
+</ul>
+
+<h2>2.2 Objectives</h2>
+<ol>
+  <li>Automate the computation of weekly teaching hours using configurable multipliers</li>
+  <li>Enforce UGC workload norms per designation with overload/underload detection</li>
+  <li>Prevent double-booking of class divisions and laboratory batches</li>
+  <li>Implement a multi-level approval workflow with SLA-based escalation</li>
+  <li>Provide role-specific analytical dashboards with real-time metrics</li>
+  <li>Enable AI-powered extraction of data from physical workload documents</li>
+  <li>Generate comprehensive, printable workload reports per department per term</li>
+  <li>Maintain a complete audit trail of every change and decision</li>
+</ol>
+
+<!-- ═══════════════════ CHAPTER 3 ═══════════════════ -->
+<h1>3. Technology Stack</h1>
+
+<table>
+  <tr><th>Layer</th><th>Technology</th><th>Version</th><th>Purpose</th></tr>
+  <tr><td><b>Language</b></td><td>TypeScript</td><td>5.7+</td><td>End-to-end type safety across frontend, backend, and shared code</td></tr>
+  <tr><td><b>Backend Framework</b></td><td>Express.js</td><td>4.21</td><td>REST API server with middleware pipeline</td></tr>
+  <tr><td><b>Frontend Framework</b></td><td>Next.js (App Router)</td><td>16.2</td><td>Server-side rendering, file-based routing, React Server Components</td></tr>
+  <tr><td><b>UI Library</b></td><td>React</td><td>19.2</td><td>Component-based UI rendering</td></tr>
+  <tr><td><b>Database</b></td><td>SQLite</td><td>—</td><td>Zero-config embedded development database</td></tr>
+  <tr><td><b>ORM</b></td><td>Prisma</td><td>6.6</td><td>Type-safe database queries, migrations, schema definition</td></tr>
+  <tr><td><b>State Management</b></td><td>Zustand</td><td>5.0</td><td>Lightweight client-side auth state with persistence</td></tr>
+  <tr><td><b>Validation</b></td><td>Zod</td><td>3.24 / 4.4</td><td>Runtime schema validation shared between frontend and backend</td></tr>
+  <tr><td><b>Authentication</b></td><td>JSON Web Tokens (JWT)</td><td>9.0</td><td>Stateless access tokens + HTTP-only refresh token cookies</td></tr>
+  <tr><td><b>Password Hashing</b></td><td>bcrypt</td><td>5.1</td><td>12-round salted hashing for password storage</td></tr>
+  <tr><td><b>Charting</b></td><td>Recharts</td><td>3.8</td><td>Bar charts, pie charts, radial gauges on dashboards</td></tr>
+  <tr><td><b>Icons</b></td><td>Lucide React</td><td>0.475</td><td>Consistent, tree-shakeable icon set</td></tr>
+  <tr><td><b>CSS Framework</b></td><td>Tailwind CSS v4</td><td>4.x</td><td>Utility-first styling with custom Ventriloc theme tokens</td></tr>
+  <tr><td><b>AI / ML</b></td><td>Google Gemini 2.5 Flash</td><td>0.24</td><td>Multimodal document extraction (images/PDFs → structured JSON)</td></tr>
+  <tr><td><b>File Upload</b></td><td>Multer</td><td>2.2</td><td>Memory-based file upload middleware (max 20MB)</td></tr>
+  <tr><td><b>Scheduling</b></td><td>node-cron</td><td>3.0</td><td>Daily midnight SLA escalation job</td></tr>
+  <tr><td><b>Security Headers</b></td><td>Helmet</td><td>8.1</td><td>HTTP security headers (CSP, HSTS, X-Frame-Options, etc.)</td></tr>
+  <tr><td><b>Rate Limiting</b></td><td>express-rate-limit</td><td>7.5</td><td>Configurable per-route throttling</td></tr>
+  <tr><td><b>Logging</b></td><td>Pino + pino-pretty</td><td>9.6</td><td>Structured JSON logging with pretty console output in dev</td></tr>
+  <tr><td><b>Monorepo</b></td><td>npm Workspaces</td><td>—</td><td>Shared dependency management across apps &amp; packages</td></tr>
+  <tr><td><b>Dev Runner</b></td><td>concurrently + tsx</td><td>—</td><td>Parallel API/Web dev servers with hot-reload TypeScript</td></tr>
+</table>
+
+<!-- ═══════════════════ CHAPTER 4 ═══════════════════ -->
+<h1>4. System Architecture</h1>
+
+<h2>4.1 Monorepo Structure</h2>
+<p>The project follows an npm workspaces monorepo pattern with three workspace packages:</p>
+
+<div class="code-block">fwms/
+├── package.json              ← Root orchestrator (workspaces, scripts)
+├── apps/
+│   ├── api/                  ← @fwms/api — Express.js REST API
+│   │   ├── prisma/           ← Database schema, migrations, seed script
+│   │   └── src/
+│   │       ├── server.ts     ← Entry point
+│   │       ├── cron/         ← Background scheduled jobs
+│   │       ├── lib/          ← Prisma client, JWT helpers, logger
+│   │       ├── middleware/   ← Auth, validation, error handling
+│   │       └── modules/      ← Feature-based business logic
+│   │           ├── auth/
+│   │           ├── institutional/
+│   │           ├── faculty/
+│   │           ├── subjects/
+│   │           ├── classes-batches/
+│   │           ├── allocations/
+│   │           ├── approvals/
+│   │           ├── conflict-engine/
+│   │           ├── workload-engine/
+│   │           ├── dashboard/
+│   │           └── workload-report/
+│   └── web/                  ← Next.js 16 Frontend
+│       └── src/
+│           ├── app/          ← App Router pages and layouts
+│           │   ├── login/
+│           │   ├── unauthorized/
+│           │   └── (protected)/
+│           │       ├── dashboard/
+│           │       ├── institutional/
+│           │       ├── master-data/
+│           │       ├── subjects/
+│           │       ├── allocations/
+│           │       ├── approvals/
+│           │       ├── faculty/
+│           │       └── workload-report/
+│           ├── components/   ← Reusable UI components
+│           ├── lib/          ← API HTTP client
+│           └── stores/       ← Zustand auth store
+└── packages/
+    └── shared/               ← @fwms/shared — Zod schemas, enums, types</div>
+
+<h2>4.2 Backend Architecture</h2>
+<p>The API follows a <b>modular service-oriented architecture</b>. Each feature domain is organised into a self-contained module with:</p>
+<ul>
+  <li><b>routes.ts</b> — Express Router defining HTTP endpoints, applying middleware, and delegating to the service layer</li>
+  <li><b>service.ts</b> — Pure business logic operating on Prisma models, performing computations, and enforcing invariants</li>
+</ul>
+
+<p>Cross-cutting concerns are handled by centralised middleware:</p>
+<table>
+  <tr><th>Middleware</th><th>File</th><th>Responsibility</th></tr>
+  <tr><td>Authentication</td><td>middleware/auth.ts</td><td>JWT verification, role gating, department scoping, self-or-admin checks</td></tr>
+  <tr><td>Validation</td><td>middleware/validation.ts</td><td>Zod schema validation for request body and query parameters</td></tr>
+  <tr><td>Error Handling</td><td>middleware/error-handler.ts</td><td>Custom ApiError class, centralized JSON error responses, stack trace suppression in production</td></tr>
+</table>
+
+<h2>4.3 Frontend Architecture</h2>
+<p>The web application uses <b>Next.js 16 App Router</b> with the following patterns:</p>
+<ul>
+  <li><b>Route Groups:</b> A <code>(protected)</code> route group wraps all authenticated pages inside a <code>RouteGuard</code> component and a shared sidebar layout.</li>
+  <li><b>Client Components:</b> Dashboard charts, forms, and interactive tables are <code>'use client'</code> components using React hooks and Recharts.</li>
+  <li><b>API Client:</b> A custom <code>apiClient</code> function handles all HTTP requests, automatically attaching Bearer tokens, intercepting 401 responses, and performing silent token refresh.</li>
+  <li><b>State Management:</b> Zustand with <code>persist</code> middleware stores the authenticated user profile in localStorage, while the access token is kept only in memory.</li>
+</ul>
+
+<h2>4.4 Shared Package (<code>@fwms/shared</code>)</h2>
+<p>Contains all Zod validation schemas and TypeScript types shared between frontend and backend. This ensures:</p>
+<ul>
+  <li>Identical validation rules on client and server</li>
+  <li>Automatic TypeScript type inference from Zod schemas (e.g., <code>CreateFacultyRequest</code>)</li>
+  <li>Mirrored enums that decouple the frontend from the Prisma dependency</li>
+</ul>
+
+<!-- ═══════════════════ CHAPTER 5 ═══════════════════ -->
+<h1>5. Database Design</h1>
+
+<h2>5.1 Entity-Relationship Overview</h2>
+<p>The database contains <b>14 tables</b> managed through Prisma ORM on SQLite. The core relationships are:</p>
+<ul>
+  <li><b>School → Department</b> (1:N) — Schools group departments</li>
+  <li><b>Department → Faculty</b> (1:N) — Departments employ faculty</li>
+  <li><b>Faculty → UserAuth</b> (1:1) — Each faculty member has login credentials</li>
+  <li><b>Department → Subject</b> (1:N) — Departments offer subjects per term</li>
+  <li><b>Department → ClassDivision</b> (1:N) — Departments define class sections</li>
+  <li><b>ClassDivision → Batch</b> (1:N) — Classes split into practical batches</li>
+  <li><b>Faculty + Subject + Class/Batch → Allocation</b> — The central junction record</li>
+  <li><b>Allocation → ApprovalLog</b> (1:N) — Full audit trail per allocation</li>
+  <li><b>AcademicTerm → Norms</b> (1:N) — Term-specific workload limits per designation</li>
+</ul>
+
+<h2>5.2 Model Descriptions</h2>
+<table>
+  <tr><th>Model</th><th>DB Table</th><th>Description</th><th>Key Fields</th></tr>
+  <tr><td>School</td><td>schools</td><td>Top-level institutional unit (faculty/school)</td><td>schoolName, deanName, isActive</td></tr>
+  <tr><td>Department</td><td>departments</td><td>Academic department under a school</td><td>deptName, schoolId, hodId, defaultBatchSize</td></tr>
+  <tr><td>AcademicTerm</td><td>academic_terms</td><td>Semester/year configuration</td><td>academicYear, semester, status (active/archived), startDate, endDate</td></tr>
+  <tr><td>Faculty</td><td>faculty</td><td>Teaching staff master record</td><td>name, email (unique), designation, deptId, employmentType, status</td></tr>
+  <tr><td>UserAuth</td><td>user_auth</td><td>Login credentials &amp; security</td><td>username, passwordHash, role, linkedId (→Faculty), tokenVersion, failedLoginAttempts, lockedUntil, mustChangePassword</td></tr>
+  <tr><td>Subject</td><td>subjects</td><td>Course offerings per department per term</td><td>subjectCode, subjectName, creditHours, theoryMultiplier, practicalMultiplier, tutorialHours, hasTheory/hasPractical/hasTutorial</td></tr>
+  <tr><td>Norms</td><td>norms</td><td>Workload limits per designation per term</td><td>designation, minWeeklyHours, maxWeeklyHours, defaultTheoryMultiplier, defaultPracticalMultiplier, slaDaysForHodReview</td></tr>
+  <tr><td>ClassDivision</td><td>class_divisions</td><td>Section/division of a student class</td><td>className, division, deptId, termId</td></tr>
+  <tr><td>StudentStrength</td><td>student_strengths</td><td>Student count per class per subject</td><td>classId, subjectId, studentCount, status</td></tr>
+  <tr><td>Batch</td><td>batches</td><td>Practical sub-groups</td><td>classId, subjectId, batchName, batchSize, facultyId</td></tr>
+  <tr><td>Allocation</td><td>allocations</td><td>Faculty-Subject-Class/Batch assignment</td><td>facultyId, subjectId, classId, batchId, termId, theoryHours, practicalHours, totalHours, status, requiresSaOverride</td></tr>
+  <tr><td>ApprovalLog</td><td>approval_logs</td><td>Status transition audit trail</td><td>entityType, entityId, requestedBy, reviewedBy, fromStatus, toStatus, changeType, remarks, slaEscalated</td></tr>
+  <tr><td>Notification</td><td>notifications</td><td>In-app user notifications</td><td>userId, message, type, read</td></tr>
+  <tr><td>AuditLog</td><td>audit_logs</td><td>Security event log</td><td>userId, action, ipAddress, metadata (JSON)</td></tr>
+  <tr><td>WorkloadReport</td><td>workload_reports</td><td>Department workload report snapshot</td><td>deptId, termId, title, notes</td></tr>
+  <tr><td>WorkloadReportRow</td><td>workload_report_rows</td><td>Individual row in a workload report</td><td>programClass, subjectName, divisions, theory/practical/tutorial hours, credits (L/P/T), noteMarker</td></tr>
+</table>
+
+<h2>5.3 Enumerations</h2>
+<table>
+  <tr><th>Enum</th><th>Values</th><th>Used In</th></tr>
+  <tr><td>Role</td><td>super_admin, dept_admin, faculty</td><td>UserAuth.role</td></tr>
+  <tr><td>Designation</td><td>Professor, Associate Professor, Assistant Professor</td><td>Faculty.designation, Norms.designation</td></tr>
+  <tr><td>EmploymentType</td><td>Permanent, Contract, Visiting</td><td>Faculty.employmentType</td></tr>
+  <tr><td>AccountStatus</td><td>active, inactive</td><td>UserAuth.status, Faculty.status</td></tr>
+  <tr><td>TermStatus</td><td>active, archived</td><td>AcademicTerm.status</td></tr>
+  <tr><td>AllocationStatus</td><td>draft, pending_approval, approved, rejected, escalated_to_super_admin</td><td>Allocation.status, StudentStrength.status</td></tr>
+  <tr><td>ApprovalEntityType</td><td>allocation, student_strength, batch_change</td><td>ApprovalLog.entityType</td></tr>
+  <tr><td>NotificationType</td><td>approval_update, sla_escalation, account_status, allocation_override</td><td>Notification.type</td></tr>
+  <tr><td>AuditAction</td><td>login_success, login_failed, logout, password_reset_requested, password_changed, role_changed, conflict_override, norms_changed, record_created, etc.</td><td>AuditLog.action</td></tr>
+</table>
+
+<!-- ═══════════════════ CHAPTER 6 ═══════════════════ -->
+<h1>6. Authentication &amp; Security</h1>
+
+<h2>6.1 JWT Token Architecture</h2>
+<p>The system implements a <b>dual-token architecture</b> for session management:</p>
+<table>
+  <tr><th>Token</th><th>Type</th><th>Expiry</th><th>Storage</th><th>Purpose</th></tr>
+  <tr><td>Access Token</td><td>JWT</td><td>15 minutes</td><td>In-memory (JavaScript variable)</td><td>Authorises individual API requests via <code>Authorization: Bearer</code> header</td></tr>
+  <tr><td>Refresh Token</td><td>JWT</td><td>7 days</td><td>httpOnly, sameSite:strict cookie (path: /api/v1/auth)</td><td>Issues new access tokens without re-login; cannot be read by JavaScript (XSS-safe)</td></tr>
+</table>
+
+<h3>JWT Payload Structure</h3>
+<div class="code-block">{
+  userId: number,
+  role: 'super_admin' | 'dept_admin' | 'faculty',
+  deptId: number | null,
+  facultyId: number | null,
+  tokenVersion: number
+}</div>
+
+<h3>Token Revocation via Version Tracking</h3>
+<p>Each user has a <code>tokenVersion</code> counter in the database. On logout or password change, this counter is incremented. During refresh, if the token's version does not match the database version, the refresh is rejected — effectively revoking all existing sessions.</p>
+
+<h3>Silent Token Refresh (Client-Side)</h3>
+<p>The frontend <code>apiClient</code> intercepts 401 responses. It queues pending requests, issues a single <code>POST /auth/refresh</code>, receives a new access token, then replays all queued requests. This provides seamless session continuity.</p>
+
+<h2>6.2 Account Lockout &amp; Brute Force Protection</h2>
+<ul>
+  <li><b>Max Failed Attempts:</b> 5 consecutive invalid passwords</li>
+  <li><b>Lockout Duration:</b> 15 minutes (auto-unlock)</li>
+  <li><b>Rate Limiting:</b> Auth endpoints limited to 10 requests/minute; general API limited to 100 requests/minute</li>
+  <li><b>Security Headers:</b> Helmet middleware sets CSP, HSTS, X-Content-Type-Options, Referrer-Policy, etc.</li>
+  <li><b>Audit Logging:</b> Every login attempt (success/fail), logout, password change, and lockout event is recorded with IP address and metadata</li>
+</ul>
+
+<h2>6.3 Role-Based Access Control (RBAC)</h2>
+<p>Four middleware functions enforce access control:</p>
+<table>
+  <tr><th>Middleware</th><th>Function</th></tr>
+  <tr><td><code>authenticate</code></td><td>Verifies the JWT access token and attaches <code>req.user</code> with role, department, and faculty IDs</td></tr>
+  <tr><td><code>requireRole(...roles)</code></td><td>Restricts endpoint access to specified roles (returns 403 for others)</td></tr>
+  <tr><td><code>requireDeptScope</code></td><td>HODs can only access their own department's data; Super Admin bypasses</td></tr>
+  <tr><td><code>requireSelfOrAdmin</code></td><td>Faculty can only view their own profile; HODs and SA can view any faculty</td></tr>
+</table>
+
+<h2>6.4 Forced Password Change</h2>
+<p>New accounts are created with <code>mustChangePassword = true</code>. On first login, the frontend <code>RouteGuard</code> component intercepts the session and displays a mandatory password change form. Until completed, the user cannot access any protected pages. After changing, the old sessions are invalidated via token version increment.</p>
+
+<!-- ═══════════════════ CHAPTER 7 ═══════════════════ -->
+<h1>7. Feature Catalogue</h1>
+
+<h2>7.1 Institutional Configuration</h2>
+<p><b>Accessible by:</b> Super Admin</p>
+<p>Complete CRUD management for the institutional hierarchy:</p>
+<ul>
+  <li><b>Schools:</b> Create, update, soft-delete (deactivate) institutional units</li>
+  <li><b>Departments:</b> Create under schools, assign HOD (auto-promotes the faculty user to <code>dept_admin</code> role, auto-demotes the previous HOD to <code>faculty</code>), set default batch sizes</li>
+  <li><b>Academic Terms:</b> Define academic year, semester name, start/end dates with active/archived status management</li>
+  <li><b>Workload Norms:</b> Configure per-designation (Professor, Associate Professor, Assistant Professor) per-term: minimum weekly hours, maximum weekly hours, default theory/practical multipliers, and HOD review SLA days. Uses <code>upsert</code> to create-or-update.</li>
+</ul>
+
+<h2>7.2 Faculty Management</h2>
+<p><b>Accessible by:</b> Super Admin, HOD</p>
+<ul>
+  <li><b>Create Faculty:</b> Registers a new faculty member and simultaneously creates their <code>UserAuth</code> login record in a database transaction. Generates a temporary password if none is provided. Optionally designates the faculty as HOD.</li>
+  <li><b>Update Faculty:</b> Modify name, designation, employment type, and HOD status. HOD promotion/demotion is transactional — the previous HOD's role is automatically reverted.</li>
+  <li><b>Deactivate/Activate:</b> Soft-disable faculty accounts by setting <code>status = inactive</code> on both Faculty and UserAuth records, preventing login. Reactivation reverses this.</li>
+  <li><b>Temporary Password Generation:</b> A 10-character alphanumeric string excluding ambiguous characters (0, O, I, l).</li>
+</ul>
+
+<h2>7.3 Subject &amp; Class Management</h2>
+<p><b>Accessible by:</b> Super Admin, HOD</p>
+<ul>
+  <li><b>Subjects:</b> Full CRUD with fields for subject code, name, credit hours, component flags (theory/practical/tutorial), and per-subject multipliers. Unique constraint on <code>(subjectCode, termId)</code>.</li>
+  <li><b>Class Divisions:</b> Define sections (e.g., "TE (I) CE - Div A") per department per term. Unique on <code>(className, division, deptId, termId)</code>.</li>
+  <li><b>Batches:</b> Create practical sub-groups under a class, specifying batch name, size, and assigned faculty.</li>
+  <li><b>Student Strength:</b> Record student counts per class-subject combination, subject to approval workflow.</li>
+</ul>
+
+<h2>7.4 Workload Calculation Engine</h2>
+<p><b>Module:</b> <code>workload-engine/service.ts</code></p>
+<p>This engine computes the teaching hours for each allocation based on subject configuration:</p>
+
+<div class="callout">
+  <p class="callout-title">Calculation Formulas</p>
+  <p><b>Theory Hours</b> = Credit Hours × Theory Multiplier (when allocation is at class level, no batch)</p>
+  <p><b>Practical Hours</b> = Credit Hours × Practical Multiplier × Number of Batches (when allocation has a batch)</p>
+  <p><b>Tutorial Hours</b> = Tutorial Hours per Week × Batch Count (or direct if class-level)</p>
+  <p><b>Total Weekly Hours</b> = Theory + Practical + Tutorial</p>
+</div>
+
+<p>The engine also supports <b>bulk recalculation</b>: when a subject's multipliers are updated, all linked allocations across the system are automatically recomputed.</p>
+
+<h2>7.5 Conflict Detection Engine</h2>
+<p><b>Module:</b> <code>conflict-engine/service.ts</code></p>
+<p>This engine enforces two constraints during every allocation create/update:</p>
+
+<h3>7.5.1 Double-Booking Check (Hard Constraint)</h3>
+<p>Queries existing approved or pending allocations for the same <code>(subjectId, termId, classId/batchId)</code>. If another faculty is already assigned, the system throws a <b>409 Conflict</b> error with the name of the conflicting faculty member. This is a blocking constraint — the allocation cannot proceed.</p>
+
+<h3>7.5.2 Workload Norms Check (Soft Constraint)</h3>
+<p>Computes the faculty's projected total weekly hours by summing all existing allocations plus the new one. Compares against the <code>Norms</code> table for the faculty's designation and term:</p>
+<ul>
+  <li><b>Overloaded:</b> Projected hours &gt; maxWeeklyHours → Allocation is flagged with <code>requiresSaOverride = true</code>. It remains in <code>draft</code> status and can only be approved by a Super Admin.</li>
+  <li><b>Underloaded:</b> Projected hours &lt; minWeeklyHours → Informational flag (does not block).</li>
+</ul>
+
+<h2>7.6 Allocation Management</h2>
+<p><b>Accessible by:</b> Super Admin, HOD, Faculty (read-only)</p>
+<ul>
+  <li><b>Create:</b> Links a faculty member to a subject + class/batch for a term. Automatically computes hours via the Workload Engine, checks conflicts via the Conflict Engine, and creates an ApprovalLog entry.</li>
+  <li><b>Update:</b> Modifies assignment details. Re-validates all constraints. Only allowed for <code>draft</code> or <code>returned_for_clarification</code> statuses.</li>
+  <li><b>Delete:</b> Only <code>draft</code> allocations can be deleted. Approved allocations must be ended with an <code>effectiveEndDate</code> instead.</li>
+  <li><b>List &amp; Filter:</b> Supports filtering by termId, deptId, and facultyId with eager loading of related faculty, subject, class, and batch names.</li>
+</ul>
+
+<h2>7.7 Approval Workflow</h2>
+<p><b>Module:</b> <code>approvals/service.ts</code></p>
+
+<h3>Status Transitions</h3>
+<table>
+  <tr><th>From</th><th>To</th><th>Action</th><th>Who Can Do It</th></tr>
+  <tr><td>draft</td><td>pending_approval</td><td>Submit for Review</td><td>HOD</td></tr>
+  <tr><td>draft (overloaded)</td><td>escalated_to_super_admin</td><td>Submit (auto-escalated)</td><td>HOD</td></tr>
+  <tr><td>pending_approval</td><td>approved</td><td>Approve</td><td>HOD or Super Admin</td></tr>
+  <tr><td>pending_approval</td><td>rejected</td><td>Reject (remarks ≥ 10 chars required)</td><td>HOD or Super Admin</td></tr>
+  <tr><td>pending_approval</td><td>returned_for_clarification</td><td>Return for Clarification</td><td>HOD or Super Admin</td></tr>
+  <tr><td>escalated_to_super_admin</td><td>approved</td><td>Override Approve</td><td>Super Admin only</td></tr>
+  <tr><td>escalated_to_super_admin</td><td>rejected</td><td>Override Reject</td><td>Super Admin only</td></tr>
+  <tr><td>returned_for_clarification</td><td>draft</td><td>Edit and resubmit</td><td>HOD</td></tr>
+</table>
+
+<p>Every status change creates an <code>ApprovalLog</code> record with the actor, timestamps, from/to status, change type, and optional remarks.</p>
+
+<h2>7.8 SLA Escalation (Automated Background Job)</h2>
+<p><b>Module:</b> <code>cron/sla-escalation.ts</code></p>
+<p>A <code>node-cron</code> job runs <b>daily at midnight (0 0 * * *)</b>. For each allocation in <code>pending_approval</code> status:</p>
+<ol>
+  <li>Finds the most recent ApprovalLog entry where <code>toStatus = 'pending_approval'</code></li>
+  <li>Retrieves the SLA days from the Norms table for the faculty's designation (default: 3 days)</li>
+  <li>If the pending duration exceeds the SLA, flags the allocation with <code>requiresSaOverride = true</code></li>
+  <li>Creates an ApprovalLog entry with <code>changeType = 'sla_escalation'</code> and <code>slaEscalated = true</code></li>
+</ol>
+
+<h2>7.9 Role-Specific Dashboards</h2>
+
+<h3>7.9.1 Super Admin Dashboard</h3>
+<p><b>KPIs:</b> Total Faculty, Total Departments, Average Workload Hours, Overloaded Faculty Count</p>
+<p><b>Charts:</b></p>
+<ul>
+  <li><b>Stacked Bar Chart:</b> Theory vs. Practical hours aggregated by department</li>
+  <li><b>Faculty Workload Heatmap:</b> Grid of coloured tiles (green = normal, amber = underloaded, orange = overloaded) representing every faculty member across all departments</li>
+</ul>
+<p><b>Filters:</b> Designation filter, workload status filter, academic term selector</p>
+
+<h3>7.9.2 HOD Dashboard</h3>
+<p><b>KPIs:</b> Department Faculty Count, Average Workload, Overloaded Faculty Count</p>
+<p><b>Charts:</b></p>
+<ul>
+  <li><b>Pie/Donut Chart:</b> Subject-wise hour distribution showing which courses consume the most teaching hours</li>
+  <li><b>Faculty Cards Grid:</b> Individual cards per faculty showing name, designation, total hours, and a colour-coded progress bar relative to min/max norms</li>
+</ul>
+
+<h3>7.9.3 Faculty Dashboard</h3>
+<p><b>Workload Gauge:</b> A radial progress chart showing the faculty's total allocated hours against their norm limit, with status-dependent colouring</p>
+<p><b>Assigned Subjects:</b> Card grid showing each assigned subject, class/batch name, and weekly hours</p>
+<p><b>Recent Request Timeline:</b> Vertical timeline with icons (check for approved, X for rejected, clock for pending) showing the last 5 approval status changes</p>
+
+<h2>7.10 Workload Report Generation</h2>
+<p><b>Module:</b> <code>workload-report/service.ts</code></p>
+<p>Generates structured departmental workload reports matching the official MGM University Teaching Workload Sheet format. Features:</p>
+<ul>
+  <li><b>Auto-Generation:</b> Compiles report rows from existing subjects, classes, batches, and their computed hours</li>
+  <li><b>Inline Editing:</b> Full spreadsheet-like editing of report rows with add/delete/reorder capabilities</li>
+  <li><b>Auto-Calculated Fields:</b> Total Theory Hours = Divisions × Theory Hrs/Week; Total Practical Hours = Batches × Practical Hrs/Week; Total Teaching Hours = Theory + Practical + Tutorial</li>
+  <li><b>Print View:</b> A dedicated print-optimised layout with the institutional header, formatted table, totals row, and signature lines</li>
+  <li><b>Note Markers:</b> Support for * (load taken by other dept) and ** (load from other dept) annotations</li>
+</ul>
+
+<h2>7.11 AI-Powered Document Ingestion</h2>
+<p><b>Module:</b> <code>workload-report/ingest.service.ts</code></p>
+<p>Integrates <b>Google Gemini 2.5 Flash</b> for multimodal document extraction:</p>
+
+<h3>Supported Document Types</h3>
+<ul>
+  <li><b>Type 1 — Teaching Workload Sheet:</b> Subject-wise table with columns for Sr. No., Program/Class, Subject Name, Divisions, Theory Hours, Practical Hours, Tutorial Hours, Credits (L/P/T)</li>
+  <li><b>Type 2 — Teaching Workload Distribution Sheet:</b> Faculty-wise table with assignments, student counts, and grand total hours</li>
+</ul>
+
+<h3>Processing Pipeline</h3>
+<ol>
+  <li>File uploaded via <code>POST /workload-report/ingest</code> (multer memory storage, max 20MB)</li>
+  <li>File buffer converted to base64 and sent to Gemini with a 230+ line structured extraction prompt</li>
+  <li>Prompt enforces 10 strict extraction rules (e.g., never skip rows, normalize designations, handle special markers)</li>
+  <li>Response JSON is cleaned (markdown code fences removed) and parsed into a typed <code>GeminiExtractedPayload</code></li>
+  <li>Dry-run mode available for preview before committing to database</li>
+  <li>On commit: maps extracted subjects to <code>WorkloadReportRow</code> records and saves via the report service</li>
+</ol>
+
+<!-- ═══════════════════ CHAPTER 8 ═══════════════════ -->
+<h1>8. API Endpoint Reference</h1>
+
+<h2>8.1 Authentication</h2>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/api/v1/auth/login</td><td>Public</td><td>Email/password login → returns access token + sets refresh cookie</td></tr>
+  <tr><td>POST</td><td>/api/v1/auth/refresh</td><td>Cookie</td><td>Silent refresh → returns new access token</td></tr>
+  <tr><td>POST</td><td>/api/v1/auth/logout</td><td>Bearer</td><td>Revokes all refresh tokens, clears cookie</td></tr>
+  <tr><td>POST</td><td>/api/v1/auth/change-password</td><td>Bearer</td><td>Changes password, clears mustChangePassword flag</td></tr>
+</table>
+
+<h2>8.2 Institutional Configuration</h2>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Roles</th><th>Description</th></tr>
+  <tr><td>GET</td><td>/api/v1/institutional/schools</td><td>SA, HOD</td><td>List all schools</td></tr>
+  <tr><td>GET</td><td>/api/v1/institutional/schools/:id</td><td>SA, HOD</td><td>Get school details with departments</td></tr>
+  <tr><td>POST</td><td>/api/v1/institutional/schools</td><td>SA</td><td>Create a new school</td></tr>
+  <tr><td>PUT</td><td>/api/v1/institutional/schools/:id</td><td>SA</td><td>Update a school</td></tr>
+  <tr><td>DELETE</td><td>/api/v1/institutional/schools/:id</td><td>SA</td><td>Deactivate a school</td></tr>
+  <tr><td>GET</td><td>/api/v1/institutional/departments</td><td>SA, HOD</td><td>List departments (HODs see only their own)</td></tr>
+  <tr><td>POST</td><td>/api/v1/institutional/departments</td><td>SA</td><td>Create a department</td></tr>
+  <tr><td>PUT</td><td>/api/v1/institutional/departments/:id</td><td>SA</td><td>Update department / assign HOD</td></tr>
+  <tr><td>DELETE</td><td>/api/v1/institutional/departments/:id</td><td>SA</td><td>Delete a department</td></tr>
+  <tr><td>GET</td><td>/api/v1/institutional/academic-terms</td><td>All</td><td>List academic terms</td></tr>
+  <tr><td>POST</td><td>/api/v1/institutional/academic-terms</td><td>SA</td><td>Create an academic term</td></tr>
+  <tr><td>DELETE</td><td>/api/v1/institutional/academic-terms/:id</td><td>SA</td><td>Delete an academic term</td></tr>
+  <tr><td>GET</td><td>/api/v1/institutional/norms</td><td>SA, HOD</td><td>List workload norms (optional termId filter)</td></tr>
+  <tr><td>PUT</td><td>/api/v1/institutional/norms</td><td>SA</td><td>Create or update norms (upsert)</td></tr>
+  <tr><td>DELETE</td><td>/api/v1/institutional/norms/:id</td><td>SA</td><td>Delete a norm</td></tr>
+</table>
+
+<h2>8.3 Faculty, Subjects, Classes, Batches</h2>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Roles</th><th>Description</th></tr>
+  <tr><td>GET</td><td>/api/v1/faculty</td><td>SA, HOD</td><td>List faculty (filterable by deptId)</td></tr>
+  <tr><td>GET</td><td>/api/v1/faculty/:id</td><td>SA, HOD, Self</td><td>Get faculty profile with allocations</td></tr>
+  <tr><td>POST</td><td>/api/v1/faculty</td><td>SA, HOD</td><td>Create faculty + UserAuth + optional HOD assignment</td></tr>
+  <tr><td>PUT</td><td>/api/v1/faculty/:id</td><td>SA, HOD</td><td>Update faculty details</td></tr>
+  <tr><td>POST</td><td>/api/v1/faculty/:id/deactivate</td><td>SA</td><td>Deactivate faculty account</td></tr>
+  <tr><td>POST</td><td>/api/v1/faculty/:id/activate</td><td>SA</td><td>Reactivate faculty account</td></tr>
+  <tr><td>GET/POST/PUT/DELETE</td><td>/api/v1/subjects/*</td><td>SA, HOD</td><td>Full CRUD for subjects</td></tr>
+  <tr><td>GET/POST/PUT/DELETE</td><td>/api/v1/classes/*</td><td>SA, HOD</td><td>Full CRUD for class divisions</td></tr>
+  <tr><td>GET/POST/PUT/DELETE</td><td>/api/v1/student-strength/*</td><td>SA, HOD</td><td>CRUD for student strength records</td></tr>
+</table>
+
+<h2>8.4 Allocations &amp; Approvals</h2>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Roles</th><th>Description</th></tr>
+  <tr><td>GET</td><td>/api/v1/allocations</td><td>All</td><td>List allocations (filterable)</td></tr>
+  <tr><td>GET</td><td>/api/v1/allocations/:id</td><td>All</td><td>Get allocation with full audit trail</td></tr>
+  <tr><td>POST</td><td>/api/v1/allocations</td><td>SA, HOD</td><td>Create allocation (auto-computes hours, checks conflicts)</td></tr>
+  <tr><td>PUT</td><td>/api/v1/allocations/:id</td><td>SA, HOD</td><td>Update allocation (re-validates constraints)</td></tr>
+  <tr><td>DELETE</td><td>/api/v1/allocations/:id</td><td>SA, HOD</td><td>Delete draft allocation</td></tr>
+  <tr><td>POST</td><td>/api/v1/approvals/:entityType/:entityId/submit</td><td>SA, HOD</td><td>Submit for approval</td></tr>
+  <tr><td>POST</td><td>/api/v1/approvals/:entityType/:entityId/decide</td><td>SA, HOD</td><td>Approve / reject / return for clarification</td></tr>
+  <tr><td>GET</td><td>/api/v1/approvals/pending</td><td>SA, HOD</td><td>List pending approvals</td></tr>
+</table>
+
+<h2>8.5 Dashboard &amp; Reports</h2>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Roles</th><th>Description</th></tr>
+  <tr><td>GET</td><td>/api/v1/dashboard/superadmin</td><td>SA</td><td>Cross-department analytics with heatmap data</td></tr>
+  <tr><td>GET</td><td>/api/v1/dashboard/hod</td><td>HOD</td><td>Department-level workload analytics</td></tr>
+  <tr><td>GET</td><td>/api/v1/dashboard/faculty</td><td>Faculty</td><td>Personal workload summary &amp; recent requests</td></tr>
+  <tr><td>GET</td><td>/api/v1/workload-report</td><td>SA, HOD</td><td>Get workload report (auto-generates if none exists)</td></tr>
+  <tr><td>POST</td><td>/api/v1/workload-report/generate</td><td>SA, HOD</td><td>Force-regenerate report from DB data</td></tr>
+  <tr><td>PUT</td><td>/api/v1/workload-report/:id</td><td>SA, HOD</td><td>Bulk update report rows</td></tr>
+  <tr><td>POST</td><td>/api/v1/workload-report/:id/rows</td><td>SA, HOD</td><td>Add a single row</td></tr>
+  <tr><td>PUT</td><td>/api/v1/workload-report/rows/:rowId</td><td>SA, HOD</td><td>Update a single row</td></tr>
+  <tr><td>DELETE</td><td>/api/v1/workload-report/rows/:rowId</td><td>SA, HOD</td><td>Delete a single row</td></tr>
+  <tr><td>POST</td><td>/api/v1/workload-report/ingest</td><td>SA, HOD</td><td>AI document ingestion (multipart upload)</td></tr>
+</table>
+
+<!-- ═══════════════════ CHAPTER 9 ═══════════════════ -->
+<h1>9. Frontend Pages &amp; Navigation</h1>
+
+<h2>9.1 Public Pages</h2>
+<table>
+  <tr><th>Route</th><th>Description</th></tr>
+  <tr><td>/login</td><td>Login form with email/password fields, error alerts, and redirect support</td></tr>
+  <tr><td>/unauthorized</td><td>403 error page shown when a user accesses a route outside their role</td></tr>
+</table>
+
+<h2>9.2 Protected Pages (Sidebar Navigation)</h2>
+<table>
+  <tr><th>Route</th><th>Label</th><th>Roles</th><th>Description</th></tr>
+  <tr><td>/dashboard</td><td>Dashboard</td><td>All</td><td>Role-specific analytics dashboard (SuperAdmin/HOD/Faculty)</td></tr>
+  <tr><td>/institutional</td><td>Institutional Config</td><td>SA</td><td>Manage schools, departments, academic terms, norms</td></tr>
+  <tr><td>/master-data</td><td>Master Data</td><td>SA, HOD</td><td>Manage subjects, classes, batches, student strength</td></tr>
+  <tr><td>/subjects</td><td>Subjects &amp; Classes</td><td>SA, HOD</td><td>Subject and class management views</td></tr>
+  <tr><td>/allocations</td><td>Allocations</td><td>All</td><td>View/create/edit faculty-subject allocations</td></tr>
+  <tr><td>/approvals</td><td>Approvals</td><td>SA, HOD</td><td>Review and decide on pending approval requests</td></tr>
+  <tr><td>/faculty</td><td>Faculty Management</td><td>SA, HOD</td><td>Create, edit, activate/deactivate faculty accounts</td></tr>
+  <tr><td>/workload-report</td><td>Workload Report</td><td>SA, HOD</td><td>Generate, edit, print, and AI-ingest workload reports</td></tr>
+</table>
+
+<h2>9.3 Layout Structure</h2>
+<p>The protected layout features:</p>
+<ul>
+  <li><b>Collapsible Sidebar</b> with a Carbon (#202020) header displaying "FWMS Portal", role-filtered navigation links with Lucide icons, active-state indicators (Signal Orange dot), and a user profile section with sign-out</li>
+  <li><b>Top Bar</b> with a mobile hamburger menu toggle and "Paperless SOET" branding</li>
+  <li><b>Content Area</b> with a max-width container, entry animation (fade-in + slide-up), and scroll containment</li>
+</ul>
+
+<!-- ═══════════════════ CHAPTER 10 ═══════════════════ -->
+<h1>10. UI/UX Design System</h1>
+<p>The application follows the <b>"Ventriloc"</b> design specification — a professional, data-first aesthetic inspired by modern analytics dashboards.</p>
+
+<h2>10.1 Colour Palette</h2>
+<table>
+  <tr><th>Token</th><th>Hex</th><th>Role</th></tr>
+  <tr><td>Signal Orange</td><td style="background:#ff682c;color:white;font-weight:bold">#ff682c</td><td>Brand accent — charts, active indicators, overload alerts</td></tr>
+  <tr><td>Sienna Bronze</td><td style="background:#816729;color:white">#816729</td><td>Muted secondary brand tone</td></tr>
+  <tr><td>Carbon</td><td style="background:#202020;color:white">#202020</td><td>Primary text, button backgrounds, headings</td></tr>
+  <tr><td>Graphite</td><td style="background:#4d4d4d;color:white">#4d4d4d</td><td>Secondary text, body emphasis</td></tr>
+  <tr><td>Slate</td><td style="background:#828282;color:white">#828282</td><td>Helper text, placeholders, inactive elements</td></tr>
+  <tr><td>Fog</td><td style="background:#f5f5f5">#f5f5f5</td><td>Subtle surface tint, hover washes</td></tr>
+  <tr><td>Mist</td><td style="background:#efefef">#efefef</td><td>Page canvas / background</td></tr>
+  <tr><td>Chalk</td><td style="background:#e8e8e8">#e8e8e8</td><td>Borders, dividers, nav background</td></tr>
+  <tr><td>Paper</td><td style="background:#ffffff;border:1px solid #e8e8e8">#ffffff</td><td>Card surfaces, content panels</td></tr>
+</table>
+
+<h2>10.2 Typography</h2>
+<table>
+  <tr><th>Font</th><th>Usage</th><th>Weights</th></tr>
+  <tr><td>Space Grotesk (substitute for PolySans)</td><td>Headings, display text, KPI values</td><td>400, 500, 600</td></tr>
+  <tr><td>Inter</td><td>Body text, UI labels, buttons, form elements</td><td>400, 500, 600</td></tr>
+</table>
+
+<h2>10.3 Border Radius System</h2>
+<table>
+  <tr><th>Element</th><th>Radius</th></tr>
+  <tr><td>Cards, Inputs</td><td>8px</td></tr>
+  <tr><td>Buttons, Tags</td><td>20px (pill shape)</td></tr>
+  <tr><td>Navigation Capsule</td><td>200px (full rounded)</td></tr>
+</table>
+
+<h2>10.4 Glassmorphism</h2>
+<p>A <code>.glass</code> CSS utility class provides a frosted-glass effect: <code>background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);</code> — used on modal overlays like the forced password change screen.</p>
+
+<!-- ═══════════════════ CHAPTER 11 ═══════════════════ -->
+<h1>11. Validation &amp; Error Handling</h1>
+
+<h2>11.1 Input Validation (Zod)</h2>
+<p>All API request bodies are validated using Zod schemas before reaching the service layer. Validation failures return a <code>400 VALIDATION_ERROR</code> with field-level error details:</p>
+<div class="code-block">{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid request data",
+    "details": [
+      { "field": "email", "message": "Invalid email format" },
+      { "field": "creditHours", "message": "Credit hours must be > 0" }
+    ]
+  }
+}</div>
+
+<h2>11.2 Application Errors (ApiError Class)</h2>
+<p>A custom <code>ApiError</code> class provides factory methods for consistent HTTP error responses:</p>
+<table>
+  <tr><th>Factory Method</th><th>HTTP Status</th><th>Error Code</th></tr>
+  <tr><td>ApiError.badRequest()</td><td>400</td><td>BAD_REQUEST</td></tr>
+  <tr><td>ApiError.unauthorized()</td><td>401</td><td>UNAUTHORIZED</td></tr>
+  <tr><td>ApiError.forbidden()</td><td>403</td><td>FORBIDDEN</td></tr>
+  <tr><td>ApiError.notFound()</td><td>404</td><td>NOT_FOUND</td></tr>
+  <tr><td>ApiError.conflict()</td><td>409</td><td>CONFLICT</td></tr>
+  <tr><td>ApiError.internal()</td><td>500</td><td>INTERNAL_ERROR</td></tr>
+</table>
+
+<p>A centralised error handler catches all thrown errors, logs unexpected ones via Pino, and suppresses stack traces in production mode.</p>
+
+<!-- ═══════════════════ CHAPTER 12 ═══════════════════ -->
+<h1>12. Seed Data &amp; Initial Configuration</h1>
+<p>Running <code>npm run db:seed</code> populates the database with test data:</p>
+
+<table>
+  <tr><th>Entity</th><th>Seed Data</th></tr>
+  <tr><td>Super Admin</td><td>admin@mgm.edu / Admin@123 (role: super_admin, mustChangePassword: true)</td></tr>
+  <tr><td>School</td><td>"School of Engineering and Technology", Dean: Dr. A. B. Smith</td></tr>
+  <tr><td>Departments</td><td>Computer Science and Engineering (batch size: 20), Information Technology (batch size: 20)</td></tr>
+  <tr><td>Academic Term</td><td>2024-25 Odd Semester (Aug 2024 – Dec 2024, status: active)</td></tr>
+  <tr><td>Norms</td><td>Professor: 8–14 hrs/wk; Associate Prof: 10–16 hrs/wk; Asst Prof: 12–18 hrs/wk (all with theory×1.0, practical×2.0, SLA: 3 days)</td></tr>
+  <tr><td>HOD (CSE)</td><td>Dr. Jane Doe (hod.cse@mgm.edu / Hod@123, designation: Professor, role: dept_admin)</td></tr>
+  <tr><td>Faculty</td><td>John Smith (john.smith@mgm.edu / Faculty@123, designation: Assistant Professor, role: faculty)</td></tr>
+</table>
+
+<!-- ═══════════════════ CHAPTER 13 ═══════════════════ -->
+<h1>13. Setup &amp; Deployment Guide</h1>
+
+<h2>13.1 Prerequisites</h2>
+<ul>
+  <li>Node.js ≥ 20.0.0</li>
+  <li>npm (bundled with Node.js)</li>
+  <li>Git (for cloning)</li>
+</ul>
+
+<h2>13.2 Environment Configuration</h2>
+<p>Create a <code>.env</code> file in the <code>fwms/</code> root directory:</p>
+<div class="code-block"># ───── Database ─────
+DATABASE_URL="file:./dev.db"
+
+# ───── JWT ─────
+JWT_ACCESS_SECRET="dev-access-secret-change-in-production-32chars"
+JWT_REFRESH_SECRET="dev-refresh-secret-change-in-production-32chars"
+JWT_ACCESS_EXPIRY="15m"
+JWT_REFRESH_EXPIRY="7d"
+
+# ───── Server ─────
+API_PORT=4000
+API_URL="http://localhost:4000"
+FRONTEND_URL="http://localhost:3000"
+NODE_ENV="development"
+
+# ───── Rate Limiting ─────
+RATE_LIMIT_AUTH_MAX=10
+RATE_LIMIT_AUTH_WINDOW_MS=60000
+RATE_LIMIT_GENERAL_MAX=100
+RATE_LIMIT_GENERAL_WINDOW_MS=60000
+
+# ───── Logging ─────
+LOG_LEVEL="debug"</div>
+
+<h2>13.3 Installation &amp; Launch</h2>
+<div class="code-block"># 1. Install all dependencies across workspaces
+npm install
+
+# 2. Apply database schema and create dev.db
+npm run db:migrate
+
+# 3. Seed initial data (admin users, norms, departments)
+npm run db:seed
+
+# 4. Start both API (port 4000) and Web (port 3000) simultaneously
+npm run dev</div>
+
+<h2>13.4 Additional Scripts</h2>
+<table>
+  <tr><th>Command</th><th>Description</th></tr>
+  <tr><td><code>npm run dev:api</code></td><td>Run only the backend API server</td></tr>
+  <tr><td><code>npm run dev:web</code></td><td>Run only the frontend web server</td></tr>
+  <tr><td><code>npm run build</code></td><td>Build shared → API → Web for production</td></tr>
+  <tr><td><code>npm run typecheck</code></td><td>Run TypeScript type checking across all packages</td></tr>
+  <tr><td><code>npm run db:studio</code></td><td>Open Prisma Studio (visual database browser)</td></tr>
+</table>
+
+<!-- ═══════════════════ CHAPTER 14 ═══════════════════ -->
+<h1>14. Future Scope</h1>
+<ol>
+  <li><b>Email Notifications:</b> SMTP integration for approval notifications, SLA escalation alerts, and password reset flows</li>
+  <li><b>PDF Export:</b> Server-side PDF generation of workload reports using Puppeteer or jsPDF</li>
+  <li><b>Timetable Integration:</b> Cross-reference allocations with class timetables to detect time-slot conflicts</li>
+  <li><b>Analytics History:</b> Term-over-term comparison charts showing workload trends per department</li>
+  <li><b>PostgreSQL Migration:</b> Upgrade from SQLite to PostgreSQL for production deployment with connection pooling</li>
+  <li><b>Real-time Updates:</b> WebSocket or Server-Sent Events for live dashboard updates and notification delivery</li>
+  <li><b>Mobile App:</b> React Native companion app for faculty to view their allocations and approval statuses</li>
+  <li><b>Bulk Import:</b> CSV/Excel upload for batch creation of faculty, subjects, and class divisions</li>
+  <li><b>Advanced AI Features:</b> Extend Gemini integration to suggest optimal faculty-subject assignments based on historical data and workload balance</li>
+</ol>
+
+<br><br>
+<hr style="border-top: 2pt solid #ff682c; width: 40%; margin: 30pt auto;">
+<p style="text-align: center; color: #828282; font-size: 10pt; margin-top: 20pt;"><b>End of Report</b></p>
+<p style="text-align: center; color: #828282; font-size: 9pt;">Paperless SOET — Faculty Workload Management System (FWMS)<br>MGM University, School of Engineering and Technology<br>July 2026</p>
+
+</div>
+</body>
+</html>

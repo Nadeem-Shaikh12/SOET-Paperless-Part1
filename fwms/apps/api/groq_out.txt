@@ -1,0 +1,374 @@
+
+<think>
+The user wants the data from the image extracted into a JSON object.
+
+1.  **Identify the main table structure:** The table has headers like "Sr. No.", "Program/Class", "Name of Course / Subject", "No. of Divisions", "Teaching Scheme" (split into Theory, Practical, Tutorial), "Total Teaching Hours", and "Credits for Course / Subject".
+2.  **Extract Header Information:**
+    *   Institution: MGM University, Chhatrapati Sambhajinagar
+    *   Academic Year: 2026-27 (Part I)
+    *   School: School of Engineering and Technology
+    *   Department: Civil Engineering Department
+    *   Title: Teaching Workload
+3.  **Extract Table Rows:** I need to go row by row, capturing the text in each cell.
+    *   *Row 1 (Headers):* Sr. No., Program/Class, Name of Course / Subject, No. of Divisions, Theory (T) - Hrs per week, Practical (P) - No. of Batches, Hrs per week, Total (Hrs per week), Tutorial (T) - Hrs per week, Total Teaching Hours, Credits for Course / Subject - L, P, T.
+    *   *Row 2 (Sub-headers):* 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14. Also formulas like (7*8), (6+9+10).
+    *   *Row 3:* 1, TF (I) CE, Soil Mechanics, 1, 3, 1, 2, 0, 29, 3, 1, 0.
+    *   *Row 4:* Strength of Materials, 1, 3, 1, 2, 0, 3, 1, 0.
+    *   *Row 5:* Building Planning and Drawing, 1, 3, 1, 2, 0, 3, 1, 0.
+    *   *Row 6:* Fluid Mechanics-I, 1, 3, 1, 2, 0, 3, 1, 0.
+    *   *Row 7:* Remote Sensing and Geographical Information System, 1, 3, 1, 2, 0, 3, 1, 0.
+    *   *Row 8:* Gandhian Studies *, 1, 2, 0, 0, 0, Audit, 0, 0.
+    *   *Row 9:* Computer Aided Drawing-I Lab, 1, 0, 1, 2, 4, 0, 0, 2, 0.
+    *   *Row 10:* 2, FO (I) CE, Environmental Engineering, 1, 3, 1, 2, 0, 28, 3, 1, 0.
+    *   *Row 11:* Transportation Engineering, 1, 3, 1, 2, 0, 3, 1, 0.
+    *   *Row 12:* Business Management & Financial Accounting *, 1, 2, 2, 0, 0, 0, 2, 0, 0.
+    *   *Row 13:* Construction of India *, 1, 2, 2, 0, 0, 0, 2, 0, 0.
+    *   *Row 14:* Civil Engineering Software-I Lab, 1, 0, 1, 2, 4, 0, 0, 2, 0.
+    *   *Row 15:* Field Project, 1, 0, 1, 2, 4, 0, 0, 2, 0.
+    *   *Row 16:* MDM*, 1, 2, 0, 0, 0, 0, 2, 0, 0.
+    *   *Row 17:* OE-1*, 1, 2, 0, 0, 0, 0, 2, 0, 0.
+    *   *Row 18:* OE-2*, 1, 2, 0, 0, 0, 0, 2, 0, 0.
+    *   *Row 19:* 3, FE(I), Introduction to Engineering **, 2, 3, 0, 0, 0, 6, 3, 0, 0.
+    *   *Row 20:* 4, FE, Python Programming **, 2, 2, 6, 2, 12, 0, 16, 2, 1, 0.
+    *   *Row 21:* 5, FY IBM, Environmental Studies ** *, 2, 2, 4, 0, 0, 0, 4, 2, 0, 0.
+    *   *Row 22:* 6, FY SOD, Environmental Studies ** *, 1, 2, 0, 0, 0, 0, 2, 2, 0, 0.
+    *   *Row 23 (Total):* TOTAL, 49, 36, 0, 85, 40, 13, 0.
+4.  **Extract Footer Information:**
+    *   Notes: * Load taken by other Department, ** Load of other Departments taken by Faculties of Civil Engineering Department.
+    *   Signatures: Head of Department (Mr. Danish Dr.), Head of Institute, Dean.
+
+5.  **Construct JSON:** Assemble the extracted data into the requested JSON format.
+</think>
+
+```json
+{
+  "header": {
+    "institution": "MGM University Chhatrapati Sambhajinagar",
+    "academic_year": "Academic year 2026-27 (Part I)",
+    "school": "School of Engineering and Technology",
+    "department": "Civil Engineering Department",
+    "title": "Teaching Workload"
+  },
+  "table": [
+    {
+      "Sr. No.": "1",
+      "Program/Class": "TF (I) CE",
+      "Name of Course / Subject": "Soil Mechanics",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "3",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "2",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "29",
+      "Credits for Course / Subject L": "3",
+      "Credits for Course / Subject P": "1",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "1",
+      "Program/Class": "TF (I) CE",
+      "Name of Course / Subject": "Strength of Materials",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "3",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "2",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "29",
+      "Credits for Course / Subject L": "3",
+      "Credits for Course / Subject P": "1",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "1",
+      "Program/Class": "TF (I) CE",
+      "Name of Course / Subject": "Building Planning and Drawing",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "3",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "2",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "29",
+      "Credits for Course / Subject L": "3",
+      "Credits for Course / Subject P": "1",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "1",
+      "Program/Class": "TF (I) CE",
+      "Name of Course / Subject": "Fluid Mechanics-I",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "3",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "2",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "29",
+      "Credits for Course / Subject L": "3",
+      "Credits for Course / Subject P": "1",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "1",
+      "Program/Class": "TF (I) CE",
+      "Name of Course / Subject": "Remote Sensing and Geographical Information System",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "3",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "2",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "29",
+      "Credits for Course / Subject L": "3",
+      "Credits for Course / Subject P": "1",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "1",
+      "Program/Class": "TF (I) CE",
+      "Name of Course / Subject": "Gandhian Studies *",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "2",
+      "Practical (P) No. of Batches": "0",
+      "Practical (P) Hrs per week": "0",
+      "Practical (P) Total (Hrs per week)": "0",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "29",
+      "Credits for Course / Subject L": "Audit",
+      "Credits for Course / Subject P": "0",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "1",
+      "Program/Class": "TF (I) CE",
+      "Name of Course / Subject": "Computer Aided Drawing-I Lab",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "0",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "4",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "29",
+      "Credits for Course / Subject L": "0",
+      "Credits for Course / Subject P": "2",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "2",
+      "Program/Class": "FO (I) CE",
+      "Name of Course / Subject": "Environmental Engineering",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "3",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "2",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "28",
+      "Credits for Course / Subject L": "3",
+      "Credits for Course / Subject P": "1",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "2",
+      "Program/Class": "FO (I) CE",
+      "Name of Course / Subject": "Transportation Engineering",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "3",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "2",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "28",
+      "Credits for Course / Subject L": "3",
+      "Credits for Course / Subject P": "1",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "2",
+      "Program/Class": "FO (I) CE",
+      "Name of Course / Subject": "Business Management & Financial Accounting *",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "2",
+      "Practical (P) No. of Batches": "2",
+      "Practical (P) Hrs per week": "0",
+      "Practical (P) Total (Hrs per week)": "0",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "28",
+      "Credits for Course / Subject L": "2",
+      "Credits for Course / Subject P": "0",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "2",
+      "Program/Class": "FO (I) CE",
+      "Name of Course / Subject": "Construction of India *",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "2",
+      "Practical (P) No. of Batches": "2",
+      "Practical (P) Hrs per week": "0",
+      "Practical (P) Total (Hrs per week)": "0",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "28",
+      "Credits for Course / Subject L": "2",
+      "Credits for Course / Subject P": "0",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "2",
+      "Program/Class": "FO (I) CE",
+      "Name of Course / Subject": "Civil Engineering Software-I Lab",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "0",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "4",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "28",
+      "Credits for Course / Subject L": "0",
+      "Credits for Course / Subject P": "2",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "2",
+      "Program/Class": "FO (I) CE",
+      "Name of Course / Subject": "Field Project",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "0",
+      "Practical (P) No. of Batches": "1",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "4",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "28",
+      "Credits for Course / Subject L": "0",
+      "Credits for Course / Subject P": "2",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "2",
+      "Program/Class": "FO (I) CE",
+      "Name of Course / Subject": "MDM*",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "2",
+      "Practical (P) No. of Batches": "0",
+      "Practical (P) Hrs per week": "0",
+      "Practical (P) Total (Hrs per week)": "0",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "28",
+      "Credits for Course / Subject L": "2",
+      "Credits for Course / Subject P": "0",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "2",
+      "Program/Class": "FO (I) CE",
+      "Name of Course / Subject": "OE-1*",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "2",
+      "Practical (P) No. of Batches": "0",
+      "Practical (P) Hrs per week": "0",
+      "Practical (P) Total (Hrs per week)": "0",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "28",
+      "Credits for Course / Subject L": "2",
+      "Credits for Course / Subject P": "0",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "2",
+      "Program/Class": "FO (I) CE",
+      "Name of Course / Subject": "OE-2*",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "2",
+      "Practical (P) No. of Batches": "0",
+      "Practical (P) Hrs per week": "0",
+      "Practical (P) Total (Hrs per week)": "0",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "28",
+      "Credits for Course / Subject L": "2",
+      "Credits for Course / Subject P": "0",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "3",
+      "Program/Class": "FE(I)",
+      "Name of Course / Subject": "Introduction to Engineering **",
+      "No. of Divisions": "2",
+      "Theory (T) Hrs per week": "3",
+      "Practical (P) No. of Batches": "0",
+      "Practical (P) Hrs per week": "0",
+      "Practical (P) Total (Hrs per week)": "0",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "6",
+      "Credits for Course / Subject L": "3",
+      "Credits for Course / Subject P": "0",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "4",
+      "Program/Class": "FE",
+      "Name of Course / Subject": "Python Programming **",
+      "No. of Divisions": "2",
+      "Theory (T) Hrs per week": "2",
+      "Practical (P) No. of Batches": "6",
+      "Practical (P) Hrs per week": "2",
+      "Practical (P) Total (Hrs per week)": "12",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "16",
+      "Credits for Course / Subject L": "2",
+      "Credits for Course / Subject P": "1",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "5",
+      "Program/Class": "FY IBM",
+      "Name of Course / Subject": "Environmental Studies ** *",
+      "No. of Divisions": "2",
+      "Theory (T) Hrs per week": "2",
+      "Practical (P) No. of Batches": "4",
+      "Practical (P) Hrs per week": "0",
+      "Practical (P) Total (Hrs per week)": "0",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "4",
+      "Credits for Course / Subject L": "2",
+      "Credits for Course / Subject P": "0",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "Sr. No.": "6",
+      "Program/Class": "FY SOD",
+      "Name of Course / Subject": "Environmental Studies ** *",
+      "No. of Divisions": "1",
+      "Theory (T) Hrs per week": "2",
+      "Practical (P) No. of Batches": "0",
+      "Practical (P) Hrs per week": "0",
+      "Practical (P) Total (Hrs per week)": "0",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "2",
+      "Credits for Course / Subject L": "2",
+      "Credits for Course / Subject P": "0",
+      "Credits for Course / Subject T": "0"
+    },
+    {
+      "TOTAL": "",
+      "Theory (T) Hrs per week": "49",
+      "Practical (P) Total (Hrs per week)": "36",
+      "Tutorial (T) Hrs per week": "0",
+      "Total Teaching Hours": "85",
+      "Credits for Course / Subject L": "40",
+      "Credits for Course / Subject P": "13",
+      "Credits for Course / Subject T": "0"
+    }
+  ],
+  "notes": [
+    "* Load taken by other Department",
+    "** Load of other Departments taken by Faculties of Civil Engineering Department"
+  ],
+  "signatures": {
+    "Head of Department": "Mr. Danish Dr.",
+    "Head of Institute": "",
+    "Dean": ""
+  }
+}
+```

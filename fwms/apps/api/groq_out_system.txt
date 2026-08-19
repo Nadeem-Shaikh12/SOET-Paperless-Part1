@@ -1,0 +1,283 @@
+
+<think>
+The user wants the table data extracted into JSON format.
+
+1.  **Identify the table structure:** The table has headers like "Sr. No.", "Program/Class", "Name of Course / Subject", "No. of Divisions", "Theory (L)", "Practical (P)", "Tutorial (T)", "Total Teaching Hours", and "Credits for Course / Subject".
+2.  **Extract headers:**
+    *   Sr. No.
+    *   Program/Class
+    *   Name of Course / Subject
+    *   No. of Divisions
+    *   Theory (L) -> Hrs per week
+    *   Practical (P) -> No. of Batches, Hrs per week, Total (Hrs per week)
+    *   Tutorial (T) -> Hrs per week
+    *   Total Teaching Hours
+    *   Credits for Course / Subject -> L, P, T
+3.  **Extract rows:** I need to go row by row, handling merged cells carefully.
+    *   Row 1: 1, TF (I) CE, Soil Mechanics, 1, 3, 1, 1, 2, 0, 29, 3, 1, 0
+    *   Row 2: (merged 1, TF (I) CE), Strength of Materials, 1, 3, 1, 1, 2, 0, (merged 29), 3, 1, 0
+    *   Row 3: (merged 1, TF (I) CE), Building Planning and Drawing, 1, 3, 1, 1, 2, 0, (merged 29), 3, 1, 0
+    *   Row 4: (merged 1, TF (I) CE), Fluid Mechanics-I, 1, 3, 1, 1, 2, 0, (merged 29), 3, 1, 0
+    *   Row 5: (merged 1, TF (I) CE), Remote Sensing and Geographical Information System, 1, 3, 1, 1, 2, 0, (merged 29), 3, 1, 0
+    *   Row 6: (merged 1, TF (I) CE), Gandhian Studies *, 1, 2, (empty), (empty), (empty), (empty), (merged 29), Audit, 0, 0
+    *   Row 7: (merged 1, TF (I) CE), Computer Aided Drawing-I Lab, 1, 0, (empty), (empty), (empty), (empty), (merged 29), 0, 2, 0
+    *   Row 8: 2, FO (I) CE, Environmental Engineering, 1, 3, 1, 1, 2, 0, 28, 3, 1, 0
+    *   Row 9: (merged 2, FO (I) CE), Transportation Engineering, 1, 3, 1, 1, 2, 0, (merged 28), 3, 1, 0
+    *   Row 10: (merged 2, FO (I) CE), Business Management & Financial Accounting *, 1, 2, (empty), (empty), (empty), (empty), (merged 28), 2, 0, 0
+    *   Row 11: (merged 2, FO (I) CE), Constitution of India *, 1, 2, (empty), (empty), (empty), (empty), (merged 28), 2, 0, 0
+    *   Row 12: (merged 2, FO (I) CE), Civil Engineering Software-I Lab, 1, 0, (empty), (empty), (empty), (empty), (merged 28), 0, 2, 0
+    *   Row 13: (merged 2, FO (I) CE), Field Project, 1, 0, 1, 2, 4, 0, (merged 28), 0, 2, 0
+    *   Row 14: (merged 2, FO (I) CE), MDM*, 1, 2, (empty), (empty), (empty), (empty), (merged 28), 2, 0, 0
+    *   Row 15: (merged 2, FO (I) CE), OE-1*, 1, 2, (empty), (empty), (empty), (empty), (merged 28), 2, 0, 0
+    *   Row 16: (merged 2, FO (I) CE), OE-2*, 1, 2, (empty), (empty), (empty), (empty), (merged 28), 2, 0, 0
+    *   Row 17: 3, FE(I), Introduction to Engineering **, 2, 3, (empty), (empty), (empty), (empty), 6, 3, 0, 0
+    *   Row 18: 4, FE, Python Programming **, 2, 2, 6, 2, 12, 0, 16, 2, 1, 0
+    *   Row 19: 5, FY IBM, Environmental Studies ** /, 2, 2, 4, 0, 0, 0, 4, 2, 0, 0
+    *   Row 20: 6, FY SOD, Environmental Studies **, 1, 2, 0, 0, 0, 0, 2, 2, 0, 0
+    *   Row 21: TOTAL, 49, 36, 0, 85, 40, 13, 0
+
+    *Wait, looking closer at the image, the "Total Teaching Hours" column seems to span multiple rows for the first two main sections.*
+    *   For TF (I) CE, the total is 29.
+    *   For FO (I) CE, the total is 28.
+    *   The "Credits" columns are L, P, T.
+
+    Let's refine the extraction.
+    Headers:
+    ["Sr. No.", "Program/Class", "Name of Course / Subject", "No. of Divisions", "Theory (L) Hrs per week", "Practical (P) No. of Batches", "Practical (P) Hrs per week", "Practical (P) Total (Hrs per week)", "Tutorial (T) Hrs per week", "Total Teaching Hours", "Credits for Course / Subject L", "Credits for Course / Subject P", "Credits for Course / Subject T"]
+
+    Row 1: ["1", "TF (I) CE", "Soil Mechanics", "1", "3", "1", "1", "2", "0", "29", "3", "1", "0"]
+    Row 2: ["", "", "Strength of Materials", "1", "3", "1", "1", "2", "0", "", "3", "1", "0"]
+    Row 3: ["", "", "Building Planning and Drawing", "1", "3", "1", "1", "2", "0", "", "3", "1", "0"]
+    Row 4: ["", "", "Fluid Mechanics-I", "1", "3", "1", "1", "2", "0", "", "3", "1", "0"]
+    Row 5: ["", "", "Remote Sensing and Geographical Information System", "1", "3", "1", "1", "2", "0", "", "3", "1", "0"]
+    Row 6: ["", "", "Gandhian Studies *", "1", "2", "", "", "", "", "", "Audit", "0", "0"] -> Wait, the "Audit" is in the L column? No, it's under "Credits for Course / Subject" -> L column. The value is "Audit".
+    Row 7: ["", "", "Computer Aided Drawing-I Lab", "1", "0", "", "", "", "", "", "0", "2", "0"]
+    Row 8: ["2", "FO (I) CE", "Environmental Engineering", "1", "3", "1", "1", "2", "0", "28", "3", "1", "0"]
+    Row 9: ["", "", "Transportation Engineering", "1", "3", "1", "1", "2", "0", "", "3", "1", "0"]
+    Row 10: ["", "", "Business Management & Financial Accounting *", "1", "2", "", "", "", "", "", "2", "0", "0"]
+    Row 11: ["", "", "Constitution of India *", "1", "2", "", "", "", "", "", "2", "0", "0"]
+    Row 12: ["", "", "Civil Engineering Software-I Lab", "1", "0", "", "", "", "", "", "0", "2", "0"]
+    Row 13: ["", "", "Field Project", "1", "0", "1", "2", "4", "0", "", "0", "2", "0"]
+    Row 14: ["", "", "MDM*", "1", "2", "", "", "", "", "", "2", "0", "0"]
+    Row 15: ["", "", "OE-1*", "1", "2", "", "", "", "", "", "2", "0", "0"]
+    Row 16: ["", "", "OE-2*", "1", "2", "", "", "", "", "", "2", "0", "0"]
+    Row 17: ["3", "FE(I)", "Introduction to Engineering **", "2", "3", "", "", "", "", "6", "3", "0", "0"]
+    Row 18: ["4", "FE", "Python Programming **", "2", "2", "6", "2", "12", "0", "16", "2", "1", "0"]
+    Row 19: ["5", "FY IBM", "Environmental Studies ** /", "2", "2", "4", "0", "0", "0", "4", "2", "0", "0"]
+    Row 20: ["6", "FY SOD", "Environmental Studies **", "1", "2", "0", "0", "0", "0", "2", "2", "0", "0"]
+    Row 21: ["", "", "TOTAL", "", "", "49", "", "36", "0", "85", "40", "13", "0"]
+
+    Wait, the "Total Teaching Hours" column for the first block is 29. It spans rows 1-7.
+    The "Total Teaching Hours" column for the second block is 28. It spans rows 8-16.
+    The "Total Teaching Hours" for row 17 is 6.
+    The "Total Teaching Hours" for row 18 is 16.
+    The "Total Teaching Hours" for row 19 is 4.
+    The "Total Teaching Hours" for row 20 is 2.
+    The "Total Teaching Hours" for TOTAL row is 85.
+
+    Let's re-read the "Total Teaching Hours" column carefully.
+    Row 1-7: The cell "29" spans these rows.
+    Row 8-16: The cell "28" spans these rows.
+    Row 17: "6"
+    Row 18: "16"
+    Row 19: "4"
+    Row 20: "2"
+    Row 21 (Total): "85"
+
+    Let's re-read the "Credits" columns.
+    Row 6: "Audit" is under L. P is 0, T is 0.
+    Row 17: L=3, P=0, T=0.
+    Row 18: L=2, P=1, T=0.
+    Row 19: L=2, P=0, T=0.
+    Row 20: L=2, P=0, T=0.
+
+    Let's construct the JSON.
+</think>
+
+```json
+[
+    {
+        "Sr. No.": "1",
+        "Program/Class": "TF (I) CE",
+        "Name of Course / Subject": "Soil Mechanics",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "3",
+        "Practical (P) No. of Batches": "1",
+        "Practical (P) Hrs per week": "1",
+        "Practical (P) Total (Hrs per week)": "2",
+        "Tutorial (T) Hrs per week": "0",
+        "Total Teaching Hours": "29",
+        "Credits for Course / Subject L": "3",
+        "Credits for Course / Subject P": "1",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Strength of Materials",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "3",
+        "Practical (P) No. of Batches": "1",
+        "Practical (P) Hrs per week": "1",
+        "Practical (P) Total (Hrs per week)": "2",
+        "Tutorial (T) Hrs per week": "0",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "3",
+        "Credits for Course / Subject P": "1",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Building Planning and Drawing",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "3",
+        "Practical (P) No. of Batches": "1",
+        "Practical (P) Hrs per week": "1",
+        "Practical (P) Total (Hrs per week)": "2",
+        "Tutorial (T) Hrs per week": "0",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "3",
+        "Credits for Course / Subject P": "1",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Fluid Mechanics-I",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "3",
+        "Practical (P) No. of Batches": "1",
+        "Practical (P) Hrs per week": "1",
+        "Practical (P) Total (Hrs per week)": "2",
+        "Tutorial (T) Hrs per week": "0",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "3",
+        "Credits for Course / Subject P": "1",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Remote Sensing and Geographical Information System",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "3",
+        "Practical (P) No. of Batches": "1",
+        "Practical (P) Hrs per week": "1",
+        "Practical (P) Total (Hrs per week)": "2",
+        "Tutorial (T) Hrs per week": "0",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "3",
+        "Credits for Course / Subject P": "1",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Gandhian Studies *",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "2",
+        "Practical (P) No. of Batches": "",
+        "Practical (P) Hrs per week": "",
+        "Practical (P) Total (Hrs per week)": "",
+        "Tutorial (T) Hrs per week": "",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "Audit",
+        "Credits for Course / Subject P": "0",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Computer Aided Drawing-I Lab",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "0",
+        "Practical (P) No. of Batches": "",
+        "Practical (P) Hrs per week": "",
+        "Practical (P) Total (Hrs per week)": "",
+        "Tutorial (T) Hrs per week": "",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "0",
+        "Credits for Course / Subject P": "2",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "2",
+        "Program/Class": "FO (I) CE",
+        "Name of Course / Subject": "Environmental Engineering",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "3",
+        "Practical (P) No. of Batches": "1",
+        "Practical (P) Hrs per week": "1",
+        "Practical (P) Total (Hrs per week)": "2",
+        "Tutorial (T) Hrs per week": "0",
+        "Total Teaching Hours": "28",
+        "Credits for Course / Subject L": "3",
+        "Credits for Course / Subject P": "1",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Transportation Engineering",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "3",
+        "Practical (P) No. of Batches": "1",
+        "Practical (P) Hrs per week": "1",
+        "Practical (P) Total (Hrs per week)": "2",
+        "Tutorial (T) Hrs per week": "0",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "3",
+        "Credits for Course / Subject P": "1",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Business Management & Financial Accounting *",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "2",
+        "Practical (P) No. of Batches": "",
+        "Practical (P) Hrs per week": "",
+        "Practical (P) Total (Hrs per week)": "",
+        "Tutorial (T) Hrs per week": "",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "2",
+        "Credits for Course / Subject P": "0",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Constitution of India *",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "2",
+        "Practical (P) No. of Batches": "",
+        "Practical (P) Hrs per week": "",
+        "Practical (P) Total (Hrs per week)": "",
+        "Tutorial (T) Hrs per week": "",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "2",
+        "Credits for Course / Subject P": "0",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Civil Engineering Software-I Lab",
+        "No. of Divisions": "1",
+        "Theory (L) Hrs per week": "0",
+        "Practical (P) No. of Batches": "",
+        "Practical (P) Hrs per week": "",
+        "Practical (P) Total (Hrs per week)": "",
+        "Tutorial (T) Hrs per week": "",
+        "Total Teaching Hours": "",
+        "Credits for Course / Subject L": "0",
+        "Credits for Course / Subject P": "2",
+        "Credits for Course / Subject T": "0"
+    },
+    {
+        "Sr. No.": "",
+        "Program/Class": "",
+        "Name of Course / Subject": "Field Project",
+        "No. of Divisions": "1",

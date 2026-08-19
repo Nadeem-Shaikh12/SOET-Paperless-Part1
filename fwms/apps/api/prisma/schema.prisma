@@ -1,0 +1,433 @@
+// ─────────────────────────────────────────────────────────────
+// FWMS — Prisma Schema
+// Mirrors TAD §4.2 table definitions exactly
+// ─────────────────────────────────────────────────────────────
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ───
+
+enum Role {
+  super_admin
+  dept_admin
+  faculty
+}
+
+enum Designation {
+  Professor
+  Associate_Professor @map("Associate Professor")
+  Assistant_Professor @map("Assistant Professor")
+}
+
+enum EmploymentType {
+  Permanent
+  Contract
+  Visiting
+}
+
+enum AccountStatus {
+  active
+  inactive
+}
+
+enum TermStatus {
+  active
+  archived
+}
+
+enum AllocationStatus {
+  draft
+  pending_approval
+  approved
+  rejected
+  escalated_to_super_admin
+}
+
+enum ApprovalEntityType {
+  allocation
+  student_strength
+  batch_change
+}
+
+enum NotificationType {
+  approval_update
+  sla_escalation
+  account_status
+  allocation_override
+}
+
+// ─── Models ───
+
+/// Top-level institutional unit (School/Faculty) grouping multiple departments
+model School {
+  id          Int          @id @default(autoincrement()) @map("school_id")
+  schoolName  String       @map("school_name")
+  deanName    String?      @map("dean_name")
+  isActive    Boolean      @default(true) @map("is_active")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+
+  departments Department[]
+
+  @@map("schools")
+}
+
+/// Academic department under a School, headed by an HOD
+model Department {
+  id               Int              @id @default(autoincrement()) @map("dept_id")
+  deptName         String           @map("dept_name")
+  schoolId         Int              @map("school_id")
+  hodId            Int?             @map("hod_id")
+  defaultBatchSize Int              @default(30) @map("default_batch_size")
+  isActive         Boolean          @default(true) @map("is_active")
+  createdAt        DateTime         @default(now()) @map("created_at")
+  updatedAt        DateTime         @updatedAt @map("updated_at")
+
+  school           School           @relation(fields: [schoolId], references: [id])
+  hod              Faculty?         @relation("DepartmentHOD", fields: [hodId], references: [id])
+  faculty          Faculty[]        @relation("FacultyDepartment")
+  subjects         Subject[]
+  classDivisions   ClassDivision[]
+  workloadReports  WorkloadReport[]
+
+  @@map("departments")
+}
+
+/// Academic term / semester configuration
+model AcademicTerm {
+  id             Int              @id @default(autoincrement()) @map("term_id")
+  academicYear   String           @map("academic_year")
+  semester       String
+  status         TermStatus       @default(active)
+  startDate      DateTime         @map("start_date")
+  endDate        DateTime         @map("end_date")
+  createdAt      DateTime         @default(now()) @map("created_at")
+
+  norms          Norms[]
+  subjects       Subject[]
+  classDivisions ClassDivision[]
+  batches        Batch[]
+  strengths      StudentStrength[]
+  allocations    Allocation[]
+  workloadReports WorkloadReport[]
+
+  @@map("academic_terms")
+}
+
+/// Master record of all teaching staff
+model Faculty {
+  id               Int              @id @default(autoincrement()) @map("faculty_id")
+  name             String
+  designation      Designation
+  deptId           Int              @map("dept_id")
+  email            String           @unique
+  employmentType   EmploymentType   @map("employment_type")
+  status           AccountStatus    @default(active)
+  effectiveEndDate DateTime?        @map("effective_end_date")
+  createdAt        DateTime         @default(now()) @map("created_at")
+  updatedAt        DateTime         @updatedAt @map("updated_at")
+
+  department       Department       @relation("FacultyDepartment", fields: [deptId], references: [id])
+  hodOfDepts       Department[]     @relation("DepartmentHOD")
+  userAuth         UserAuth?
+  batches          Batch[]
+  allocations      Allocation[]
+
+  @@index([deptId])
+  @@map("faculty")
+}
+
+/// Login credentials and role mapping for all users
+model UserAuth {
+  id                  Int              @id @default(autoincrement()) @map("user_id")
+  username            String           @unique
+  passwordHash        String           @map("password_hash")
+  role                Role
+  linkedId            Int?             @unique @map("linked_id")
+  tokenVersion        Int              @default(0) @map("token_version")
+  lastLoginAt         DateTime?        @map("last_login_at")
+  failedLoginAttempts Int              @default(0) @map("failed_login_attempts")
+  lockedUntil         DateTime?        @map("locked_until")
+  mustChangePassword  Boolean          @default(true) @map("must_change_password")
+  status              AccountStatus    @default(active)
+  createdAt           DateTime         @default(now()) @map("created_at")
+  updatedAt           DateTime         @updatedAt @map("updated_at")
+
+  linkedFaculty       Faculty?         @relation(fields: [linkedId], references: [id])
+  requestedApprovals  ApprovalLog[]    @relation("RequestedBy")
+  reviewedApprovals   ApprovalLog[]    @relation("ReviewedBy")
+  notifications       Notification[]
+  auditLogs           AuditLog[]
+  strengthUpdates     StudentStrength[]
+
+  @@map("user_auth")
+}
+
+/// Master list of subjects offered by departments
+model Subject {
+  id                   Int              @id @default(autoincrement()) @map("subject_id")
+  subjectCode          String           @map("subject_code")
+  subjectName          String           @map("subject_name")
+  deptId               Int              @map("dept_id")
+  hasTheory            Boolean          @default(true) @map("has_theory")
+  hasPractical         Boolean          @default(false) @map("has_practical")
+  hasTutorial          Boolean          @default(false) @map("has_tutorial")
+  creditHours          Float          @map("credit_hours")
+  theoryMultiplier     Float          @default(1.0) @map("theory_multiplier")
+  practicalMultiplier  Float          @default(2.0) @map("practical_multiplier")
+  tutorialHours        Float?         @map("tutorial_hours")
+  termId               Int              @map("term_id")
+  isActive             Boolean          @default(true) @map("is_active")
+  createdAt            DateTime         @default(now()) @map("created_at")
+  updatedAt            DateTime         @updatedAt @map("updated_at")
+
+  department           Department       @relation(fields: [deptId], references: [id])
+  term                 AcademicTerm     @relation(fields: [termId], references: [id])
+  strengths            StudentStrength[]
+  batches              Batch[]
+  allocations          Allocation[]
+
+  @@unique([subjectCode, termId])
+  @@index([deptId])
+  @@index([termId])
+  @@map("subjects")
+}
+
+/// Configurable workload norms per designation per term
+model Norms {
+  id                         Int           @id @default(autoincrement()) @map("norm_id")
+  designation                Designation
+  minWeeklyHours             Float       @map("min_weekly_hours")
+  maxWeeklyHours             Float       @map("max_weekly_hours")
+  defaultTheoryMultiplier    Float       @map("default_theory_multiplier")
+  defaultPracticalMultiplier Float       @map("default_practical_multiplier")
+  slaDaysForHodReview        Int           @default(3) @map("sla_days_for_hod_review")
+  effectiveTermId            Int           @map("effective_term_id")
+  createdAt                  DateTime      @default(now()) @map("created_at")
+  updatedAt                  DateTime      @updatedAt @map("updated_at")
+
+  effectiveTerm              AcademicTerm  @relation(fields: [effectiveTermId], references: [id])
+
+  @@unique([designation, effectiveTermId])
+  @@map("norms")
+}
+
+/// Represents a section of students for theory sessions
+model ClassDivision {
+  id         Int              @id @default(autoincrement()) @map("class_id")
+  className  String           @map("class_name")
+  division   String
+  deptId     Int              @map("dept_id")
+  termId     Int              @map("term_id")
+  createdAt  DateTime         @default(now()) @map("created_at")
+  updatedAt  DateTime         @updatedAt @map("updated_at")
+
+  department Department       @relation(fields: [deptId], references: [id])
+  term       AcademicTerm     @relation(fields: [termId], references: [id])
+  strengths  StudentStrength[]
+  batches    Batch[]
+  allocations Allocation[]
+
+  @@unique([className, division, deptId, termId])
+  @@index([deptId])
+  @@index([termId])
+  @@map("class_divisions")
+}
+
+/// Tracks number of students per class per subject
+model StudentStrength {
+  id           Int             @id @default(autoincrement()) @map("strength_id")
+  classId      Int             @map("class_id")
+  subjectId    Int             @map("subject_id")
+  studentCount Int             @map("student_count")
+  termId       Int             @map("term_id")
+  updatedBy    Int?            @map("updated_by")
+  status       AllocationStatus @default(draft)
+  createdAt    DateTime        @default(now()) @map("created_at")
+  updatedAt    DateTime        @updatedAt @map("updated_at")
+
+  classDivision ClassDivision  @relation(fields: [classId], references: [id])
+  subject       Subject        @relation(fields: [subjectId], references: [id])
+  term          AcademicTerm   @relation(fields: [termId], references: [id])
+  updatedByUser UserAuth?      @relation(fields: [updatedBy], references: [id])
+
+  @@unique([classId, subjectId, termId])
+  @@index([classId])
+  @@index([subjectId])
+  @@index([termId])
+  @@map("student_strengths")
+}
+
+/// Practical sub-groups of a class assigned to faculty
+model Batch {
+  id          Int           @id @default(autoincrement()) @map("batch_id")
+  classId     Int           @map("class_id")
+  subjectId   Int           @map("subject_id")
+  batchName   String        @map("batch_name")
+  batchSize   Int           @map("batch_size")
+  facultyId   Int           @map("faculty_id")
+  termId      Int           @map("term_id")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  classDivision ClassDivision @relation(fields: [classId], references: [id])
+  subject       Subject       @relation(fields: [subjectId], references: [id])
+  faculty       Faculty       @relation(fields: [facultyId], references: [id])
+  term          AcademicTerm  @relation(fields: [termId], references: [id])
+  allocations   Allocation[]
+
+  @@unique([classId, subjectId, batchName, termId])
+  @@index([classId])
+  @@index([subjectId])
+  @@index([facultyId])
+  @@index([termId])
+  @@map("batches")
+}
+
+/// Links faculty to subjects/classes/batches with computed hours
+model Allocation {
+  id                 Int              @id @default(autoincrement()) @map("allocation_id")
+  facultyId          Int              @map("faculty_id")
+  subjectId          Int              @map("subject_id")
+  classId            Int?             @map("class_id")
+  batchId            Int?             @map("batch_id")
+  termId             Int              @map("term_id")
+  theoryHours        Float          @default(0) @map("theory_hours")
+  practicalHours     Float          @default(0) @map("practical_hours")
+  totalHours         Float          @default(0) @map("total_hours")
+  effectiveStartDate DateTime         @map("effective_start_date")
+  effectiveEndDate   DateTime?        @map("effective_end_date")
+  status             AllocationStatus @default(draft)
+  requiresSaOverride Boolean          @default(false) @map("requires_sa_override")
+  createdAt          DateTime         @default(now()) @map("created_at")
+  updatedAt          DateTime         @updatedAt @map("updated_at")
+
+  faculty            Faculty          @relation(fields: [facultyId], references: [id])
+  subject            Subject          @relation(fields: [subjectId], references: [id])
+  classDivision      ClassDivision?   @relation(fields: [classId], references: [id])
+  batch              Batch?           @relation(fields: [batchId], references: [id])
+  term               AcademicTerm     @relation(fields: [termId], references: [id])
+  approvalLogs       ApprovalLog[]
+
+  @@index([facultyId])
+  @@index([subjectId])
+  @@index([classId])
+  @@index([batchId])
+  @@index([termId])
+  @@index([status])
+  @@map("allocations")
+}
+
+/// Audit trail of all change requests and approvals
+model ApprovalLog {
+  id           Int                @id @default(autoincrement()) @map("log_id")
+  entityType   ApprovalEntityType @map("entity_type")
+  entityId     Int                @map("entity_id")
+  requestedBy  Int                @map("requested_by")
+  reviewedBy   Int?               @map("reviewed_by")
+  fromStatus   String             @map("from_status")
+  toStatus     String             @map("to_status")
+  changeType   String             @map("change_type")
+  remarks      String?
+  slaEscalated Boolean            @default(false) @map("sla_escalated")
+  allocationId Int?               @map("allocation_id")
+  createdAt    DateTime           @default(now()) @map("timestamp")
+
+  requester    UserAuth           @relation("RequestedBy", fields: [requestedBy], references: [id])
+  reviewer     UserAuth?          @relation("ReviewedBy", fields: [reviewedBy], references: [id])
+  allocation   Allocation?        @relation(fields: [allocationId], references: [id])
+
+  @@index([entityType, entityId])
+  @@index([requestedBy])
+  @@index([reviewedBy])
+  @@index([createdAt])
+  @@map("approval_logs")
+}
+
+/// In-app notifications for users
+model Notification {
+  id        Int              @id @default(autoincrement()) @map("notification_id")
+  userId    Int              @map("user_id")
+  message   String
+  type      NotificationType
+  read      Boolean          @default(false)
+  createdAt DateTime         @default(now()) @map("created_at")
+
+  user      UserAuth         @relation(fields: [userId], references: [id])
+
+  @@index([userId, read])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+/// Security audit log for login attempts, password resets, role changes, etc.
+model AuditLog {
+  id        Int      @id @default(autoincrement()) @map("audit_id")
+  userId    Int?     @map("user_id")
+  action    String
+  ipAddress String?  @map("ip_address")
+  metadata  Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user      UserAuth? @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+/// Department teaching workload report per term
+model WorkloadReport {
+  id          Int      @id @default(autoincrement()) @map("report_id")
+  deptId      Int      @map("dept_id")
+  termId      Int      @map("term_id")
+  title       String   @default("Teaching Workload")
+  notes       String?  // JSON string for report-level notes / footnotes
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  department  Department   @relation(fields: [deptId], references: [id])
+  term        AcademicTerm @relation(fields: [termId], references: [id])
+  rows        WorkloadReportRow[]
+
+  @@unique([deptId, termId])
+  @@index([deptId])
+  @@index([termId])
+  @@map("workload_reports")
+}
+
+/// Individual row in a workload report
+model WorkloadReportRow {
+  id                  Int      @id @default(autoincrement()) @map("row_id")
+  reportId            Int      @map("report_id")
+  sortOrder           Int      @map("sort_order")
+  programClass        String   @map("program_class")
+  subjectName         String   @map("subject_name")
+  divisions           Int      @default(1)
+  theoryHrsPerWeek    Float    @default(0) @map("theory_hrs_per_week")
+  totalTheoryHrs      Float    @default(0) @map("total_theory_hrs")
+  batches             Int      @default(0)
+  practicalHrsPerWeek Float    @default(0) @map("practical_hrs_per_week")
+  totalPracticalHrs   Float    @default(0) @map("total_practical_hrs")
+  tutorialHrsPerWeek  Float    @default(0) @map("tutorial_hrs_per_week")
+  totalTeachingHours  Float    @default(0) @map("total_teaching_hours")
+  creditsL            Float    @default(0) @map("credits_l")
+  creditsP            Float    @default(0) @map("credits_p")
+  creditsT            Float    @default(0) @map("credits_t")
+  noteMarker          String?  @map("note_marker")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  report WorkloadReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+  @@index([reportId])
+  @@map("workload_report_rows")
+}
