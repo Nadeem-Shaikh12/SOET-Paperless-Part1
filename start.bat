@@ -141,7 +141,7 @@ set "WEB_SCRIPT=!PROJECT_DIR!\apps\web\run_dev.bat"
     echo echo  ==========================================
     echo echo.
     echo cd /d "!PROJECT_DIR!\apps\web"
-    echo npx next dev
+    echo npm run dev
 ) > "!WEB_SCRIPT!"
 
 echo  Starting API Server  ^(http://localhost:4000^)...
