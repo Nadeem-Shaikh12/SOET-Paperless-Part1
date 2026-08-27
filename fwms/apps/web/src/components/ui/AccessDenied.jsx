@@ -1,6 +1,6 @@
 import { ShieldAlert } from 'lucide-react';
 
-export function AccessDenied({ message = 'You do not have permission to view this page.' }: { message?: string }) {
+export function AccessDenied({ message = 'You do not have permission to view this page.' }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[50vh] text-center p-6 animate-in fade-in duration-300">
       <div className="w-16 h-16 bg-[var(--color-fog)] rounded-[var(--radius-cards)] flex items-center justify-center text-[var(--color-signal-orange)] mb-4">

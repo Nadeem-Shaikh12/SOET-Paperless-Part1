@@ -1,16 +1,9 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 
-type ModalProps = {
-  open: boolean;
-  onClose: () => void;
-  title: string;
-  children: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg';
-};
 
 export function Modal({ open, onClose, title, children, size = 'md' }: ModalProps) {
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef(null);
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {

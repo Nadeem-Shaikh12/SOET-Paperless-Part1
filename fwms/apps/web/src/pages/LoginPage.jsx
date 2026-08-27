@@ -11,7 +11,7 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [validationErrors, setValidationErrors] = useState<{ email?: string; password?: string }>({});
+  const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
     // If auth state is already determined and user is authenticated, redirect
@@ -29,7 +29,7 @@ export default function LoginPage() {
     );
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     clearError();
     setValidationErrors({});
@@ -43,9 +43,9 @@ export default function LoginPage() {
       navigate('/dashboard');
     } catch (err) {
       if (err instanceof z.ZodError) {
-        const errors: any = {};
-        (err.issues ?? (err as any).errors ?? []).forEach((e: any) => {
-          if (e.path[0]) errors[e.path[0] as string] = e.message;
+        const errors = {};
+        (err.issues ?? (err).errors ?? []).forEach((e) => {
+          if (e.path[0]) errors[e.path[0]] = e.message;
         });
         setValidationErrors(errors);
       }

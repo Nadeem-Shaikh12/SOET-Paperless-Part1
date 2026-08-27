@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAuthStore } from '../stores/auth';
 import { apiClient } from '../lib/api-client';
@@ -11,7 +11,7 @@ import { Loader2 } from 'lucide-react';
 export default function DashboardPage() {
   const { user } = useAuthStore();
   const [searchParams] = useSearchParams();
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const getGreeting = () => {

@@ -1,58 +1,17 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { Pencil, Save, X, Plus, Trash2, RefreshCw, Printer } from 'lucide-react';
 
-type ReportRow = {
-  id?: number;
-  sortOrder: number;
-  programClass: string;
-  subjectName: string;
-  divisions: number;
-  theoryHrsPerWeek: number;
-  totalTheoryHrs: number;
-  batches: number;
-  practicalHrsPerWeek: number;
-  totalPracticalHrs: number;
-  tutorialHrsPerWeek: number;
-  totalTeachingHours: number;
-  creditsL: number;
-  creditsP: number;
-  creditsT: number;
-  noteMarker?: string | null;
-};
 
-type ReportData = {
-  id: number;
-  deptId: number;
-  termId: number;
-  title: string;
-  notes?: string | null;
-  department: {
-    deptName: string;
-    school: { schoolName: string };
-  };
-  term: {
-    academicYear: string;
-    semester: string;
-  };
-  rows: ReportRow[];
-};
-
-type Props = {
-  report: ReportData;
-  onSave: (reportId: number, data: { title?: string; notes?: string; rows: ReportRow[] }) => Promise<void>;
-  onRegenerate: () => Promise<void>;
-  saving: boolean;
-};
 
 // Helper to compute derived fields
-function computeRow(row: ReportRow): ReportRow {
+function computeRow(row) {
   const totalTheoryHrs = row.divisions * row.theoryHrsPerWeek;
   const totalPracticalHrs = row.batches * row.practicalHrsPerWeek;
   const totalTeachingHours = totalTheoryHrs + totalPracticalHrs + row.tutorialHrsPerWeek;
   return { ...row, totalTheoryHrs, totalPracticalHrs, totalTeachingHours };
 }
 
-function emptyRow(sortOrder: number): ReportRow {
+function emptyRow(sortOrder) {
   return {
     sortOrder,
     programClass: '',
@@ -72,9 +31,9 @@ function emptyRow(sortOrder: number): ReportRow {
   };
 }
 
-export function WorkloadReportDocument({ report, onSave, onRegenerate, saving }: Props) {
+export function WorkloadReportDocument({ report, onSave, onRegenerate, saving }) {
   const [editing, setEditing] = useState(false);
-  const [editRows, setEditRows] = useState<ReportRow[]>([]);
+  const [editRows, setEditRows] = useState([]);
   const [editTitle, setEditTitle] = useState(report.title);
   const [editNotes, setEditNotes] = useState(report.notes || '');
 
@@ -120,7 +79,7 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving }:
     setEditing(false);
   };
 
-  const updateCell = useCallback((index: number, field: keyof ReportRow, value: string | number) => {
+  const updateCell = useCallback((index, field, value) => {
     setEditRows(prev => {
       const updated = [...prev];
       const row = { ...updated[index], [field]: value };
@@ -133,7 +92,7 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving }:
     setEditRows(prev => [...prev, emptyRow(prev.length + 1)]);
   }, []);
 
-  const deleteRow = useCallback((index: number) => {
+  const deleteRow = useCallback((index) => {
     setEditRows(prev => {
       const updated = prev.filter((_, i) => i !== index);
       return updated.map((r, i) => ({ ...r, sortOrder: i + 1 }));
@@ -146,8 +105,8 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving }:
 
   // Group rows by programClass for the grouped display
   const groupedRows = useMemo(() => {
-    const groups: { programClass: string; rows: (ReportRow & { globalIndex: number })[] }[] = [];
-    let currentGroup: typeof groups[0] | null = null;
+    const groups = [];
+    let currentGroup = null;
 
     displayRows.forEach((row, index) => {
       if (!currentGroup || currentGroup.programClass !== row.programClass) {

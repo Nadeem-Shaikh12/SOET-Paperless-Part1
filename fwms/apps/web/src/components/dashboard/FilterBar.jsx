@@ -3,14 +3,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { Filter } from 'lucide-react';
 import { apiClient } from '../../lib/api-client';
 
-export function FilterBar({ role }: { role?: string }) {
+export function FilterBar({ role }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
-  const [terms, setTerms] = useState<any[]>([]);
+  const [terms, setTerms] = useState([]);
 
   useEffect(() => {
-    apiClient<any[]>('/institutional/academic-terms')
+    apiClient('/institutional/academic-terms')
       .then((res) => {
         setTerms(res);
         // If there's no termId search parameter and we have an active term, set it
@@ -26,7 +26,7 @@ export function FilterBar({ role }: { role?: string }) {
   }, [pathname, navigate, searchParams]);
 
   const createQueryString = useCallback(
-    (name: string, value: string) => {
+    (name, value) => {
       const params = new URLSearchParams(searchParams.toString());
       if (value) {
         params.set(name, value);

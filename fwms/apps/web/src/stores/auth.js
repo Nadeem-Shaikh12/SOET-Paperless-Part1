@@ -1,30 +1,10 @@
-import { create } from 'zustand';
+﻿import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { apiClient, setAccessToken } from '../lib/api-client';
-import { LoginRequest, LoginResponse } from '@fwms/shared';
 
-export interface User {
-  id: number;
-  email: string;
-  role: 'super_admin' | 'dept_admin' | 'faculty';
-  name: string;
-  deptId: number | null;
-  facultyId: number | null;
-  mustChangePassword?: boolean;
-}
 
-interface AuthState {
-  user: User | null;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  error: string | null;
-  login: (data: LoginRequest) => Promise<void>;
-  logout: () => Promise<void>;
-  clearError: () => void;
-  initAuth: () => Promise<void>;
-}
 
-export const useAuthStore = create<AuthState>()(
+export const useAuthStore = create()(
   persist(
     (set, get) => ({
       user: null,
@@ -32,10 +12,10 @@ export const useAuthStore = create<AuthState>()(
       isLoading: true,
       error: null,
 
-      login: async (data: LoginRequest) => {
+      login: async (data) => {
         set({ isLoading: true, error: null });
         try {
-          const response = await apiClient<LoginResponse>('/auth/login', {
+          const response = await apiClient('/auth/login', {
             method: 'POST',
             body: JSON.stringify(data),
           });
@@ -46,7 +26,7 @@ export const useAuthStore = create<AuthState>()(
             isAuthenticated: true,
             isLoading: false,
           });
-        } catch (err: any) {
+        } catch (err) {
           set({ error: err.message || 'Login failed', isLoading: false });
           throw err;
         }
@@ -71,7 +51,7 @@ export const useAuthStore = create<AuthState>()(
         if (user) {
           // Try to silent refresh to get a new access token
           try {
-            const response = await apiClient<{ accessToken: string }>('/auth/refresh', { method: 'POST' });
+            const response = await apiClient('/auth/refresh', { method: 'POST' });
             setAccessToken(response.accessToken);
             set({ isAuthenticated: true, isLoading: false });
           } catch {

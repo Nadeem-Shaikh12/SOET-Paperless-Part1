@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+﻿import { useState, useEffect, useCallback, useRef } from 'react';
 import { useAuthStore } from '../stores/auth';
 import { apiClient, getAccessToken } from '../lib/api-client';
 import { useNavigate } from 'react-router-dom';
@@ -19,43 +19,8 @@ import {
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type TermOption = { id: number; academicYear: string; semester: string; status: string };
-type DepartmentOption = { id: number; deptName: string };
 
-type ExtractedSubject = {
-  srNo: number;
-  programClass: string;
-  subjectName: string;
-  noOfDivisions: number;
-  theoryHrsPerWeek: number;
-  totalTheoryHrs: number;
-  noOfBatches: number;
-  practicalHrsPerWeek: number;
-  totalPracticalHrs: number;
-  tutorialHrsPerWeek: number;
-  totalTeachingHours: number;
-  creditL: number;
-  creditP: number;
-  creditT: number;
-  isLoadTakenByOtherDept: boolean;
-  isLoadFromOtherDept: boolean;
-  isAuditCourse: boolean;
-};
 
-type GeminiResult = {
-  documentType: string;
-  academicYear: string;
-  semesterPart: string;
-  school: string;
-  department: string;
-  subjects: ExtractedSubject[];
-  extractionMetadata: {
-    totalSubjectsDetected: number;
-    totalFacultyDetected: number;
-    documentQuality: string;
-    warningFlags: string[];
-  };
-};
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -64,25 +29,25 @@ const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000/api/v1';
 export default function IngestPage() {
   const { user } = useAuthStore();
   const navigate = useNavigate();
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef(null);
 
-  const [terms, setTerms] = useState<TermOption[]>([]);
-  const [departments, setDepartments] = useState<DepartmentOption[]>([]);
-  const [selectedTermId, setSelectedTermId] = useState<number | ''>('');
-  const [selectedDeptId, setSelectedDeptId] = useState<number | ''>('');
+  const [terms, setTerms] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [selectedTermId, setSelectedTermId] = useState('');
+  const [selectedDeptId, setSelectedDeptId] = useState('');
 
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState(null);
   const [dragOver, setDragOver] = useState(false);
 
-  const [step, setStep] = useState<'upload' | 'preview' | 'success'>('upload');
+  const [step, setStep] = useState('upload');
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState('');
   const [isSyncing, setIsSyncing] = useState(false);
   const [metaLoading, setMetaLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
-  const [previewData, setPreviewData] = useState<GeminiResult | null>(null);
-  const [importedReport, setImportedReport] = useState<any>(null);
+  const [previewData, setPreviewData] = useState(null);
+  const [importedReport, setImportedReport] = useState(null);
 
   const isAdmin = user?.role === 'super_admin';
 
@@ -92,7 +57,7 @@ export default function IngestPage() {
     const load = async () => {
       setMetaLoading(true);
       try {
-        const termsList = await apiClient<TermOption[]>('/institutional/academic-terms');
+        const termsList = await apiClient('/institutional/academic-terms');
         setTerms(termsList || []);
 
         // Auto-select the active term
@@ -101,12 +66,12 @@ export default function IngestPage() {
         else if (termsList && termsList.length > 0) setSelectedTermId(termsList[0].id);
 
         if (isAdmin) {
-          const deptsList = await apiClient<DepartmentOption[]>('/institutional/departments');
+          const deptsList = await apiClient('/institutional/departments');
           setDepartments(deptsList || []);
         } else if (user?.deptId) {
           setSelectedDeptId(user.deptId);
         }
-      } catch (err: any) {
+      } catch (err) {
         setError(err?.message || 'Failed to load terms/departments');
       } finally {
         setMetaLoading(false);
@@ -117,7 +82,7 @@ export default function IngestPage() {
 
   // ── File handling ──────────────────────────────────────────────────────────
 
-  const handleFile = useCallback((f: File) => {
+  const handleFile = useCallback((f) => {
     const allowed = [
       'image/jpeg', 'image/png', 'image/webp', 'application/pdf',
       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -136,7 +101,7 @@ export default function IngestPage() {
     setFile(f);
   }, []);
 
-  const onDrop = (e: React.DragEvent) => {
+  const onDrop = (e) => {
     e.preventDefault();
     setDragOver(false);
     const f = e.dataTransfer.files[0];
@@ -147,7 +112,7 @@ export default function IngestPage() {
 
   const resolvedDeptId = selectedDeptId || user?.deptId;
 
-  const doIngest = async (dryRun: boolean) => {
+  const doIngest = async (dryRun) => {
     if (!file || !selectedTermId || !resolvedDeptId) {
       setError('Please select a term, department, and file before proceeding.');
       return null;
@@ -205,9 +170,9 @@ export default function IngestPage() {
     try {
       const data = await doIngest(true);
       if (!data) return;
-      setPreviewData(data.data as GeminiResult);
+      setPreviewData(data.data);
       setStep('preview');
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || 'Unexpected error during AI extraction');
     } finally {
       setLoading(false);
@@ -222,7 +187,7 @@ export default function IngestPage() {
       if (!data) return;
       setImportedReport(data.report);
       setStep('success');
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || 'Unexpected error during import');
     } finally {
       setLoading(false);
@@ -235,7 +200,7 @@ export default function IngestPage() {
   const isPreviewReady = !!file && !!selectedTermId && !!resolvedDeptId;
 
   // ── Client-side Image Resizer ──────────────────────────────────────────────
-  const resizeImage = (file: File, maxWidth = 1600, maxHeight = 1600): Promise<string> => {
+  const resizeImage = (file, maxWidth = 1600, maxHeight = 1600) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.onload = () => {
@@ -268,14 +233,14 @@ export default function IngestPage() {
     setIsSyncing(true);
     setError(null);
     try {
-      const res = await apiClient<any>(`/workload-report/${importedReport.id}/sync`, {
+      const res = await apiClient(`/workload-report/${importedReport.id}/sync`, {
         method: 'POST',
       });
       if (res.error) throw new Error(res.error.message || 'Failed to sync');
       
       // Navigate to allocations or subjects page
       navigate('/allocations');
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
       setError(err.message || 'Failed to publish workload');
     } finally {

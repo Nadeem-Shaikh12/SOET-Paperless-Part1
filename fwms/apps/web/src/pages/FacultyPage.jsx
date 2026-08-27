@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+﻿import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { DataTable } from '..\/components/ui/DataTable';
@@ -9,22 +9,22 @@ import { Plus, Pencil, Trash2, Loader2, UserMinus, UserCheck, Crown } from 'luci
 
 export default function FacultyPage() {
   const { user } = useAuthStore();
-  const [faculty, setFaculty] = useState<any[]>([]);
-  const [departments, setDepartments] = useState<any[]>([]);
+  const [faculty, setFaculty] = useState([]);
+  const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editItem, setEditItem] = useState<any>(null);
-  const [formData, setFormData] = useState<any>({});
+  const [editItem, setEditItem] = useState(null);
+  const [formData, setFormData] = useState({});
   const [saving, setSaving] = useState(false);
-  const [deactivateModal, setDeactivateModal] = useState<{ open: boolean; faculty: any }>({ open: false, faculty: null });
+  const [deactivateModal, setDeactivateModal] = useState({ open: false, faculty: null });
   const [deactivateDate, setDeactivateDate] = useState('');
 
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const [fac, dept] = await Promise.all([
-        apiClient<any[]>('/faculty'),
-        apiClient<any[]>('/institutional/departments').catch(() => []),
+        apiClient('/faculty'),
+        apiClient('/institutional/departments').catch(() => []),
       ]);
       setFaculty(fac);
       setDepartments(dept);
@@ -51,7 +51,7 @@ export default function FacultyPage() {
     setModalOpen(true);
   };
 
-  const openEdit = (item: any) => {
+  const openEdit = (item) => {
     setEditItem(item);
     setFormData({
       name: item.name,
@@ -75,19 +75,19 @@ export default function FacultyPage() {
       }
       setModalOpen(false);
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Save failed');
     } finally {
       setSaving(false);
     }
   };
 
-  const handleDelete = async (item: any) => {
+  const handleDelete = async (item) => {
     if (!confirm(`Are you sure you want to permanently delete ${item.name}? This will also remove their login account.`)) return;
     try {
       await apiClient(`/faculty/${item.id}`, { method: 'DELETE' });
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Delete failed');
     }
   };
@@ -102,24 +102,24 @@ export default function FacultyPage() {
       });
       setDeactivateModal({ open: false, faculty: null });
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Failed');
     } finally {
       setSaving(false);
     }
   };
 
-  const handleReactivate = async (item: any) => {
+  const handleReactivate = async (item) => {
     if (!confirm(`Are you sure you want to reactivate ${item.name}?`)) return;
     try {
       await apiClient(`/faculty/${item.id}/reactivate`, { method: 'PATCH' });
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Failed to reactivate faculty');
     }
   };
 
-  const updateField = (key: string, value: any) => setFormData((p: any) => ({ ...p, [key]: value }));
+  const updateField = (key, value) => setFormData((p) => ({ ...p, [key]: value }));
   const inputClass = 'w-full px-4 py-2.5 rounded-[var(--radius-inputs)] border border-[var(--border)] bg-[var(--color-fog)] text-[var(--foreground)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-carbon)] transition-all';
   const labelClass = 'block text-sm font-semibold text-[var(--foreground)] mb-1.5';
 

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+﻿import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { DataTable } from '..\/components/ui/DataTable';
@@ -7,35 +7,34 @@ import { Badge } from '..\/components/ui/Badge';
 import { AccessDenied } from '..\/components/ui/AccessDenied';
 import { Plus, Pencil, Trash2, BookOpen, LayoutGrid, FlaskConical, Users, Loader2 } from 'lucide-react';
 
-type Tab = 'subjects' | 'classes' | 'batches' | 'strength';
 
 export default function SubjectsClassesPage() {
   const { user } = useAuthStore();
-  const [tab, setTab] = useState<Tab>('subjects');
-  const [subjects, setSubjects] = useState<any[]>([]);
-  const [classes, setClasses] = useState<any[]>([]);
-  const [batches, setBatches] = useState<any[]>([]);
-  const [strengths, setStrengths] = useState<any[]>([]);
-  const [departments, setDepartments] = useState<any[]>([]);
-  const [terms, setTerms] = useState<any[]>([]);
-  const [faculty, setFaculty] = useState<any[]>([]);
+  const [tab, setTab] = useState('subjects');
+  const [subjects, setSubjects] = useState([]);
+  const [classes, setClasses] = useState([]);
+  const [batches, setBatches] = useState([]);
+  const [strengths, setStrengths] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [terms, setTerms] = useState([]);
+  const [faculty, setFaculty] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editItem, setEditItem] = useState<any>(null);
-  const [formData, setFormData] = useState<any>({});
+  const [editItem, setEditItem] = useState(null);
+  const [formData, setFormData] = useState({});
   const [saving, setSaving] = useState(false);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const [subj, cls, bat, str, dept, trm, fac] = await Promise.all([
-        apiClient<any[]>('/subjects'),
-        apiClient<any[]>('/classes'),
-        apiClient<any[]>('/classes/batches'),
-        apiClient<any[]>('/student-strength'),
-        apiClient<any[]>('/institutional/departments'),
-        apiClient<any[]>('/institutional/academic-terms'),
-        apiClient<any[]>('/faculty'),
+        apiClient('/subjects'),
+        apiClient('/classes'),
+        apiClient('/classes/batches'),
+        apiClient('/student-strength'),
+        apiClient('/institutional/departments'),
+        apiClient('/institutional/academic-terms'),
+        apiClient('/faculty'),
       ]);
       setSubjects(subj);
       setClasses(cls);
@@ -54,7 +53,7 @@ export default function SubjectsClassesPage() {
   useEffect(() => { fetchData(); }, [fetchData]);
 
   const openCreate = () => { setEditItem(null); setFormData(getDefaultForm()); setModalOpen(true); };
-  const openEdit = (item: any) => { setEditItem(item); setFormData({ ...item }); setModalOpen(true); };
+  const openEdit = (item) => { setEditItem(item); setFormData({ ...item }); setModalOpen(true); };
 
   const activeTerm = terms.find((t) => t.status === 'active');
 
@@ -88,14 +87,14 @@ export default function SubjectsClassesPage() {
       }
       setModalOpen(false);
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Save failed');
     } finally {
       setSaving(false);
     }
   };
 
-  const handleDelete = async (item: any) => {
+  const handleDelete = async (item) => {
     if (!confirm('Are you sure you want to delete this item?')) return;
     try {
       let endpoint = '';
@@ -108,14 +107,14 @@ export default function SubjectsClassesPage() {
         await apiClient(endpoint, { method: 'DELETE' });
         fetchData();
       }
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Delete failed');
     }
   };
 
-  const updateField = (key: string, value: any) => setFormData((p: any) => ({ ...p, [key]: value }));
+  const updateField = (key, value) => setFormData((p) => ({ ...p, [key]: value }));
 
-  const tabs: { key: Tab; label: string; icon: any }[] = [
+  const tabs = [
     { key: 'subjects', label: 'Subjects', icon: BookOpen },
     { key: 'classes', label: 'Classes', icon: LayoutGrid },
     { key: 'batches', label: 'Batches', icon: FlaskConical },

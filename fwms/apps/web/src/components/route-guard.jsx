@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../stores/auth';
 import { Loader2, KeyRound, Lock, AlertCircle, CheckCircle2 } from 'lucide-react';
@@ -8,11 +8,11 @@ function ForcePasswordChange() {
   const { logout } = useAuthStore();
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [successMsg, setSuccessMsg] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [successMsg, setSuccessMsg] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg(null);
 
@@ -36,7 +36,7 @@ function ForcePasswordChange() {
       setTimeout(async () => {
         await logout();
       }, 2000);
-    } catch (err: any) {
+    } catch (err) {
       setErrorMsg(err.message || 'Failed to change password. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -134,7 +134,7 @@ function ForcePasswordChange() {
 
 // Maps URL path prefixes to which roles are allowed to visit them.
 // Any authenticated user not in the allowed list is redirected to /unauthorized.
-const ROUTE_ROLE_MAP: Array<{ prefix: string; roles: string[] }> = [
+const ROUTE_ROLE_MAP = [
   { prefix: '/institutional', roles: ['super_admin'] },
   { prefix: '/master-data', roles: ['super_admin', 'dept_admin'] },
   { prefix: '/subjects', roles: ['super_admin', 'dept_admin'] },
@@ -145,7 +145,7 @@ const ROUTE_ROLE_MAP: Array<{ prefix: string; roles: string[] }> = [
   { prefix: '/dashboard', roles: ['super_admin', 'dept_admin', 'faculty'] },
 ];
 
-export function RouteGuard({ children, allowedRoles }: { children: React.ReactNode, allowedRoles?: string[] }) {
+export function RouteGuard({ children, allowedRoles }) {
   const { isAuthenticated, isLoading, user } = useAuthStore();
   const navigate = useNavigate();
   const { pathname } = useLocation();

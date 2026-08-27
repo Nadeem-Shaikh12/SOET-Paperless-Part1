@@ -1,11 +1,8 @@
-import { useMemo } from 'react';
+﻿import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Users, Building2, Clock, AlertCircle } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-type SuperAdminDashboardProps = {
-  data: any;
-};
 
 export function SuperAdminDashboard({ data }: SuperAdminDashboardProps) {
   const { heatmap, deptWorkloadChart } = data;
@@ -15,7 +12,7 @@ export function SuperAdminDashboard({ data }: SuperAdminDashboardProps) {
 
   const filteredHeatmap = useMemo(() => {
     if (!heatmap) return [];
-    return heatmap.filter((f: any) => {
+    return heatmap.filter((f) => {
       const matchDesig = designationFilter ? f.desig === designationFilter : true;
       const matchStatus = statusFilter ? f.status === statusFilter : true;
       return matchDesig && matchStatus;
@@ -26,13 +23,13 @@ export function SuperAdminDashboard({ data }: SuperAdminDashboardProps) {
     let overloadedCount = 0;
     let totalWorkload = 0;
     
-    filteredHeatmap.forEach((f: any) => {
+    filteredHeatmap.forEach((f) => {
       totalWorkload += f.totalHours;
       if (f.status === 'overloaded') overloadedCount++;
     });
 
     const avgWorkload = filteredHeatmap.length > 0 ? (totalWorkload / filteredHeatmap.length).toFixed(1) : 0;
-    const uniqueDepts = new Set(filteredHeatmap.map((f: any) => f.dept)).size;
+    const uniqueDepts = new Set(filteredHeatmap.map((f) => f.dept)).size;
 
     return {
       totalFaculty: filteredHeatmap.length,
@@ -101,7 +98,7 @@ export function SuperAdminDashboard({ data }: SuperAdminDashboardProps) {
         <div className="bg-[var(--surface)] rounded-[var(--radius-cards)] border border-[var(--border)] p-6">
           <h2 className="text-base font-semibold text-[var(--foreground)] mb-4" style={{ letterSpacing: '-0.02em' }}>Faculty Workload Heatmap</h2>
           <div className="flex flex-wrap gap-2 max-h-72 overflow-y-auto">
-            {filteredHeatmap.map((f: any) => {
+            {filteredHeatmap.map((f) => {
               let colorClass = 'bg-emerald-500'; // normal
               if (f.status === 'overloaded') colorClass = 'bg-[#ff682c]';
               if (f.status === 'underloaded') colorClass = 'bg-amber-400';

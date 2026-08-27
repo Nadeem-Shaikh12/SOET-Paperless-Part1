@@ -1,24 +1,9 @@
 import { useState, useMemo } from 'react';
 import { Search, ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react';
 
-type Column<T> = {
-  key: string;
-  label: string;
-  sortable?: boolean;
-  render?: (row: T) => React.ReactNode;
-};
 
-type DataTableProps<T> = {
-  columns: Column<T>[];
-  data: T[];
-  searchPlaceholder?: string;
-  searchKeys?: string[];
-  onRowClick?: (row: T) => void;
-  actions?: (row: T) => React.ReactNode;
-  emptyMessage?: string;
-};
 
-export function DataTable<T extends Record<string, any>>({
+export function DataTable({
   columns,
   data,
   searchPlaceholder = 'Search...',
@@ -26,10 +11,10 @@ export function DataTable<T extends Record<string, any>>({
   onRowClick,
   actions,
   emptyMessage = 'No data found.',
-}: DataTableProps<T>) {
+}) {
   const [search, setSearch] = useState('');
-  const [sortKey, setSortKey] = useState<string | null>(null);
-  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc');
+  const [sortKey, setSortKey] = useState(null);
+  const [sortDir, setSortDir] = useState('asc');
 
   const filtered = useMemo(() => {
     if (!search.trim()) return data;
@@ -53,7 +38,7 @@ export function DataTable<T extends Record<string, any>>({
     });
   }, [filtered, sortKey, sortDir]);
 
-  const handleSort = (key: string) => {
+  const handleSort = (key) => {
     if (sortKey === key) {
       setSortDir((d) => (d === 'asc' ? 'desc' : 'asc'));
     } else {
@@ -62,7 +47,7 @@ export function DataTable<T extends Record<string, any>>({
     }
   };
 
-  const SortIcon = ({ col }: { col: Column<T> }) => {
+  const SortIcon = ({ col }) => {
     if (!col.sortable) return null;
     if (sortKey !== col.key) return <ChevronsUpDown className="w-3.5 h-3.5 ml-1 opacity-40" />;
     return sortDir === 'asc' ? <ChevronUp className="w-3.5 h-3.5 ml-1" /> : <ChevronDown className="w-3.5 h-3.5 ml-1" />;

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+﻿import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { Badge } from '..\/components/ui/Badge';
@@ -7,16 +7,16 @@ import { Calendar, Gauge, Loader2 } from 'lucide-react';
 
 export default function MasterDataPage() {
   const { user } = useAuthStore();
-  const [terms, setTerms] = useState<any[]>([]);
-  const [norms, setNorms] = useState<any[]>([]);
+  const [terms, setTerms] = useState([]);
+  const [norms, setNorms] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const [t, n] = await Promise.all([
-        apiClient<any[]>('/institutional/academic-terms'),
-        apiClient<any[]>('/institutional/norms'),
+        apiClient('/institutional/academic-terms'),
+        apiClient('/institutional/norms'),
       ]);
       setTerms(t);
       setNorms(n);

@@ -1,20 +1,7 @@
 import { RadialBarChart, RadialBar, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { BookOpen, Edit2, Clock, CheckCircle, XCircle, FileSpreadsheet, FlaskConical } from 'lucide-react';
 
-type WorkloadRow = {
-  id: number;
-  subjectName: string;
-  programClass: string;
-  theoryHrsPerWeek: number;
-  practicalHrsPerWeek: number;
-  tutorialHrsPerWeek: number;
-  totalTeachingHours: number;
-  noteMarker?: string | null;
-};
 
-type FacultyDashboardProps = {
-  data: any;
-};
 
 export function FacultyDashboard({ data }: FacultyDashboardProps) {
   const { workload, assignedSubjects, workloadRows, recentRequests } = data;
@@ -74,7 +61,7 @@ export function FacultyDashboard({ data }: FacultyDashboardProps) {
           </h2>
           {hasAllocations ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {assignedSubjects.map((sub: any) => (
+              {assignedSubjects.map((sub) => (
                 <div key={sub.id} className="p-4 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white transition-colors relative group">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
@@ -170,7 +157,7 @@ export function FacultyDashboard({ data }: FacultyDashboardProps) {
         <h2 className="text-lg font-semibold text-[var(--foreground)] mb-6">Recent Request Status</h2>
         {recentRequests?.length > 0 ? (
           <div className="space-y-6">
-            {recentRequests.map((req: any) => (
+            {recentRequests.map((req) => (
               <div key={req.id} className="relative flex items-center gap-4">
                 <div className="h-full w-px bg-gray-200 absolute left-4 top-8 -z-10" />
                 <div className="bg-[var(--surface)]">

@@ -2,11 +2,8 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api/
 
 
 export class ApiError extends Error {
-  code: string;
-  statusCode: number;
-  details?: any;
 
-  constructor(message: string, code: string, statusCode: number, details?: any) {
+  constructor(message, code, statusCode, details) {
     super(message);
     this.code = code;
     this.statusCode = statusCode;
@@ -14,28 +11,28 @@ export class ApiError extends Error {
   }
 }
 
-let accessToken: string | null = null;
+let accessToken = null;
 let isRefreshing = false;
-let refreshSubscribers: ((token: string) => void)[] = [];
+let refreshSubscribers = [];
 
-export function setAccessToken(token: string | null) {
+export function setAccessToken(token) {
   accessToken = token;
 }
 
-export function getAccessToken(): string | null {
+export function getAccessToken() {
   return accessToken;
 }
 
-function onRefreshed(token: string) {
+function onRefreshed(token) {
   refreshSubscribers.forEach((callback) => callback(token));
   refreshSubscribers = [];
 }
 
-function addRefreshSubscriber(callback: (token: string) => void) {
+function addRefreshSubscriber(callback) {
   refreshSubscribers.push(callback);
 }
 
-export async function apiClient<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+export async function apiClient(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
   
   const headers = new Headers(options.headers || {});
@@ -46,7 +43,7 @@ export async function apiClient<T>(endpoint: string, options: RequestInit = {}):
   }
 
   // Include credentials for refresh token cookie
-  const config: RequestInit = {
+  const config = {
     ...options,
     headers,
     credentials: 'include',
@@ -96,8 +93,8 @@ export async function apiClient<T>(endpoint: string, options: RequestInit = {}):
     }
 
     // Wait for the refresh to complete before retrying the original request
-    return new Promise<T>((resolve, reject) => {
-      addRefreshSubscriber(async (newToken: string) => {
+    return new Promise((resolve, reject) => {
+      addRefreshSubscriber(async (newToken) => {
         headers.set('Authorization', `Bearer ${newToken}`);
         try {
           const retriedResponse = await fetch(url, config);
@@ -128,6 +125,6 @@ export async function apiClient<T>(endpoint: string, options: RequestInit = {}):
   try {
     return await response.json();
   } catch {
-    return {} as T;
+    return {};
   }
 }

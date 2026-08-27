@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { useAuthStore } from '../stores/auth';
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }) {
   const initAuth = useAuthStore((state) => state.initAuth);
 
   useEffect(() => {

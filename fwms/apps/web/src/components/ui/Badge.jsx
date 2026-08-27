@@ -1,6 +1,5 @@
-type BadgeVariant = 'success' | 'warning' | 'error' | 'info' | 'neutral' | 'accent';
-
-const variantClasses: Record<BadgeVariant, string> = {
+﻿
+const variantClasses = {
   success: 'bg-emerald-50 text-emerald-700 ring-emerald-600/20',
   warning: 'bg-amber-50 text-amber-700 ring-amber-600/20',
   error: 'bg-red-50 text-red-700 ring-red-600/20',
@@ -10,7 +9,7 @@ const variantClasses: Record<BadgeVariant, string> = {
 };
 
 // Maps common status strings to visual variants
-const statusVariantMap: Record<string, BadgeVariant> = {
+const statusVariantMap = {
   active: 'success',
   approved: 'success',
   inactive: 'neutral',
@@ -20,12 +19,6 @@ const statusVariantMap: Record<string, BadgeVariant> = {
   archived: 'neutral',
 };
 
-type BadgeProps = {
-  children: React.ReactNode;
-  variant?: BadgeVariant;
-  /** Auto-map a status string to a variant */
-  status?: string;
-};
 
 export function Badge({ children, variant, status }: BadgeProps) {
   const resolvedVariant = variant || (status ? statusVariantMap[status] || 'neutral' : 'neutral');

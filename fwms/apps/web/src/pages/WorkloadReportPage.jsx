@@ -6,30 +6,20 @@ import { WorkloadReportDocument } from '../components/workload-report/WorkloadRe
 import { FileSpreadsheet, Sparkles } from 'lucide-react';
 
 
-type TermOption = {
-  id: number;
-  academicYear: string;
-  semester: string;
-  status: string;
-};
 
-type DepartmentOption = {
-  id: number;
-  deptName: string;
-};
 
 export default function WorkloadReportPage() {
   const { user } = useAuthStore();
-  const [report, setReport] = useState<any>(null);
+  const [report, setReport] = useState(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   // Filters
-  const [terms, setTerms] = useState<TermOption[]>([]);
-  const [departments, setDepartments] = useState<DepartmentOption[]>([]);
-  const [selectedTermId, setSelectedTermId] = useState<number | null>(null);
-  const [selectedDeptId, setSelectedDeptId] = useState<number | null>(null);
+  const [terms, setTerms] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [selectedTermId, setSelectedTermId] = useState(null);
+  const [selectedDeptId, setSelectedDeptId] = useState(null);
 
   const isAdmin = user?.role === 'super_admin';
 
@@ -37,21 +27,21 @@ export default function WorkloadReportPage() {
   useEffect(() => {
     const fetchMeta = async () => {
       try {
-        const termsList = await apiClient<TermOption[]>('/institutional/academic-terms');
+        const termsList = await apiClient('/institutional/academic-terms');
         setTerms(termsList || []);
 
         // Default to first active term
-        const activeTerm = (termsList || []).find((t: TermOption) => t.status === 'active');
+        const activeTerm = (termsList || []).find((t) => t.status === 'active');
         if (activeTerm) setSelectedTermId(activeTerm.id);
         else if (termsList && termsList.length > 0) setSelectedTermId(termsList[0].id);
 
         if (isAdmin) {
-          const deptsList = await apiClient<DepartmentOption[]>('/institutional/departments');
+          const deptsList = await apiClient('/institutional/departments');
           setDepartments(deptsList || []);
         } else if (user?.deptId) {
           setSelectedDeptId(user.deptId);
         }
-      } catch (err: any) {
+      } catch (err) {
         setError(err.message || 'Failed to load metadata');
       }
     };
@@ -68,9 +58,9 @@ export default function WorkloadReportPage() {
       const params = new URLSearchParams({ termId: String(selectedTermId) });
       if (selectedDeptId) params.set('deptId', String(selectedDeptId));
 
-      const data = await apiClient<any>(`/workload-report?${params.toString()}`);
+      const data = await apiClient(`/workload-report?${params.toString()}`);
       setReport(data);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || 'Failed to load report');
       setReport(null);
     } finally {
@@ -83,15 +73,15 @@ export default function WorkloadReportPage() {
   }, [selectedTermId, selectedDeptId, fetchReport]);
 
   // Save handler
-  const handleSave = async (reportId: number, data: { title?: string; notes?: string; rows: any[] }) => {
+  const handleSave = async (reportId, data) => {
     setSaving(true);
     try {
-      const updated = await apiClient<any>(`/workload-report/${reportId}`, {
+      const updated = await apiClient(`/workload-report/${reportId}`, {
         method: 'PUT',
         body: JSON.stringify(data),
       });
       setReport(updated);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || 'Failed to save');
     } finally {
       setSaving(false);
@@ -110,12 +100,12 @@ export default function WorkloadReportPage() {
 
     setLoading(true);
     try {
-      const data = await apiClient<any>('/workload-report/generate', {
+      const data = await apiClient('/workload-report/generate', {
         method: 'POST',
         body: JSON.stringify({ deptId, termId: selectedTermId }),
       });
       setReport(data);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || 'Failed to regenerate');
     } finally {
       setLoading(false);

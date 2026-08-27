@@ -3,9 +3,6 @@ import { useSearchParams } from 'react-router-dom';
 import { Users, Clock, AlertCircle } from 'lucide-react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
-type HodDashboardProps = {
-  data: any;
-};
 
 const COLORS = ['#202020', '#ff682c', '#816729', '#828282', '#4d4d4d', '#e8e8e8', '#f5f5f5'];
 
@@ -17,7 +14,7 @@ export function HodDashboard({ data }: HodDashboardProps) {
 
   const filteredWorkloads = useMemo(() => {
     if (!facultyWorkloads) return [];
-    return facultyWorkloads.filter((f: any) => {
+    return facultyWorkloads.filter((f) => {
       let status = 'normal';
       if (f.totalHours > f.normMax) status = 'overloaded';
       if (f.totalHours < f.normMin) status = 'underloaded';
@@ -33,7 +30,7 @@ export function HodDashboard({ data }: HodDashboardProps) {
     let overloadedCount = 0;
     let totalWorkload = 0;
     
-    filteredWorkloads.forEach((f: any) => {
+    filteredWorkloads.forEach((f) => {
       totalWorkload += f.totalHours;
       if (f.totalHours > f.normMax) overloadedCount++;
     });
@@ -92,7 +89,7 @@ export function HodDashboard({ data }: HodDashboardProps) {
                   paddingAngle={5}
                   dataKey="value"
                 >
-                  {subjectAllocationChart?.map((entry: any, index: number) => (
+                  {subjectAllocationChart?.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
@@ -115,7 +112,7 @@ export function HodDashboard({ data }: HodDashboardProps) {
         <div className="lg:col-span-2 bg-[var(--surface)] rounded-[var(--radius-cards)] border border-[var(--border)] p-6">
           <h2 className="text-base font-semibold text-[var(--foreground)] mb-4" style={{ letterSpacing: '-0.02em' }}>Faculty Workload Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[300px] overflow-y-auto pr-2">
-            {filteredWorkloads.map((f: any) => {
+            {filteredWorkloads.map((f) => {
               const progressPct = Math.min((f.totalHours / f.normMax) * 100, 100);
               let barColor = 'bg-emerald-500';
               if (f.totalHours > f.normMax) barColor = 'bg-[#ff682c]';

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+﻿import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { DataTable } from '..\/components/ui/DataTable';
@@ -9,9 +9,9 @@ import { CheckCircle, XCircle, Loader2 } from 'lucide-react';
 
 export default function ApprovalsPage() {
   const { user } = useAuthStore();
-  const [pendingItems, setPendingItems] = useState<any[]>([]);
+  const [pendingItems, setPendingItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [actionModal, setActionModal] = useState<{ open: boolean; item: any; action: 'approved' | 'rejected' }>({ open: false, item: null, action: 'approved' });
+  const [actionModal, setActionModal] = useState({ open: false, item: null, action: 'approved' });
   const [remarks, setRemarks] = useState('');
   const [saving, setSaving] = useState(false);
 
@@ -19,17 +19,17 @@ export default function ApprovalsPage() {
     setLoading(true);
     try {
       // Fetch pending items
-      const data = await apiClient<any>(`/approvals/pending`);
+      const data = await apiClient(`/approvals/pending`);
       
       const items = [
-        ...(data.allocations || []).map((a: any) => ({
+        ...(data.allocations || []).map((a) => ({
           entityType: 'allocation',
           entityId: a.id,
           description: `Allocation: ${a.faculty?.name} - ${a.subject?.subjectCode} ${a.subject?.subjectName}`,
           status: a.status,
           date: a.updatedAt
         })),
-        ...(data.strengths || []).map((s: any) => ({
+        ...(data.strengths || []).map((s) => ({
           entityType: 'student_strength',
           entityId: s.id,
           description: `Student Strength: ${s.classDivision?.className} ${s.classDivision?.division} - ${s.subject?.subjectCode} (${s.studentCount} students)`,
@@ -48,7 +48,7 @@ export default function ApprovalsPage() {
 
   useEffect(() => { fetchData(); }, [fetchData]);
 
-  const openAction = (item: any, action: 'approved' | 'rejected') => {
+  const openAction = (item, action) => {
     setActionModal({ open: true, item, action });
     setRemarks('');
   };
@@ -68,7 +68,7 @@ export default function ApprovalsPage() {
       });
       setActionModal({ open: false, item: null, action: 'approved' });
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Action failed');
     } finally {
       setSaving(false);

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+﻿import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { DataTable } from '..\/components/ui/DataTable';
@@ -8,14 +8,14 @@ import { Plus, Loader2, Send, Trash2 } from 'lucide-react';
 
 export default function AllocationsPage() {
   const { user } = useAuthStore();
-  const [allocations, setAllocations] = useState<any[]>([]);
-  const [faculty, setFaculty] = useState<any[]>([]);
-  const [subjects, setSubjects] = useState<any[]>([]);
-  const [classes, setClasses] = useState<any[]>([]);
-  const [terms, setTerms] = useState<any[]>([]);
+  const [allocations, setAllocations] = useState([]);
+  const [faculty, setFaculty] = useState([]);
+  const [subjects, setSubjects] = useState([]);
+  const [classes, setClasses] = useState([]);
+  const [terms, setTerms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
-  const [formData, setFormData] = useState<any>({});
+  const [formData, setFormData] = useState({});
   const [saving, setSaving] = useState(false);
   const [statusFilter, setStatusFilter] = useState('all');
 
@@ -23,11 +23,11 @@ export default function AllocationsPage() {
     setLoading(true);
     try {
       const [alloc, fac, subj, cls, trm] = await Promise.all([
-        apiClient<any[]>('/allocations'),
-        apiClient<any[]>('/faculty').catch(() => []),
-        apiClient<any[]>('/subjects').catch(() => []),
-        apiClient<any[]>('/classes').catch(() => []),
-        apiClient<any[]>('/institutional/academic-terms').catch(() => []),
+        apiClient('/allocations'),
+        apiClient('/faculty').catch(() => []),
+        apiClient('/subjects').catch(() => []),
+        apiClient('/classes').catch(() => []),
+        apiClient('/institutional/academic-terms').catch(() => []),
       ]);
       setAllocations(alloc);
       setFaculty(fac);
@@ -72,14 +72,14 @@ export default function AllocationsPage() {
       await apiClient('/allocations', { method: 'POST', body: JSON.stringify(payload) });
       setModalOpen(false);
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Save failed');
     } finally {
       setSaving(false);
     }
   };
 
-  const handleSubmitApproval = async (item: any) => {
+  const handleSubmitApproval = async (item) => {
     if (!confirm('Are you sure you want to submit this allocation for approval?')) return;
     try {
       await apiClient('/approvals/submit', {
@@ -90,24 +90,24 @@ export default function AllocationsPage() {
         }),
       });
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Submission failed');
     }
   };
 
-  const handleDelete = async (item: any) => {
+  const handleDelete = async (item) => {
     if (!confirm('Are you sure you want to delete this allocation?')) return;
     try {
       await apiClient(`/allocations/${item.id}`, { method: 'DELETE' });
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Delete failed');
     }
   };
 
   const filteredAllocations = statusFilter === 'all' ? allocations : allocations.filter((a) => a.status === statusFilter);
 
-  const updateField = (key: string, value: any) => setFormData((p: any) => ({ ...p, [key]: value }));
+  const updateField = (key, value) => setFormData((p) => ({ ...p, [key]: value }));
   const inputClass = 'w-full px-4 py-2.5 rounded-[var(--radius-inputs)] border border-[var(--border)] bg-[var(--color-fog)] text-[var(--foreground)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-carbon)] transition-all';
   const labelClass = 'block text-sm font-semibold text-[var(--foreground)] mb-1.5';
 

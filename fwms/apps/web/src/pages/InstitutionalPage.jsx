@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+﻿import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { DataTable } from '..\/components/ui/DataTable';
@@ -7,30 +7,29 @@ import { Badge } from '..\/components/ui/Badge';
 import { AccessDenied } from '..\/components/ui/AccessDenied';
 import { Plus, Pencil, Trash2, Building2, GraduationCap, Calendar, Gauge, Loader2 } from 'lucide-react';
 
-type Tab = 'schools' | 'departments' | 'terms' | 'norms';
 
 export default function InstitutionalConfigPage() {
   const { user } = useAuthStore();
   const isSuperAdmin = user?.role === 'super_admin';
-  const [tab, setTab] = useState<Tab>('schools');
-  const [schools, setSchools] = useState<any[]>([]);
-  const [departments, setDepartments] = useState<any[]>([]);
-  const [terms, setTerms] = useState<any[]>([]);
-  const [norms, setNorms] = useState<any[]>([]);
+  const [tab, setTab] = useState('schools');
+  const [schools, setSchools] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [terms, setTerms] = useState([]);
+  const [norms, setNorms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editItem, setEditItem] = useState<any>(null);
-  const [formData, setFormData] = useState<any>({});
+  const [editItem, setEditItem] = useState(null);
+  const [formData, setFormData] = useState({});
   const [saving, setSaving] = useState(false);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const [s, d, t, n] = await Promise.all([
-        apiClient<any[]>('/institutional/schools'),
-        apiClient<any[]>('/institutional/departments'),
-        apiClient<any[]>('/institutional/academic-terms'),
-        apiClient<any[]>('/institutional/norms'),
+        apiClient('/institutional/schools'),
+        apiClient('/institutional/departments'),
+        apiClient('/institutional/academic-terms'),
+        apiClient('/institutional/norms'),
       ]);
       setSchools(s);
       setDepartments(d);
@@ -51,7 +50,7 @@ export default function InstitutionalConfigPage() {
     setModalOpen(true);
   };
 
-  const openEdit = (item: any) => {
+  const openEdit = (item) => {
     setEditItem(item);
     setFormData(getEditForm(item));
     setModalOpen(true);
@@ -67,7 +66,7 @@ export default function InstitutionalConfigPage() {
     }
   };
 
-  const getEditForm = (item: any) => {
+  const getEditForm = (item) => {
     switch (tab) {
       case 'schools': return { schoolName: item.schoolName, deanName: item.deanName || '' };
       case 'departments': return { deptName: item.deptName, schoolId: item.schoolId, defaultBatchSize: item.defaultBatchSize };
@@ -103,24 +102,24 @@ export default function InstitutionalConfigPage() {
       }
       setModalOpen(false);
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Save failed');
     } finally {
       setSaving(false);
     }
   };
 
-  const handleDeactivateSchool = async (id: number) => {
+  const handleDeactivateSchool = async (id) => {
     if (!confirm('Are you sure you want to deactivate this school?')) return;
     try {
       await apiClient(`/institutional/schools/${id}`, { method: 'DELETE' });
       fetchData();
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Failed');
     }
   };
 
-  const handleDelete = async (item: any) => {
+  const handleDelete = async (item) => {
     if (!confirm('Are you sure you want to delete this item?')) return;
     try {
       let endpoint = '';
@@ -132,14 +131,14 @@ export default function InstitutionalConfigPage() {
         await apiClient(endpoint, { method: 'DELETE' });
         fetchData();
       }
-    } catch (err: any) {
+    } catch (err) {
       alert(err.message || 'Delete failed');
     }
   };
 
-  const updateField = (key: string, value: any) => setFormData((p: any) => ({ ...p, [key]: value }));
+  const updateField = (key, value) => setFormData((p) => ({ ...p, [key]: value }));
 
-  const tabs: { key: Tab; label: string; icon: any }[] = [
+  const tabs = [
     { key: 'schools', label: 'Schools', icon: Building2 },
     { key: 'departments', label: 'Departments', icon: GraduationCap },
     { key: 'terms', label: 'Academic Terms', icon: Calendar },
