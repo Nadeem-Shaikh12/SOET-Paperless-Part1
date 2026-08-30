@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { DataTable } from '..\/components/ui/DataTable';
@@ -23,9 +23,9 @@ export default function FacultyPage() {
     setLoading(true);
     try {
       const [fac, dept] = await Promise.all([
-        apiClient('/faculty'),
-        apiClient('/institutional/departments').catch(() => []),
-      ]);
+      apiClient('/faculty'),
+      apiClient('/institutional/departments').catch(() => [])]
+      );
       setFaculty(fac);
       setDepartments(dept);
     } catch (err) {
@@ -35,7 +35,7 @@ export default function FacultyPage() {
     }
   }, []);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
+  useEffect(() => {fetchData();}, [fetchData]);
 
   const openCreate = () => {
     setEditItem(null);
@@ -46,7 +46,7 @@ export default function FacultyPage() {
       deptId: departments[0]?.id || '',
       employmentType: 'Permanent',
       initialPassword: 'Changeme@123',
-      isHod: false,
+      isHod: false
     });
     setModalOpen(true);
   };
@@ -59,7 +59,7 @@ export default function FacultyPage() {
       designation: item.designation,
       deptId: item.deptId,
       employmentType: item.employmentType,
-      isHod: item.department?.hodId === item.id || item.userAuth?.role === 'dept_admin',
+      isHod: item.department?.hodId === item.id || item.userAuth?.role === 'dept_admin'
     });
     setModalOpen(true);
   };
@@ -98,7 +98,7 @@ export default function FacultyPage() {
     try {
       await apiClient(`/faculty/${deactivateModal.faculty.id}/status`, {
         method: 'PATCH',
-        body: JSON.stringify({ effectiveEndDate: deactivateDate || new Date().toISOString() }),
+        body: JSON.stringify({ effectiveEndDate: deactivateDate || new Date().toISOString() })
       });
       setDeactivateModal({ open: false, faculty: null });
       fetchData();
@@ -140,51 +140,51 @@ export default function FacultyPage() {
           <h1 className="text-2xl font-bold text-[var(--foreground)]" style={{ letterSpacing: '-0.02em' }}>Faculty Management</h1>
           <p className="text-sm text-[var(--color-slate)] mt-1">Manage faculty members, their designations, and department affiliations.</p>
         </div>
-        {canManage && (
-          <button onClick={openCreate} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold text-sm rounded-[var(--radius-buttons)] transition-all">
+        {canManage &&
+        <button onClick={openCreate} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold text-sm rounded-[var(--radius-buttons)] transition-all">
             <Plus className="w-4 h-4" /> Add Faculty
           </button>
-        )}
+        }
       </div>
 
       <DataTable
         columns={[
-          { key: 'name', label: 'Name', sortable: true, render: (r) => (
-            <div className="flex items-center gap-3">
+        { key: 'name', label: 'Name', sortable: true, render: (r) =>
+          <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-[var(--color-carbon)] flex items-center justify-center text-white text-xs font-bold">{r.name.charAt(0)}</div>
               <div>
                 <div className="flex items-center gap-2">
                   <p className="font-semibold text-[var(--foreground)]">{r.name}</p>
-                  {(r.department?.hodId === r.id || r.userAuth?.role === 'dept_admin') && (
-                    <Badge variant="warning">
+                  {(r.department?.hodId === r.id || r.userAuth?.role === 'dept_admin') &&
+                <Badge variant="warning">
                       <Crown className="w-3 h-3 mr-1 inline-block" /> HOD
                     </Badge>
-                  )}
+                }
                 </div>
                 <p className="text-xs text-[var(--foreground)] opacity-50">{r.email}</p>
               </div>
             </div>
-          )},
-          { key: 'designation', label: 'Designation', sortable: true, render: (r) => r.designation.replace('_', ' ') },
-          { key: 'deptId', label: 'Department', sortable: true, render: (r) => departments.find((d) => d.id === r.deptId)?.deptName || `Dept #${r.deptId}` },
-          { key: 'employmentType', label: 'Type', render: (r) => <Badge variant="info">{r.employmentType}</Badge> },
-          { key: 'status', label: 'Status', render: (r) => <Badge status={r.status}>{r.status}</Badge> },
-        ]}
+        },
+        { key: 'designation', label: 'Designation', sortable: true, render: (r) => r.designation.replace('_', ' ') },
+        { key: 'deptId', label: 'Department', sortable: true, render: (r) => departments.find((d) => d.id === r.deptId)?.deptName || `Dept #${r.deptId}` },
+        { key: 'employmentType', label: 'Type', render: (r) => <Badge variant="info">{r.employmentType}</Badge> },
+        { key: 'status', label: 'Status', render: (r) => <Badge status={r.status}>{r.status}</Badge> }]
+        }
         data={faculty}
         searchKeys={['name', 'email']}
         searchPlaceholder="Search by name or email..."
-        actions={canManage ? (row) => (
-          <div className="flex gap-1">
+        actions={canManage ? (row) =>
+        <div className="flex gap-1">
             <button onClick={() => openEdit(row)} className="p-1.5 rounded-lg hover:bg-[var(--surface-hover)] text-[var(--foreground)] opacity-50 hover:opacity-100 transition-all" title="Edit"><Pencil className="w-4 h-4" /></button>
-            {row.status === 'active' ? (
-              <button onClick={() => setDeactivateModal({ open: true, faculty: row })} className="p-1.5 rounded-lg hover:bg-amber-50 text-amber-500 opacity-50 hover:opacity-100 transition-all" title="Deactivate"><UserMinus className="w-4 h-4" /></button>
-            ) : (
-              <button onClick={() => handleReactivate(row)} className="p-1.5 rounded-lg hover:bg-green-50 text-green-500 opacity-50 hover:opacity-100 transition-all" title="Reactivate"><UserCheck className="w-4 h-4" /></button>
-            )}
+            {row.status === 'active' ?
+          <button onClick={() => setDeactivateModal({ open: true, faculty: row })} className="p-1.5 rounded-lg hover:bg-amber-50 text-amber-500 opacity-50 hover:opacity-100 transition-all" title="Deactivate"><UserMinus className="w-4 h-4" /></button> :
+
+          <button onClick={() => handleReactivate(row)} className="p-1.5 rounded-lg hover:bg-green-50 text-green-500 opacity-50 hover:opacity-100 transition-all" title="Reactivate"><UserCheck className="w-4 h-4" /></button>
+          }
             <button onClick={() => handleDelete(row)} className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 opacity-50 hover:opacity-100 transition-all" title="Delete"><Trash2 className="w-4 h-4" /></button>
-          </div>
-        ) : undefined}
-      />
+          </div> :
+        undefined} />
+      
 
       {/* Create/Edit Modal */}
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={editItem ? 'Edit Faculty' : 'Add Faculty'} size="lg">
@@ -215,18 +215,18 @@ export default function FacultyPage() {
                 <option value="Visiting">Visiting</option>
               </select>
             </div>
-            {!editItem && (
-              <div><label className={labelClass}>Login Password *</label><input className={inputClass} value={formData.initialPassword || ''} onChange={(e) => updateField('initialPassword', e.target.value)} placeholder="e.g. Faculty@123" /></div>
-            )}
+            {!editItem &&
+            <div><label className={labelClass}>Login Password *</label><input className={inputClass} value={formData.initialPassword || ''} onChange={(e) => updateField('initialPassword', e.target.value)} placeholder="e.g. Faculty@123" /></div>
+            }
           </div>
           <div className="border-t border-[var(--border)] pt-3">
             <label className="flex items-start gap-2.5 cursor-pointer">
-              <input 
-                type="checkbox" 
-                checked={formData.isHod || false} 
-                onChange={(e) => updateField('isHod', e.target.checked)} 
-                className="mt-0.5 w-4 h-4 rounded border-[var(--border)] text-[var(--color-carbon)] focus:ring-[var(--color-carbon)] bg-[var(--color-fog)] accent-[var(--color-carbon)]" 
-              />
+              <input
+                type="checkbox"
+                checked={formData.isHod || false}
+                onChange={(e) => updateField('isHod', e.target.checked)}
+                className="mt-0.5 w-4 h-4 rounded border-[var(--border)] text-[var(--color-carbon)] focus:ring-[var(--color-carbon)] bg-[var(--color-fog)] accent-[var(--color-carbon)]" />
+              
               <div>
                 <span className="text-sm font-semibold text-[var(--foreground)]">Head of Department (HOD)</span>
                 <p className="text-xs text-[var(--color-slate)] mt-0.5">
@@ -263,6 +263,6 @@ export default function FacultyPage() {
           </div>
         </div>
       </Modal>
-    </div>
-  );
+    </div>);
+
 }

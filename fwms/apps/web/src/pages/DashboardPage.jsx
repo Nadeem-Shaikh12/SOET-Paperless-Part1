@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAuthStore } from '../stores/auth';
 import { apiClient } from '../lib/api-client';
@@ -6,7 +6,7 @@ import { SuperAdminDashboard } from '../components/dashboard/SuperAdminDashboard
 import { HodDashboard } from '../components/dashboard/HodDashboard';
 import { FacultyDashboard } from '../components/dashboard/FacultyDashboard';
 import { FilterBar } from '../components/dashboard/FilterBar';
-import { Loader2 } from 'lucide-react';
+import { BeatLoader } from 'react-spinners';
 
 export default function DashboardPage() {
   const { user } = useAuthStore();
@@ -17,7 +17,7 @@ export default function DashboardPage() {
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return 'Good Morning';
-    if (hour < 18) return 'Good Afternoon';
+    if (hour < 14) return 'Good Afternoon';
     return 'Good Evening';
   };
 
@@ -27,9 +27,9 @@ export default function DashboardPage() {
       setLoading(true);
       try {
         let endpoint = '';
-        if (user.role === 'super_admin') endpoint = '/dashboard/superadmin';
-        else if (user.role === 'dept_admin') endpoint = '/dashboard/hod';
-        else endpoint = '/dashboard/faculty';
+        if (user.role === 'super_admin') endpoint = '/dashboard/superadmin'; else
+          if (user.role === 'dept_admin') endpoint = '/dashboard/hod'; else
+            endpoint = '/dashboard/faculty';
 
         // Pass filters to backend if needed (e.g. termId)
         const termId = searchParams.get('termId');
@@ -63,17 +63,16 @@ export default function DashboardPage() {
 
       <FilterBar role={user.role} />
 
-      {loading ? (
+      {loading ?
         <div className="flex items-center justify-center h-64">
-          <Loader2 className="w-8 h-8 animate-spin text-[var(--color-carbon)]" />
-        </div>
-      ) : (
+          <BeatLoader color="var(--color-carbon)" size={15} />
+        </div> :
         <>
           {user.role === 'super_admin' && <SuperAdminDashboard data={data} />}
           {user.role === 'dept_admin' && <HodDashboard data={data} />}
           {user.role === 'faculty' && <FacultyDashboard data={data} />}
         </>
-      )}
+      }
     </div>
   );
 }

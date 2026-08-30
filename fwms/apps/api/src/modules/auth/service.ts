@@ -1,5 +1,5 @@
 import prisma from '../../lib/prisma.js';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { signAccessToken, signRefreshToken, JwtPayload } from '../../lib/jwt.js';
 import { ApiError } from '../../middleware/error-handler.js';
 import logger from '../../lib/logger.js';

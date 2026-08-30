@@ -1,4 +1,4 @@
-﻿import { AccessDenied } from '../components/ui/AccessDenied';
+import { AccessDenied } from '../components/ui/AccessDenied';
 
 export default function UnauthorizedPage() {
   return (
@@ -6,6 +6,6 @@ export default function UnauthorizedPage() {
       <div className="glass max-w-md w-full p-8 rounded-2xl shadow-xl">
         <AccessDenied message="You do not have permission to access this resource." />
       </div>
-    </div>
-  );
+    </div>);
+
 }

@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { DataTable } from '..\/components/ui/DataTable';
@@ -23,12 +23,12 @@ export default function AllocationsPage() {
     setLoading(true);
     try {
       const [alloc, fac, subj, cls, trm] = await Promise.all([
-        apiClient('/allocations'),
-        apiClient('/faculty').catch(() => []),
-        apiClient('/subjects').catch(() => []),
-        apiClient('/classes').catch(() => []),
-        apiClient('/institutional/academic-terms').catch(() => []),
-      ]);
+      apiClient('/allocations'),
+      apiClient('/faculty').catch(() => []),
+      apiClient('/subjects').catch(() => []),
+      apiClient('/classes').catch(() => []),
+      apiClient('/institutional/academic-terms').catch(() => [])]
+      );
       setAllocations(alloc);
       setFaculty(fac);
       setSubjects(subj);
@@ -41,7 +41,7 @@ export default function AllocationsPage() {
     }
   }, []);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
+  useEffect(() => {fetchData();}, [fetchData]);
 
   const activeTerm = terms.find((t) => t.status === 'active');
 
@@ -52,7 +52,7 @@ export default function AllocationsPage() {
       classId: classes[0]?.id || '',
       termId: activeTerm?.id || '',
       theoryHours: 0,
-      practicalHours: 0,
+      practicalHours: 0
     });
     setModalOpen(true);
   };
@@ -67,7 +67,7 @@ export default function AllocationsPage() {
         termId: Number(formData.termId),
         theoryHours: Number(formData.theoryHours),
         practicalHours: Number(formData.practicalHours),
-        effectiveStartDate: new Date().toISOString(),
+        effectiveStartDate: new Date().toISOString()
       };
       await apiClient('/allocations', { method: 'POST', body: JSON.stringify(payload) });
       setModalOpen(false);
@@ -86,8 +86,8 @@ export default function AllocationsPage() {
         method: 'POST',
         body: JSON.stringify({
           entityType: 'allocation',
-          entityId: item.id,
-        }),
+          entityId: item.id
+        })
       });
       fetchData();
     } catch (err) {
@@ -124,32 +124,32 @@ export default function AllocationsPage() {
           <h1 className="text-2xl font-bold text-[var(--foreground)]" style={{ letterSpacing: '-0.02em' }}>Allocations</h1>
           <p className="text-sm text-[var(--color-slate)] mt-1">Faculty-subject-class workload assignments.</p>
         </div>
-        {canCreate && (
-          <button onClick={openCreate} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold text-sm rounded-[var(--radius-buttons)] transition-all">
+        {canCreate &&
+        <button onClick={openCreate} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold text-sm rounded-[var(--radius-buttons)] transition-all">
             <Plus className="w-4 h-4" /> New Allocation
           </button>
-        )}
+        }
       </div>
 
       {/* Status filter chips */}
       <div className="flex gap-2 flex-wrap">
-        {['all', 'draft', 'pending_approval', 'approved', 'rejected'].map((s) => (
-          <button key={s} onClick={() => setStatusFilter(s)}
-            className={`px-3 py-1.5 rounded-[var(--radius-tags)] text-xs font-semibold transition-all ${statusFilter === s ? 'bg-[var(--color-carbon)] text-white' : 'bg-[var(--surface)] text-[var(--color-graphite)] hover:text-[var(--color-carbon)] border border-[var(--border)]'}`}
-          >{s === 'all' ? 'All' : s.replace('_', ' ').replace(/\b\w/g, (l) => l.toUpperCase())}</button>
-        ))}
+        {['all', 'draft', 'pending_approval', 'approved', 'rejected'].map((s) =>
+        <button key={s} onClick={() => setStatusFilter(s)}
+        className={`px-3 py-1.5 rounded-[var(--radius-tags)] text-xs font-semibold transition-all ${statusFilter === s ? 'bg-[var(--color-carbon)] text-white' : 'bg-[var(--surface)] text-[var(--color-graphite)] hover:text-[var(--color-carbon)] border border-[var(--border)]'}`}>
+          {s === 'all' ? 'All' : s.replace('_', ' ').replace(/\b\w/g, (l) => l.toUpperCase())}</button>
+        )}
       </div>
 
       <DataTable
         columns={[
-          { key: 'facultyId', label: 'Faculty', sortable: true, render: (r) => faculty.find((f) => f.id === r.facultyId)?.name || `#${r.facultyId}` },
-          { key: 'subjectId', label: 'Subject', sortable: true, render: (r) => subjects.find((s) => s.id === r.subjectId)?.subjectName || `#${r.subjectId}` },
-          { key: 'classId', label: 'Class', render: (r) => { const c = classes.find((cl) => cl.id === r.classId); return c ? `${c.className} ${c.division}` : (r.classId || '—'); } },
-          { key: 'theoryHours', label: 'Theory Hrs' },
-          { key: 'practicalHours', label: 'Practical Hrs' },
-          { key: 'totalHours', label: 'Total Hrs', sortable: true, render: (r) => <span className="font-bold">{r.totalHours}</span> },
-          { key: 'status', label: 'Status', render: (r) => <Badge status={r.status}>{r.status.replace('_', ' ')}</Badge> },
-        ]}
+        { key: 'facultyId', label: 'Faculty', sortable: true, render: (r) => faculty.find((f) => f.id === r.facultyId)?.name || `#${r.facultyId}` },
+        { key: 'subjectId', label: 'Subject', sortable: true, render: (r) => subjects.find((s) => s.id === r.subjectId)?.subjectName || `#${r.subjectId}` },
+        { key: 'classId', label: 'Class', render: (r) => {const c = classes.find((cl) => cl.id === r.classId);return c ? `${c.className} ${c.division}` : r.classId || '—';} },
+        { key: 'theoryHours', label: 'Theory Hrs' },
+        { key: 'practicalHours', label: 'Practical Hrs' },
+        { key: 'totalHours', label: 'Total Hrs', sortable: true, render: (r) => <span className="font-bold">{r.totalHours}</span> },
+        { key: 'status', label: 'Status', render: (r) => <Badge status={r.status}>{r.status.replace('_', ' ')}</Badge> }]
+        }
         data={filteredAllocations}
         searchKeys={[]}
         emptyMessage="No allocations found for the selected filter."
@@ -157,16 +157,16 @@ export default function AllocationsPage() {
           const isDraft = row.status === 'draft' || row.status === 'returned_for_clarification';
           return (
             <div className="flex gap-1">
-              {isDraft && (
-                <button onClick={() => handleSubmitApproval(row)} className="p-1.5 rounded-lg hover:bg-indigo-50 text-indigo-600 transition-all" title="Submit for Approval"><Send className="w-4 h-4" /></button>
-              )}
-              {row.status === 'draft' && (
-                <button onClick={() => handleDelete(row)} className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 transition-all" title="Delete"><Trash2 className="w-4 h-4" /></button>
-              )}
-            </div>
-          );
-        } : undefined}
-      />
+              {isDraft &&
+              <button onClick={() => handleSubmitApproval(row)} className="p-1.5 rounded-lg hover:bg-indigo-50 text-indigo-600 transition-all" title="Submit for Approval"><Send className="w-4 h-4" /></button>
+              }
+              {row.status === 'draft' &&
+              <button onClick={() => handleDelete(row)} className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 transition-all" title="Delete"><Trash2 className="w-4 h-4" /></button>
+              }
+            </div>);
+
+        } : undefined} />
+      
 
       {/* Create Modal */}
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title="Create Allocation" size="lg">
@@ -207,6 +207,6 @@ export default function AllocationsPage() {
           </div>
         </div>
       </Modal>
-    </div>
-  );
+    </div>);
+
 }

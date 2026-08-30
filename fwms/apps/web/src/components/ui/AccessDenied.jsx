@@ -8,6 +8,6 @@ export function AccessDenied({ message = 'You do not have permission to view thi
       </div>
       <h2 className="text-xl font-bold text-[var(--foreground)] tracking-tight" style={{ letterSpacing: '-0.02em' }}>Access Denied</h2>
       <p className="text-sm text-[var(--color-slate)] mt-2 max-w-sm">{message}</p>
-    </div>
-  );
+    </div>);
+
 }

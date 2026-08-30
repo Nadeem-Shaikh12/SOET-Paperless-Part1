@@ -1,10 +1,11 @@
-﻿import { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Users, Building2, Clock, AlertCircle } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { v4 as uuidv4 } from 'uuid';
 
 
-export function SuperAdminDashboard({ data }: SuperAdminDashboardProps) {
+export function SuperAdminDashboard({ data }) {
   const { heatmap, deptWorkloadChart } = data;
   const [searchParams] = useSearchParams();
   const designationFilter = searchParams.get('designation') || '';
@@ -22,7 +23,7 @@ export function SuperAdminDashboard({ data }: SuperAdminDashboardProps) {
   const displayKpis = useMemo(() => {
     let overloadedCount = 0;
     let totalWorkload = 0;
-    
+
     filteredHeatmap.forEach((f) => {
       totalWorkload += f.totalHours;
       if (f.status === 'overloaded') overloadedCount++;
@@ -104,12 +105,12 @@ export function SuperAdminDashboard({ data }: SuperAdminDashboardProps) {
               if (f.status === 'underloaded') colorClass = 'bg-amber-400';
 
               return (
-                <div 
-                  key={f.id} 
+                <div
+                  key={uuidv4()}
                   title={`${f.name} (${f.dept}): ${f.totalHours} hrs`}
-                  className={`w-6 h-6 rounded-[var(--radius-sm)] cursor-pointer hover:opacity-80 transition-opacity ${colorClass}`}
-                />
-              );
+                  className={`w-6 h-6 rounded-[var(--radius-sm)] cursor-pointer hover:opacity-80 transition-opacity ${colorClass}`} />);
+
+
             })}
           </div>
           <div className="flex items-center gap-4 mt-6 text-xs text-[var(--color-slate)]">
@@ -119,6 +120,6 @@ export function SuperAdminDashboard({ data }: SuperAdminDashboardProps) {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
+
 }

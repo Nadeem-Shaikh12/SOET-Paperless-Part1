@@ -27,7 +27,7 @@ function emptyRow(sortOrder) {
     creditsL: 0,
     creditsP: 0,
     creditsT: 0,
-    noteMarker: null,
+    noteMarker: null
   };
 }
 
@@ -38,7 +38,7 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
   const [editNotes, setEditNotes] = useState(report.notes || '');
 
   useEffect(() => {
-    setEditRows(report.rows.map(r => ({ ...r })));
+    setEditRows(report.rows.map((r) => ({ ...r })));
     setEditTitle(report.title);
     setEditNotes(report.notes || '');
   }, [report]);
@@ -63,14 +63,14 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
   }, [displayRows]);
 
   const startEditing = () => {
-    setEditRows(report.rows.map(r => ({ ...r })));
+    setEditRows(report.rows.map((r) => ({ ...r })));
     setEditTitle(report.title);
     setEditNotes(report.notes || '');
     setEditing(true);
   };
 
   const cancelEditing = () => {
-    setEditRows(report.rows.map(r => ({ ...r })));
+    setEditRows(report.rows.map((r) => ({ ...r })));
     setEditing(false);
   };
 
@@ -80,7 +80,7 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
   };
 
   const updateCell = useCallback((index, field, value) => {
-    setEditRows(prev => {
+    setEditRows((prev) => {
       const updated = [...prev];
       const row = { ...updated[index], [field]: value };
       updated[index] = computeRow(row);
@@ -89,11 +89,11 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
   }, []);
 
   const addRow = useCallback(() => {
-    setEditRows(prev => [...prev, emptyRow(prev.length + 1)]);
+    setEditRows((prev) => [...prev, emptyRow(prev.length + 1)]);
   }, []);
 
   const deleteRow = useCallback((index) => {
-    setEditRows(prev => {
+    setEditRows((prev) => {
       const updated = prev.filter((_, i) => i !== index);
       return updated.map((r, i) => ({ ...r, sortOrder: i + 1 }));
     });
@@ -130,45 +130,45 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
           Teaching Workload Report
         </h1>
         <div className="flex items-center gap-2">
-          {editing ? (
-            <>
+          {editing ?
+          <>
               <button
-                onClick={cancelEditing}
-                className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg border border-[var(--border)] text-[var(--color-graphite)] hover:bg-[var(--color-fog)] transition-all"
-              >
+              onClick={cancelEditing}
+              className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg border border-[var(--border)] text-[var(--color-graphite)] hover:bg-[var(--color-fog)] transition-all">
+              
                 <X className="w-4 h-4" /> Cancel
               </button>
               <button
-                onClick={handleSave}
-                disabled={saving}
-                className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg bg-[var(--color-carbon)] text-white hover:bg-[var(--color-graphite)] transition-all disabled:opacity-50"
-              >
+              onClick={handleSave}
+              disabled={saving}
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg bg-[var(--color-carbon)] text-white hover:bg-[var(--color-graphite)] transition-all disabled:opacity-50">
+              
                 <Save className="w-4 h-4" /> {saving ? 'Saving...' : 'Save'}
               </button>
-            </>
-          ) : (
-            <>
+            </> :
+
+          <>
               <button
-                onClick={handlePrint}
-                className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg border border-[var(--border)] text-[var(--color-graphite)] hover:bg-[var(--color-fog)] transition-all"
-              >
+              onClick={handlePrint}
+              className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg border border-[var(--border)] text-[var(--color-graphite)] hover:bg-[var(--color-fog)] transition-all">
+              
                 <Printer className="w-4 h-4" /> Print
               </button>
               <button
-                onClick={onRegenerate}
-                className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg border border-[var(--border)] text-[var(--color-graphite)] hover:bg-[var(--color-fog)] transition-all"
-                title="Regenerate from current subjects/classes data"
-              >
+              onClick={onRegenerate}
+              className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg border border-[var(--border)] text-[var(--color-graphite)] hover:bg-[var(--color-fog)] transition-all"
+              title="Regenerate from current subjects/classes data">
+              
                 <RefreshCw className="w-4 h-4" /> Regenerate
               </button>
               <button
-                onClick={startEditing}
-                className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg bg-[var(--color-carbon)] text-white hover:bg-[var(--color-graphite)] transition-all"
-              >
+              onClick={startEditing}
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg bg-[var(--color-carbon)] text-white hover:bg-[var(--color-graphite)] transition-all">
+              
                 <Pencil className="w-4 h-4" /> Edit
               </button>
             </>
-          )}
+          }
         </div>
       </div>
 
@@ -189,18 +189,18 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
           <p className="text-sm font-semibold text-[var(--foreground)] mt-1">
             {report.department.deptName}
           </p>
-          {editing ? (
-            <input
-              type="text"
-              value={editTitle}
-              onChange={e => setEditTitle(e.target.value)}
-              className="mt-2 text-base font-bold text-center border-b border-[var(--color-signal-orange)] bg-transparent outline-none text-[var(--foreground)] w-64"
-            />
-          ) : (
-            <h3 className="text-base font-bold text-[var(--foreground)] mt-2 underline underline-offset-4">
+          {editing ?
+          <input
+            type="text"
+            value={editTitle}
+            onChange={(e) => setEditTitle(e.target.value)}
+            className="mt-2 text-base font-bold text-center border-b border-[var(--color-signal-orange)] bg-transparent outline-none text-[var(--foreground)] w-64" /> :
+
+
+          <h3 className="text-base font-bold text-[var(--foreground)] mt-2 underline underline-offset-4">
               {report.title}
             </h3>
-          )}
+          }
         </div>
 
         {/* Table */}
@@ -208,22 +208,22 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
           <table className="w-full text-xs border-collapse workload-table">
             <thead>
               <tr className="bg-[var(--color-fog)]">
-                <th rowSpan={2} className="wr-th">Sr.<br/>No.</th>
-                <th rowSpan={2} className="wr-th min-w-[100px]">Program /<br/>Class</th>
-                <th rowSpan={2} className="wr-th min-w-[140px]">Name of Course /<br/>Subject</th>
+                <th rowSpan={2} className="wr-th">Sr.<br />No.</th>
+                <th rowSpan={2} className="wr-th min-w-[100px]">Program /<br />Class</th>
+                <th rowSpan={2} className="wr-th min-w-[140px]">Name of Course /<br />Subject</th>
                 <th colSpan={3} className="wr-th">Theory</th>
                 <th colSpan={3} className="wr-th">Practical</th>
-                <th rowSpan={2} className="wr-th">Tutorial<br/>Hrs/wk</th>
-                <th rowSpan={2} className="wr-th">Total<br/>Teaching<br/>Hours</th>
+                <th rowSpan={2} className="wr-th">Tutorial<br />Hrs/wk</th>
+                <th rowSpan={2} className="wr-th">Total<br />Teaching<br />Hours</th>
                 <th colSpan={3} className="wr-th">Credits</th>
                 {editing && <th rowSpan={2} className="wr-th print:hidden">Actions</th>}
               </tr>
               <tr className="bg-[var(--color-fog)]">
                 <th className="wr-th">Div.</th>
-                <th className="wr-th">Hrs/<br/>wk</th>
+                <th className="wr-th">Hrs/<br />wk</th>
                 <th className="wr-th">Total</th>
                 <th className="wr-th">Batch</th>
-                <th className="wr-th">Hrs/<br/>wk</th>
+                <th className="wr-th">Hrs/<br />wk</th>
                 <th className="wr-th">Total</th>
                 <th className="wr-th">L</th>
                 <th className="wr-th">P</th>
@@ -231,50 +231,50 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
               </tr>
             </thead>
             <tbody>
-              {groupedRows.map((group, gIdx) => (
-                group.rows.map((row, rIdx) => {
-                  const srNo = row.globalIndex + 1;
-                  return (
-                    <tr key={`${gIdx}-${rIdx}`} className="hover:bg-[var(--color-fog)]/50 transition-colors">
+              {groupedRows.map((group, gIdx) =>
+              group.rows.map((row, rIdx) => {
+                const srNo = row.globalIndex + 1;
+                return (
+                  <tr key={`${gIdx}-${rIdx}`} className="hover:bg-[var(--color-fog)]/50 transition-colors">
                       <td className="wr-td text-center font-medium">{srNo}</td>
 
                       {/* Program/Class */}
                       <td className="wr-td">
-                        {editing ? (
-                          <input type="text" value={row.programClass} onChange={e => updateCell(row.globalIndex, 'programClass', e.target.value)}
-                            className="wr-input w-full" />
-                        ) : (
-                          <span className="font-medium">{row.programClass}</span>
-                        )}
+                        {editing ?
+                      <input type="text" value={row.programClass} onChange={(e) => updateCell(row.globalIndex, 'programClass', e.target.value)}
+                      className="wr-input w-full" /> :
+
+                      <span className="font-medium">{row.programClass}</span>
+                      }
                       </td>
 
                       {/* Subject Name */}
                       <td className="wr-td">
-                        {editing ? (
-                          <input type="text" value={row.subjectName} onChange={e => updateCell(row.globalIndex, 'subjectName', e.target.value)}
-                            className="wr-input w-full" />
-                        ) : (
-                          <>
+                        {editing ?
+                      <input type="text" value={row.subjectName} onChange={(e) => updateCell(row.globalIndex, 'subjectName', e.target.value)}
+                      className="wr-input w-full" /> :
+
+                      <>
                             {row.subjectName}
                             {row.noteMarker && <sup className="text-[var(--color-signal-orange)] font-bold ml-0.5">{row.noteMarker}</sup>}
                           </>
-                        )}
+                      }
                       </td>
 
                       {/* Theory: Divisions */}
                       <td className="wr-td text-center">
-                        {editing ? (
-                          <input type="number" value={row.divisions} onChange={e => updateCell(row.globalIndex, 'divisions', parseInt(e.target.value) || 0)}
-                            className="wr-input w-14 text-center" />
-                        ) : row.divisions}
+                        {editing ?
+                      <input type="number" value={row.divisions} onChange={(e) => updateCell(row.globalIndex, 'divisions', parseInt(e.target.value) || 0)}
+                      className="wr-input w-14 text-center" /> :
+                      row.divisions}
                       </td>
 
                       {/* Theory: Hrs/wk */}
                       <td className="wr-td text-center">
-                        {editing ? (
-                          <input type="number" step="0.5" value={row.theoryHrsPerWeek} onChange={e => updateCell(row.globalIndex, 'theoryHrsPerWeek', parseFloat(e.target.value) || 0)}
-                            className="wr-input w-14 text-center" />
-                        ) : row.theoryHrsPerWeek}
+                        {editing ?
+                      <input type="number" step="0.5" value={row.theoryHrsPerWeek} onChange={(e) => updateCell(row.globalIndex, 'theoryHrsPerWeek', parseFloat(e.target.value) || 0)}
+                      className="wr-input w-14 text-center" /> :
+                      row.theoryHrsPerWeek}
                       </td>
 
                       {/* Theory: Total (computed) */}
@@ -284,18 +284,18 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
 
                       {/* Practical: Batches */}
                       <td className="wr-td text-center">
-                        {editing ? (
-                          <input type="number" value={row.batches} onChange={e => updateCell(row.globalIndex, 'batches', parseInt(e.target.value) || 0)}
-                            className="wr-input w-14 text-center" />
-                        ) : row.batches}
+                        {editing ?
+                      <input type="number" value={row.batches} onChange={(e) => updateCell(row.globalIndex, 'batches', parseInt(e.target.value) || 0)}
+                      className="wr-input w-14 text-center" /> :
+                      row.batches}
                       </td>
 
                       {/* Practical: Hrs/wk */}
                       <td className="wr-td text-center">
-                        {editing ? (
-                          <input type="number" step="0.5" value={row.practicalHrsPerWeek} onChange={e => updateCell(row.globalIndex, 'practicalHrsPerWeek', parseFloat(e.target.value) || 0)}
-                            className="wr-input w-14 text-center" />
-                        ) : row.practicalHrsPerWeek}
+                        {editing ?
+                      <input type="number" step="0.5" value={row.practicalHrsPerWeek} onChange={(e) => updateCell(row.globalIndex, 'practicalHrsPerWeek', parseFloat(e.target.value) || 0)}
+                      className="wr-input w-14 text-center" /> :
+                      row.practicalHrsPerWeek}
                       </td>
 
                       {/* Practical: Total (computed) */}
@@ -305,10 +305,10 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
 
                       {/* Tutorial */}
                       <td className="wr-td text-center">
-                        {editing ? (
-                          <input type="number" step="0.5" value={row.tutorialHrsPerWeek} onChange={e => updateCell(row.globalIndex, 'tutorialHrsPerWeek', parseFloat(e.target.value) || 0)}
-                            className="wr-input w-14 text-center" />
-                        ) : row.tutorialHrsPerWeek}
+                        {editing ?
+                      <input type="number" step="0.5" value={row.tutorialHrsPerWeek} onChange={(e) => updateCell(row.globalIndex, 'tutorialHrsPerWeek', parseFloat(e.target.value) || 0)}
+                      className="wr-input w-14 text-center" /> :
+                      row.tutorialHrsPerWeek}
                       </td>
 
                       {/* Total Teaching Hours (computed) */}
@@ -318,57 +318,57 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
 
                       {/* Credits L */}
                       <td className="wr-td text-center">
-                        {editing ? (
-                          <input type="number" step="0.5" value={row.creditsL} onChange={e => updateCell(row.globalIndex, 'creditsL', parseFloat(e.target.value) || 0)}
-                            className="wr-input w-12 text-center" />
-                        ) : row.creditsL}
+                        {editing ?
+                      <input type="number" step="0.5" value={row.creditsL} onChange={(e) => updateCell(row.globalIndex, 'creditsL', parseFloat(e.target.value) || 0)}
+                      className="wr-input w-12 text-center" /> :
+                      row.creditsL}
                       </td>
 
                       {/* Credits P */}
                       <td className="wr-td text-center">
-                        {editing ? (
-                          <input type="number" step="0.5" value={row.creditsP} onChange={e => updateCell(row.globalIndex, 'creditsP', parseFloat(e.target.value) || 0)}
-                            className="wr-input w-12 text-center" />
-                        ) : row.creditsP}
+                        {editing ?
+                      <input type="number" step="0.5" value={row.creditsP} onChange={(e) => updateCell(row.globalIndex, 'creditsP', parseFloat(e.target.value) || 0)}
+                      className="wr-input w-12 text-center" /> :
+                      row.creditsP}
                       </td>
 
                       {/* Credits T */}
                       <td className="wr-td text-center">
-                        {editing ? (
-                          <input type="number" step="0.5" value={row.creditsT} onChange={e => updateCell(row.globalIndex, 'creditsT', parseFloat(e.target.value) || 0)}
-                            className="wr-input w-12 text-center" />
-                        ) : row.creditsT}
+                        {editing ?
+                      <input type="number" step="0.5" value={row.creditsT} onChange={(e) => updateCell(row.globalIndex, 'creditsT', parseFloat(e.target.value) || 0)}
+                      className="wr-input w-12 text-center" /> :
+                      row.creditsT}
                       </td>
 
                       {/* Note Marker (edit mode only shows as small input) */}
-                      {editing && (
-                        <td className="wr-td text-center print:hidden">
+                      {editing &&
+                    <td className="wr-td text-center print:hidden">
                           <div className="flex items-center gap-1">
-                            <input type="text" value={row.noteMarker || ''} onChange={e => updateCell(row.globalIndex, 'noteMarker', e.target.value)}
-                              className="wr-input w-8 text-center" placeholder="*" title="Note marker (e.g. *, **)" />
+                            <input type="text" value={row.noteMarker || ''} onChange={(e) => updateCell(row.globalIndex, 'noteMarker', e.target.value)}
+                        className="wr-input w-8 text-center" placeholder="*" title="Note marker (e.g. *, **)" />
                             <button onClick={() => deleteRow(row.globalIndex)}
-                              className="p-1 text-red-500 hover:bg-red-50 rounded transition-colors" title="Delete row">
+                        className="p-1 text-red-500 hover:bg-red-50 rounded transition-colors" title="Delete row">
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
                           </div>
                         </td>
-                      )}
-                    </tr>
-                  );
-                })
-              ))}
+                    }
+                    </tr>);
+
+              })
+              )}
 
               {/* Add Row button in edit mode */}
-              {editing && (
-                <tr className="print:hidden">
+              {editing &&
+              <tr className="print:hidden">
                   <td colSpan={15} className="p-2 text-center">
                     <button onClick={addRow}
-                      className="flex items-center gap-1.5 mx-auto px-3 py-1.5 text-xs font-medium rounded-lg border border-dashed border-[var(--color-slate)] text-[var(--color-graphite)] hover:bg-[var(--color-fog)] transition-all">
+                  className="flex items-center gap-1.5 mx-auto px-3 py-1.5 text-xs font-medium rounded-lg border border-dashed border-[var(--color-slate)] text-[var(--color-graphite)] hover:bg-[var(--color-fog)] transition-all">
                       <Plus className="w-3.5 h-3.5" /> Add Row
                     </button>
                   </td>
                 </tr>
-              )}
+              }
 
               {/* Totals Row */}
               <tr className="bg-[var(--color-fog)] font-bold border-t-2 border-[var(--color-carbon)]">
@@ -392,24 +392,24 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
 
         {/* Notes */}
         <div className="mt-6 space-y-1">
-          {editing ? (
-            <div>
+          {editing ?
+          <div>
               <label className="text-xs font-medium text-[var(--color-slate)] mb-1 block">Footnotes</label>
               <textarea
-                value={editNotes}
-                onChange={e => setEditNotes(e.target.value)}
-                rows={3}
-                className="w-full text-xs p-2 border border-[var(--border)] rounded-lg bg-[var(--color-fog)] text-[var(--foreground)] outline-none focus:border-[var(--color-signal-orange)] transition-colors"
-                placeholder="e.g. * Load taken by other Department&#10;** Load of other Departments taken by faculties of this department"
-              />
-            </div>
-          ) : (
-            <>
-              {(report.notes || '* Load taken by other Department\n** Load of other Departments taken by faculties of this department').split('\n').map((line, i) => (
-                <p key={i} className="text-xs text-[var(--color-slate)] italic">{line}</p>
-              ))}
+              value={editNotes}
+              onChange={(e) => setEditNotes(e.target.value)}
+              rows={3}
+              className="w-full text-xs p-2 border border-[var(--border)] rounded-lg bg-[var(--color-fog)] text-[var(--foreground)] outline-none focus:border-[var(--color-signal-orange)] transition-colors"
+              placeholder="e.g. * Load taken by other Department&#10;** Load of other Departments taken by faculties of this department" />
+            
+            </div> :
+
+          <>
+              {(report.notes || '* Load taken by other Department\n** Load of other Departments taken by faculties of this department').split('\n').map((line, i) =>
+            <p key={i} className="text-xs text-[var(--color-slate)] italic">{line}</p>
+            )}
             </>
-          )}
+          }
         </div>
 
         {/* Signature Section */}
@@ -469,6 +469,6 @@ export function WorkloadReportDocument({ report, onSave, onRegenerate, saving })
           .print\\:rounded-none { border-radius: 0 !important; }
         }
       `}</style>
-    </div>
-  );
+    </div>);
+
 }

@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../stores/auth';
 import { Loader2, KeyRound, Lock, AlertCircle, CheckCircle2 } from 'lucide-react';
@@ -30,7 +30,7 @@ function ForcePasswordChange() {
     try {
       await apiClient('/auth/change-password', {
         method: 'POST',
-        body: JSON.stringify({ newPassword }),
+        body: JSON.stringify({ newPassword })
       });
       setSuccessMsg('Password changed successfully! Logging out...');
       setTimeout(async () => {
@@ -60,19 +60,19 @@ function ForcePasswordChange() {
           </p>
         </div>
 
-        {errorMsg && (
-          <div className="mb-6 p-4 bg-[var(--color-fog)] border-l-4 border-[var(--color-error)] rounded-r-[var(--radius-sm)] flex items-start space-x-3">
+        {errorMsg &&
+        <div className="mb-6 p-4 bg-[var(--color-fog)] border-l-4 border-[var(--color-error)] rounded-r-[var(--radius-sm)] flex items-start space-x-3">
             <AlertCircle className="w-5 h-5 text-[var(--color-error)] shrink-0 mt-0.5" />
             <p className="text-sm text-[var(--color-carbon)] font-medium">{errorMsg}</p>
           </div>
-        )}
+        }
 
-        {successMsg && (
-          <div className="mb-6 p-4 bg-[var(--color-fog)] border-l-4 border-[var(--color-success)] rounded-r-[var(--radius-sm)] flex items-start space-x-3">
+        {successMsg &&
+        <div className="mb-6 p-4 bg-[var(--color-fog)] border-l-4 border-[var(--color-success)] rounded-r-[var(--radius-sm)] flex items-start space-x-3">
             <CheckCircle2 className="w-5 h-5 text-[var(--color-success)] shrink-0 mt-0.5" />
             <p className="text-sm text-[var(--color-carbon)] font-medium">{successMsg}</p>
           </div>
-        )}
+        }
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
@@ -88,8 +88,8 @@ function ForcePasswordChange() {
                 className="w-full pl-10 pr-4 py-3 rounded-[var(--radius-inputs)] border border-[var(--border)] bg-[var(--color-fog)] text-[var(--foreground)] focus:bg-[var(--surface)] transition-all outline-none focus:ring-2 focus:ring-[var(--color-carbon)]"
                 placeholder="Minimum 8 characters"
                 required
-                disabled={isSubmitting || !!successMsg}
-              />
+                disabled={isSubmitting || !!successMsg} />
+              
               <Lock className="w-5 h-5 text-[var(--color-slate)] absolute left-3 top-3.5" />
             </div>
           </div>
@@ -107,8 +107,8 @@ function ForcePasswordChange() {
                 className="w-full pl-10 pr-4 py-3 rounded-[var(--radius-inputs)] border border-[var(--border)] bg-[var(--color-fog)] text-[var(--foreground)] focus:bg-[var(--surface)] transition-all outline-none focus:ring-2 focus:ring-[var(--color-carbon)]"
                 placeholder="Re-enter new password"
                 required
-                disabled={isSubmitting || !!successMsg}
-              />
+                disabled={isSubmitting || !!successMsg} />
+              
               <Lock className="w-5 h-5 text-[var(--color-slate)] absolute left-3 top-3.5" />
             </div>
           </div>
@@ -116,34 +116,34 @@ function ForcePasswordChange() {
           <button
             type="submit"
             disabled={isSubmitting || !!successMsg}
-            className="w-full py-3 px-4 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold rounded-[var(--radius-buttons)] transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
-          >
+            className="w-full py-3 px-4 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold rounded-[var(--radius-buttons)] transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed">
+            
             <span className="flex items-center space-x-2">
-              {isSubmitting ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
-              ) : (
-                <span>Change Password & Sign In</span>
-              )}
+              {isSubmitting ?
+              <Loader2 className="w-5 h-5 animate-spin" /> :
+
+              <span>Change Password & Sign In</span>
+              }
             </span>
           </button>
         </form>
       </div>
-    </div>
-  );
+    </div>);
+
 }
 
 // Maps URL path prefixes to which roles are allowed to visit them.
 // Any authenticated user not in the allowed list is redirected to /unauthorized.
 const ROUTE_ROLE_MAP = [
-  { prefix: '/institutional', roles: ['super_admin'] },
-  { prefix: '/master-data', roles: ['super_admin', 'dept_admin'] },
-  { prefix: '/subjects', roles: ['super_admin', 'dept_admin'] },
-  { prefix: '/approvals', roles: ['super_admin', 'dept_admin'] },
-  { prefix: '/faculty', roles: ['super_admin', 'dept_admin'] },
-  { prefix: '/workload-report', roles: ['super_admin', 'dept_admin'] },
-  { prefix: '/allocations', roles: ['super_admin', 'dept_admin', 'faculty'] },
-  { prefix: '/dashboard', roles: ['super_admin', 'dept_admin', 'faculty'] },
-];
+{ prefix: '/institutional', roles: ['super_admin'] },
+{ prefix: '/master-data', roles: ['super_admin', 'dept_admin'] },
+{ prefix: '/subjects', roles: ['super_admin', 'dept_admin'] },
+{ prefix: '/approvals', roles: ['super_admin', 'dept_admin'] },
+{ prefix: '/faculty', roles: ['super_admin', 'dept_admin'] },
+{ prefix: '/workload-report', roles: ['super_admin', 'dept_admin'] },
+{ prefix: '/allocations', roles: ['super_admin', 'dept_admin', 'faculty'] },
+{ prefix: '/dashboard', roles: ['super_admin', 'dept_admin', 'faculty'] }];
+
 
 export function RouteGuard({ children, allowedRoles }) {
   const { isAuthenticated, isLoading, user } = useAuthStore();
@@ -168,8 +168,8 @@ export function RouteGuard({ children, allowedRoles }) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
         <Loader2 className="w-8 h-8 animate-spin text-[var(--color-carbon)]" />
-      </div>
-    );
+      </div>);
+
   }
 
   // Force password change takes precedence over rendering children or checking role
@@ -184,4 +184,3 @@ export function RouteGuard({ children, allowedRoles }) {
 
   return <>{children}</>;
 }
-

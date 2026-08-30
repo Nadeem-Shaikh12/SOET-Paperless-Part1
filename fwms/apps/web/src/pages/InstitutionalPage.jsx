@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { DataTable } from '..\/components/ui/DataTable';
@@ -26,11 +26,11 @@ export default function InstitutionalConfigPage() {
     setLoading(true);
     try {
       const [s, d, t, n] = await Promise.all([
-        apiClient('/institutional/schools'),
-        apiClient('/institutional/departments'),
-        apiClient('/institutional/academic-terms'),
-        apiClient('/institutional/norms'),
-      ]);
+      apiClient('/institutional/schools'),
+      apiClient('/institutional/departments'),
+      apiClient('/institutional/academic-terms'),
+      apiClient('/institutional/norms')]
+      );
       setSchools(s);
       setDepartments(d);
       setTerms(t);
@@ -42,7 +42,7 @@ export default function InstitutionalConfigPage() {
     }
   }, []);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
+  useEffect(() => {fetchData();}, [fetchData]);
 
   const openCreate = () => {
     setEditItem(null);
@@ -58,21 +58,21 @@ export default function InstitutionalConfigPage() {
 
   const getDefaultForm = () => {
     switch (tab) {
-      case 'schools': return { schoolName: '', deanName: '' };
-      case 'departments': return { deptName: '', schoolId: schools[0]?.id || '', defaultBatchSize: 30 };
-      case 'terms': return { academicYear: '', semester: 'Odd', startDate: '', endDate: '' };
-      case 'norms': return { designation: 'Professor', minWeeklyHours: 14, maxWeeklyHours: 16, defaultTheoryMultiplier: 1.0, defaultPracticalMultiplier: 2.0, slaDaysForHodReview: 3, effectiveTermId: terms[0]?.id || '' };
-      default: return {};
+      case 'schools':return { schoolName: '', deanName: '' };
+      case 'departments':return { deptName: '', schoolId: schools[0]?.id || '', defaultBatchSize: 30 };
+      case 'terms':return { academicYear: '', semester: 'Odd', startDate: '', endDate: '' };
+      case 'norms':return { designation: 'Professor', minWeeklyHours: 14, maxWeeklyHours: 16, defaultTheoryMultiplier: 1.0, defaultPracticalMultiplier: 2.0, slaDaysForHodReview: 3, effectiveTermId: terms[0]?.id || '' };
+      default:return {};
     }
   };
 
   const getEditForm = (item) => {
     switch (tab) {
-      case 'schools': return { schoolName: item.schoolName, deanName: item.deanName || '' };
-      case 'departments': return { deptName: item.deptName, schoolId: item.schoolId, defaultBatchSize: item.defaultBatchSize };
-      case 'terms': return { academicYear: item.academicYear, semester: item.semester, startDate: item.startDate?.split('T')[0], endDate: item.endDate?.split('T')[0] };
-      case 'norms': return { ...item, effectiveTermId: item.effectiveTermId };
-      default: return {};
+      case 'schools':return { schoolName: item.schoolName, deanName: item.deanName || '' };
+      case 'departments':return { deptName: item.deptName, schoolId: item.schoolId, defaultBatchSize: item.defaultBatchSize };
+      case 'terms':return { academicYear: item.academicYear, semester: item.semester, startDate: item.startDate?.split('T')[0], endDate: item.endDate?.split('T')[0] };
+      case 'norms':return { ...item, effectiveTermId: item.effectiveTermId };
+      default:return {};
     }
   };
 
@@ -80,12 +80,12 @@ export default function InstitutionalConfigPage() {
     setSaving(true);
     try {
       if (tab === 'schools') {
-        if (editItem) await apiClient(`/institutional/schools/${editItem.id}`, { method: 'PUT', body: JSON.stringify(formData) });
-        else await apiClient('/institutional/schools', { method: 'POST', body: JSON.stringify(formData) });
+        if (editItem) await apiClient(`/institutional/schools/${editItem.id}`, { method: 'PUT', body: JSON.stringify(formData) });else
+        await apiClient('/institutional/schools', { method: 'POST', body: JSON.stringify(formData) });
       } else if (tab === 'departments') {
         const payload = { ...formData, schoolId: Number(formData.schoolId), defaultBatchSize: Number(formData.defaultBatchSize) };
-        if (editItem) await apiClient(`/institutional/departments/${editItem.id}`, { method: 'PUT', body: JSON.stringify(payload) });
-        else await apiClient('/institutional/departments', { method: 'POST', body: JSON.stringify(payload) });
+        if (editItem) await apiClient(`/institutional/departments/${editItem.id}`, { method: 'PUT', body: JSON.stringify(payload) });else
+        await apiClient('/institutional/departments', { method: 'POST', body: JSON.stringify(payload) });
       } else if (tab === 'terms') {
         await apiClient('/institutional/academic-terms', { method: 'POST', body: JSON.stringify(formData) });
       } else if (tab === 'norms') {
@@ -96,7 +96,7 @@ export default function InstitutionalConfigPage() {
           maxWeeklyHours: Number(formData.maxWeeklyHours),
           defaultTheoryMultiplier: Number(formData.defaultTheoryMultiplier),
           defaultPracticalMultiplier: Number(formData.defaultPracticalMultiplier),
-          slaDaysForHodReview: Number(formData.slaDaysForHodReview),
+          slaDaysForHodReview: Number(formData.slaDaysForHodReview)
         };
         await apiClient('/institutional/norms', { method: 'PUT', body: JSON.stringify(payload) });
       }
@@ -123,9 +123,9 @@ export default function InstitutionalConfigPage() {
     if (!confirm('Are you sure you want to delete this item?')) return;
     try {
       let endpoint = '';
-      if (tab === 'departments') endpoint = `/institutional/departments/${item.id}`;
-      else if (tab === 'terms') endpoint = `/institutional/academic-terms/${item.id}`;
-      else if (tab === 'norms') endpoint = `/institutional/norms/${item.id}`;
+      if (tab === 'departments') endpoint = `/institutional/departments/${item.id}`;else
+      if (tab === 'terms') endpoint = `/institutional/academic-terms/${item.id}`;else
+      if (tab === 'norms') endpoint = `/institutional/norms/${item.id}`;
 
       if (endpoint) {
         await apiClient(endpoint, { method: 'DELETE' });
@@ -139,11 +139,11 @@ export default function InstitutionalConfigPage() {
   const updateField = (key, value) => setFormData((p) => ({ ...p, [key]: value }));
 
   const tabs = [
-    { key: 'schools', label: 'Schools', icon: Building2 },
-    { key: 'departments', label: 'Departments', icon: GraduationCap },
-    { key: 'terms', label: 'Academic Terms', icon: Calendar },
-    { key: 'norms', label: 'Workload Norms', icon: Gauge },
-  ];
+  { key: 'schools', label: 'Schools', icon: Building2 },
+  { key: 'departments', label: 'Departments', icon: GraduationCap },
+  { key: 'terms', label: 'Academic Terms', icon: Calendar },
+  { key: 'norms', label: 'Workload Norms', icon: Gauge }];
+
 
   const inputClass = 'w-full px-4 py-2.5 rounded-[var(--radius-inputs)] border border-[var(--border)] bg-[var(--color-fog)] text-[var(--foreground)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-carbon)] transition-all';
   const labelClass = 'block text-sm font-semibold text-[var(--foreground)] mb-1.5';
@@ -152,8 +152,8 @@ export default function InstitutionalConfigPage() {
     return (
       <div className="flex items-center justify-center h-64">
         <Loader2 className="w-8 h-8 animate-spin text-[var(--color-carbon)]" />
-      </div>
-    );
+      </div>);
+
   }
 
   if (user?.role !== 'super_admin') {
@@ -168,15 +168,15 @@ export default function InstitutionalConfigPage() {
           <h1 className="text-2xl font-bold text-[var(--foreground)]" style={{ letterSpacing: '-0.02em' }}>Institutional Configuration</h1>
           <p className="text-sm text-[var(--color-slate)] mt-1">Manage schools, departments, academic terms, and workload norms.</p>
         </div>
-        {isSuperAdmin && (
-          <button
-            onClick={openCreate}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold text-sm rounded-[var(--radius-buttons)] transition-all"
-          >
+        {isSuperAdmin &&
+        <button
+          onClick={openCreate}
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold text-sm rounded-[var(--radius-buttons)] transition-all">
+          
             <Plus className="w-4 h-4" />
             Add {tabs.find((t) => t.key === tab)?.label.replace(/s$/, '')}
           </button>
-        )}
+        }
       </div>
 
       {/* Tabs */}
@@ -188,106 +188,106 @@ export default function InstitutionalConfigPage() {
               key={t.key}
               onClick={() => setTab(t.key)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                tab === t.key
-                  ? 'bg-[var(--color-carbon)] text-white'
-                  : 'text-[var(--color-graphite)] hover:text-[var(--color-carbon)] hover:bg-[var(--color-fog)]'
-              }`}
-            >
+              tab === t.key ?
+              'bg-[var(--color-carbon)] text-white' :
+              'text-[var(--color-graphite)] hover:text-[var(--color-carbon)] hover:bg-[var(--color-fog)]'}`
+              }>
+              
               <Icon className="w-4 h-4" />
               <span className="hidden sm:inline">{t.label}</span>
-            </button>
-          );
+            </button>);
+
         })}
       </div>
 
       {/* Tables */}
-      {tab === 'schools' && (
-        <DataTable
-          columns={[
-            { key: 'id', label: 'ID', sortable: true },
-            { key: 'schoolName', label: 'School Name', sortable: true },
-            { key: 'deanName', label: 'Dean', sortable: true },
-            { key: 'isActive', label: 'Status', render: (r) => <Badge status={r.isActive ? 'active' : 'inactive'}>{r.isActive ? 'Active' : 'Inactive'}</Badge> },
-          ]}
-          data={schools}
-          searchKeys={['schoolName', 'deanName']}
-          searchPlaceholder="Search schools..."
-          actions={isSuperAdmin ? (row) => (
-            <div className="flex gap-2 justify-end">
+      {tab === 'schools' &&
+      <DataTable
+        columns={[
+        { key: 'id', label: 'ID', sortable: true },
+        { key: 'schoolName', label: 'School Name', sortable: true },
+        { key: 'deanName', label: 'Dean', sortable: true },
+        { key: 'isActive', label: 'Status', render: (r) => <Badge status={r.isActive ? 'active' : 'inactive'}>{r.isActive ? 'Active' : 'Inactive'}</Badge> }]
+        }
+        data={schools}
+        searchKeys={['schoolName', 'deanName']}
+        searchPlaceholder="Search schools..."
+        actions={isSuperAdmin ? (row) =>
+        <div className="flex gap-2 justify-end">
               <button onClick={() => openEdit(row)} className="p-1.5 rounded-lg hover:bg-[var(--surface-hover)] text-[var(--foreground)] opacity-50 hover:opacity-100 transition-all"><Pencil className="w-4 h-4" /></button>
               <button onClick={() => handleDeactivateSchool(row.id)} className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 opacity-50 hover:opacity-100 transition-all"><Trash2 className="w-4 h-4" /></button>
-            </div>
-          ) : undefined}
-        />
-      )}
+            </div> :
+        undefined} />
 
-      {tab === 'departments' && (
-        <DataTable
-          columns={[
-            { key: 'id', label: 'ID', sortable: true },
-            { key: 'deptName', label: 'Department', sortable: true },
-            { key: 'schoolId', label: 'School', sortable: true, render: (r) => schools.find((s) => s.id === r.schoolId)?.schoolName || r.schoolId },
-            { key: 'defaultBatchSize', label: 'Batch Size' },
-            { key: 'isActive', label: 'Status', render: (r) => <Badge status={r.isActive ? 'active' : 'inactive'}>{r.isActive ? 'Active' : 'Inactive'}</Badge> },
-          ]}
-          data={departments}
-          searchKeys={['deptName']}
-          searchPlaceholder="Search departments..."
-          actions={isSuperAdmin ? (row) => (
-            <div className="flex gap-2">
+      }
+
+      {tab === 'departments' &&
+      <DataTable
+        columns={[
+        { key: 'id', label: 'ID', sortable: true },
+        { key: 'deptName', label: 'Department', sortable: true },
+        { key: 'schoolId', label: 'School', sortable: true, render: (r) => schools.find((s) => s.id === r.schoolId)?.schoolName || r.schoolId },
+        { key: 'defaultBatchSize', label: 'Batch Size' },
+        { key: 'isActive', label: 'Status', render: (r) => <Badge status={r.isActive ? 'active' : 'inactive'}>{r.isActive ? 'Active' : 'Inactive'}</Badge> }]
+        }
+        data={departments}
+        searchKeys={['deptName']}
+        searchPlaceholder="Search departments..."
+        actions={isSuperAdmin ? (row) =>
+        <div className="flex gap-2">
               <button onClick={() => openEdit(row)} className="p-1.5 rounded-lg hover:bg-[var(--surface-hover)] text-[var(--foreground)] opacity-50 hover:opacity-100 transition-all"><Pencil className="w-4 h-4" /></button>
               <button onClick={() => handleDelete(row)} className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 opacity-50 hover:opacity-100 transition-all"><Trash2 className="w-4 h-4" /></button>
-            </div>
-          ) : undefined}
-        />
-      )}
+            </div> :
+        undefined} />
 
-      {tab === 'terms' && (
-        <DataTable
-          columns={[
-            { key: 'id', label: 'ID', sortable: true },
-            { key: 'academicYear', label: 'Academic Year', sortable: true },
-            { key: 'semester', label: 'Semester', sortable: true },
-            { key: 'status', label: 'Status', render: (r) => <Badge status={r.status}>{r.status}</Badge> },
-            { key: 'startDate', label: 'Start', render: (r) => new Date(r.startDate).toLocaleDateString() },
-            { key: 'endDate', label: 'End', render: (r) => new Date(r.endDate).toLocaleDateString() },
-          ]}
-          data={terms}
-          searchKeys={['academicYear', 'semester']}
-          searchPlaceholder="Search terms..."
-          actions={isSuperAdmin ? (row) => (
-            <div className="flex gap-2">
+      }
+
+      {tab === 'terms' &&
+      <DataTable
+        columns={[
+        { key: 'id', label: 'ID', sortable: true },
+        { key: 'academicYear', label: 'Academic Year', sortable: true },
+        { key: 'semester', label: 'Semester', sortable: true },
+        { key: 'status', label: 'Status', render: (r) => <Badge status={r.status}>{r.status}</Badge> },
+        { key: 'startDate', label: 'Start', render: (r) => new Date(r.startDate).toLocaleDateString() },
+        { key: 'endDate', label: 'End', render: (r) => new Date(r.endDate).toLocaleDateString() }]
+        }
+        data={terms}
+        searchKeys={['academicYear', 'semester']}
+        searchPlaceholder="Search terms..."
+        actions={isSuperAdmin ? (row) =>
+        <div className="flex gap-2">
               <button onClick={() => handleDelete(row)} className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 opacity-50 hover:opacity-100 transition-all"><Trash2 className="w-4 h-4" /></button>
-            </div>
-          ) : undefined}
-        />
-      )}
+            </div> :
+        undefined} />
 
-      {tab === 'norms' && (
-        <DataTable
-          columns={[
-            { key: 'designation', label: 'Designation', sortable: true, render: (r) => r.designation.replace('_', ' ') },
-            { key: 'minWeeklyHours', label: 'Min Hours' },
-            { key: 'maxWeeklyHours', label: 'Max Hours' },
-            { key: 'defaultTheoryMultiplier', label: 'Theory Mult.' },
-            { key: 'defaultPracticalMultiplier', label: 'Practical Mult.' },
-            { key: 'slaDaysForHodReview', label: 'SLA Days' },
-          ]}
-          data={norms}
-          actions={isSuperAdmin ? (row) => (
-            <div className="flex gap-2">
+      }
+
+      {tab === 'norms' &&
+      <DataTable
+        columns={[
+        { key: 'designation', label: 'Designation', sortable: true, render: (r) => r.designation.replace('_', ' ') },
+        { key: 'minWeeklyHours', label: 'Min Hours' },
+        { key: 'maxWeeklyHours', label: 'Max Hours' },
+        { key: 'defaultTheoryMultiplier', label: 'Theory Mult.' },
+        { key: 'defaultPracticalMultiplier', label: 'Practical Mult.' },
+        { key: 'slaDaysForHodReview', label: 'SLA Days' }]
+        }
+        data={norms}
+        actions={isSuperAdmin ? (row) =>
+        <div className="flex gap-2">
               <button onClick={() => openEdit(row)} className="p-1.5 rounded-lg hover:bg-[var(--surface-hover)] text-[var(--foreground)] opacity-50 hover:opacity-100 transition-all"><Pencil className="w-4 h-4" /></button>
               <button onClick={() => handleDelete(row)} className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 opacity-50 hover:opacity-100 transition-all"><Trash2 className="w-4 h-4" /></button>
-            </div>
-          ) : undefined}
-        />
-      )}
+            </div> :
+        undefined} />
+
+      }
 
       {/* Modal Forms */}
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editItem ? 'Edit' : 'Add'} ${tabs.find((t) => t.key === tab)?.label.replace(/s$/, '')}`}>
         <div className="space-y-4">
-          {tab === 'schools' && (
-            <>
+          {tab === 'schools' &&
+          <>
               <div>
                 <label className={labelClass}>School Name *</label>
                 <input className={inputClass} value={formData.schoolName || ''} onChange={(e) => updateField('schoolName', e.target.value)} placeholder="e.g. School of Engineering" />
@@ -297,10 +297,10 @@ export default function InstitutionalConfigPage() {
                 <input className={inputClass} value={formData.deanName || ''} onChange={(e) => updateField('deanName', e.target.value)} placeholder="e.g. Dr. Sharma" />
               </div>
             </>
-          )}
+          }
 
-          {tab === 'departments' && (
-            <>
+          {tab === 'departments' &&
+          <>
               <div>
                 <label className={labelClass}>Department Name *</label>
                 <input className={inputClass} value={formData.deptName || ''} onChange={(e) => updateField('deptName', e.target.value)} placeholder="e.g. Computer Science" />
@@ -317,10 +317,10 @@ export default function InstitutionalConfigPage() {
                 <input className={inputClass} type="number" value={formData.defaultBatchSize || 30} onChange={(e) => updateField('defaultBatchSize', e.target.value)} />
               </div>
             </>
-          )}
+          }
 
-          {tab === 'terms' && (
-            <>
+          {tab === 'terms' &&
+          <>
               <div>
                 <label className={labelClass}>Academic Year *</label>
                 <input className={inputClass} value={formData.academicYear || ''} onChange={(e) => updateField('academicYear', e.target.value)} placeholder="e.g. 2024-25" />
@@ -343,10 +343,10 @@ export default function InstitutionalConfigPage() {
                 </div>
               </div>
             </>
-          )}
+          }
 
-          {tab === 'norms' && (
-            <>
+          {tab === 'norms' &&
+          <>
               <div>
                 <label className={labelClass}>Designation *</label>
                 <select className={inputClass} value={formData.designation || ''} onChange={(e) => updateField('designation', e.target.value)}>
@@ -386,7 +386,7 @@ export default function InstitutionalConfigPage() {
                 <input className={inputClass} type="number" value={formData.slaDaysForHodReview ?? 3} onChange={(e) => updateField('slaDaysForHodReview', e.target.value)} />
               </div>
             </>
-          )}
+          }
 
           {/* Footer */}
           <div className="flex justify-end gap-3 pt-4 border-t border-[var(--border)]">
@@ -398,6 +398,6 @@ export default function InstitutionalConfigPage() {
           </div>
         </div>
       </Modal>
-    </div>
-  );
+    </div>);
+
 }

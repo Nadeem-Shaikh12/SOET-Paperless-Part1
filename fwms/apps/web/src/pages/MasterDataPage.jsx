@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '..\/lib/api-client';
 import { useAuthStore } from '..\/stores/auth';
 import { Badge } from '..\/components/ui/Badge';
@@ -15,9 +15,9 @@ export default function MasterDataPage() {
     setLoading(true);
     try {
       const [t, n] = await Promise.all([
-        apiClient('/institutional/academic-terms'),
-        apiClient('/institutional/norms'),
-      ]);
+      apiClient('/institutional/academic-terms'),
+      apiClient('/institutional/norms')]
+      );
       setTerms(t);
       setNorms(n);
     } catch (err) {
@@ -27,14 +27,14 @@ export default function MasterDataPage() {
     }
   }, []);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
+  useEffect(() => {fetchData();}, [fetchData]);
 
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
         <Loader2 className="w-8 h-8 animate-spin text-[var(--color-carbon)]" />
-      </div>
-    );
+      </div>);
+
   }
 
   if (user?.role !== 'super_admin' && user?.role !== 'dept_admin') {
@@ -56,8 +56,8 @@ export default function MasterDataPage() {
           <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-600"><Calendar className="w-5 h-5" /></div>
           <h2 className="text-lg font-bold text-[var(--foreground)]">Current Academic Term</h2>
         </div>
-        {activeTerm ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {activeTerm ?
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
               <p className="text-xs font-medium text-[var(--foreground)] opacity-50 uppercase tracking-wider">Year</p>
               <p className="text-lg font-bold text-[var(--foreground)] mt-0.5">{activeTerm.academicYear}</p>
@@ -74,18 +74,18 @@ export default function MasterDataPage() {
               <p className="text-xs font-medium text-[var(--foreground)] opacity-50 uppercase tracking-wider">End</p>
               <p className="text-lg font-bold text-[var(--foreground)] mt-0.5">{new Date(activeTerm.endDate).toLocaleDateString()}</p>
             </div>
-          </div>
-        ) : (
-          <p className="text-sm text-[var(--foreground)] opacity-50">No active term configured.</p>
-        )}
+          </div> :
+
+        <p className="text-sm text-[var(--foreground)] opacity-50">No active term configured.</p>
+        }
       </div>
 
       {/* All Terms */}
       <div className="bg-[var(--surface)] rounded-xl border border-[var(--border)] p-6 shadow-sm">
         <h2 className="text-lg font-bold text-[var(--foreground)] mb-4">All Academic Terms</h2>
         <div className="grid gap-3">
-          {terms.map((t) => (
-            <div key={t.id} className="flex items-center justify-between p-3 rounded-xl border border-[var(--border)] bg-[var(--surface-hover)]">
+          {terms.map((t) =>
+          <div key={t.id} className="flex items-center justify-between p-3 rounded-xl border border-[var(--border)] bg-[var(--surface-hover)]">
               <div>
                 <p className="font-semibold text-[var(--foreground)]">{t.semester} Semester, {t.academicYear}</p>
                 <p className="text-xs text-[var(--foreground)] opacity-50 mt-0.5">
@@ -94,7 +94,7 @@ export default function MasterDataPage() {
               </div>
               <Badge status={t.status}>{t.status}</Badge>
             </div>
-          ))}
+          )}
         </div>
       </div>
 
@@ -104,12 +104,12 @@ export default function MasterDataPage() {
           <div className="p-2.5 rounded-xl bg-purple-50 text-purple-600"><Gauge className="w-5 h-5" /></div>
           <h2 className="text-lg font-bold text-[var(--foreground)]">Workload Norms</h2>
         </div>
-        {norms.length === 0 ? (
-          <p className="text-sm text-[var(--foreground)] opacity-50">No norms configured for the current term.</p>
-        ) : (
-          <div className="grid gap-4 md:grid-cols-3">
-            {norms.map((n) => (
-              <div key={n.id} className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface-hover)]">
+        {norms.length === 0 ?
+        <p className="text-sm text-[var(--foreground)] opacity-50">No norms configured for the current term.</p> :
+
+        <div className="grid gap-4 md:grid-cols-3">
+            {norms.map((n) =>
+          <div key={n.id} className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface-hover)]">
                 <p className="font-bold text-[var(--foreground)]">{n.designation.replace('_', ' ')}</p>
                 <div className="mt-3 space-y-1.5 text-sm">
                   <div className="flex justify-between"><span className="text-[var(--foreground)] opacity-60">Weekly Hours</span><span className="font-semibold text-[var(--foreground)]">{n.minWeeklyHours} – {n.maxWeeklyHours}</span></div>
@@ -118,10 +118,10 @@ export default function MasterDataPage() {
                   <div className="flex justify-between"><span className="text-[var(--foreground)] opacity-60">SLA Days</span><span className="font-semibold text-[var(--foreground)]">{n.slaDaysForHodReview} days</span></div>
                 </div>
               </div>
-            ))}
+          )}
           </div>
-        )}
+        }
       </div>
-    </div>
-  );
+    </div>);
+
 }

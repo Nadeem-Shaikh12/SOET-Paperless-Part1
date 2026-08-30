@@ -6,7 +6,7 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recha
 
 const COLORS = ['#202020', '#ff682c', '#816729', '#828282', '#4d4d4d', '#e8e8e8', '#f5f5f5'];
 
-export function HodDashboard({ data }: HodDashboardProps) {
+export function HodDashboard({ data }) {
   const { facultyWorkloads, subjectAllocationChart } = data;
   const [searchParams] = useSearchParams();
   const designationFilter = searchParams.get('designation') || '';
@@ -18,10 +18,10 @@ export function HodDashboard({ data }: HodDashboardProps) {
       let status = 'normal';
       if (f.totalHours > f.normMax) status = 'overloaded';
       if (f.totalHours < f.normMin) status = 'underloaded';
-      
+
       const matchDesig = designationFilter ? f.desig === designationFilter : true;
       const matchStatus = statusFilter ? status === statusFilter : true;
-      
+
       return matchDesig && matchStatus;
     });
   }, [facultyWorkloads, designationFilter, statusFilter]);
@@ -29,7 +29,7 @@ export function HodDashboard({ data }: HodDashboardProps) {
   const displayKpis = useMemo(() => {
     let overloadedCount = 0;
     let totalWorkload = 0;
-    
+
     filteredWorkloads.forEach((f) => {
       totalWorkload += f.totalHours;
       if (f.totalHours > f.normMax) overloadedCount++;
@@ -87,22 +87,22 @@ export function HodDashboard({ data }: HodDashboardProps) {
                   innerRadius={60}
                   outerRadius={80}
                   paddingAngle={5}
-                  dataKey="value"
-                >
-                  {subjectAllocationChart?.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
+                  dataKey="value">
+                  
+                  {subjectAllocationChart?.map((entry, index) =>
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  )}
                 </Pie>
                 <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid #e8e8e8', backgroundColor: '#ffffff', boxShadow: '0 1px 3px rgba(32, 32, 32, 0.04)' }} />
-                <Legend 
-                  iconType="circle" 
-                  wrapperStyle={{ fontSize: '12px' }} 
-                  formatter={(value) => (
-                    <span title={value} className="text-[var(--foreground)] truncate inline-block max-w-[140px] align-bottom ml-1">
+                <Legend
+                  iconType="circle"
+                  wrapperStyle={{ fontSize: '12px' }}
+                  formatter={(value) =>
+                  <span title={value} className="text-[var(--foreground)] truncate inline-block max-w-[140px] align-bottom ml-1">
                       {value}
                     </span>
-                  )}
-                />
+                  } />
+                
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -113,7 +113,7 @@ export function HodDashboard({ data }: HodDashboardProps) {
           <h2 className="text-base font-semibold text-[var(--foreground)] mb-4" style={{ letterSpacing: '-0.02em' }}>Faculty Workload Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[300px] overflow-y-auto pr-2">
             {filteredWorkloads.map((f) => {
-              const progressPct = Math.min((f.totalHours / f.normMax) * 100, 100);
+              const progressPct = Math.min(f.totalHours / f.normMax * 100, 100);
               let barColor = 'bg-emerald-500';
               if (f.totalHours > f.normMax) barColor = 'bg-[#ff682c]';
               if (f.totalHours < f.normMin) barColor = 'bg-amber-400';
@@ -134,12 +134,12 @@ export function HodDashboard({ data }: HodDashboardProps) {
                     <span>Min: {f.normMin}</span>
                     <span>Max: {f.normMax}</span>
                   </div>
-                </div>
-              );
+                </div>);
+
             })}
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
+
 }

@@ -1,21 +1,21 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { useAuthStore } from '../stores/auth';
 import { RouteGuard } from '../components/route-guard';
 import clsx from 'clsx';
-import { 
-  LayoutDashboard, 
-  Users, 
-  BookOpen, 
-  Calendar, 
-  ClipboardList, 
-  Settings, 
-  LogOut, 
+import {
+  LayoutDashboard,
+  Users,
+  BookOpen,
+  Calendar,
+  ClipboardList,
+  Settings,
+  LogOut,
   Menu,
   X,
   Database,
-  FileSpreadsheet
-} from 'lucide-react';
+  FileSpreadsheet } from
+'lucide-react';
 
 export default function ProtectedLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -27,27 +27,27 @@ export default function ProtectedLayout() {
   };
 
   const navItems = [
-    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard, roles: ['super_admin', 'dept_admin', 'faculty'] },
-    { name: 'Institutional Config', href: '/institutional', icon: Settings, roles: ['super_admin'] },
-    { name: 'Master Data', href: '/master-data', icon: Database, roles: ['super_admin', 'dept_admin'] },
-    { name: 'Subjects & Classes', href: '/subjects', icon: BookOpen, roles: ['super_admin', 'dept_admin'] },
-    { name: 'Allocations', href: '/allocations', icon: Calendar, roles: ['super_admin', 'dept_admin', 'faculty'] },
-    { name: 'Approvals', href: '/approvals', icon: ClipboardList, roles: ['super_admin', 'dept_admin'] },
-    { name: 'Faculty Management', href: '/faculty', icon: Users, roles: ['super_admin', 'dept_admin'] },
-    { name: 'Workload Report', href: '/workload-report', icon: FileSpreadsheet, roles: ['super_admin', 'dept_admin'] },
-  ].filter(item => user && item.roles.includes(user.role));
+  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard, roles: ['super_admin', 'dept_admin', 'faculty'] },
+  { name: 'Institutional Config', href: '/institutional', icon: Settings, roles: ['super_admin'] },
+  { name: 'Master Data', href: '/master-data', icon: Database, roles: ['super_admin', 'dept_admin'] },
+  { name: 'Subjects & Classes', href: '/subjects', icon: BookOpen, roles: ['super_admin', 'dept_admin'] },
+  { name: 'Allocations', href: '/allocations', icon: Calendar, roles: ['super_admin', 'dept_admin', 'faculty'] },
+  { name: 'Approvals', href: '/approvals', icon: ClipboardList, roles: ['super_admin', 'dept_admin'] },
+  { name: 'Faculty Management', href: '/faculty', icon: Users, roles: ['super_admin', 'dept_admin'] },
+  { name: 'Workload Report', href: '/workload-report', icon: FileSpreadsheet, roles: ['super_admin', 'dept_admin'] }].
+  filter((item) => user && item.roles.includes(user.role));
 
   return (
     <RouteGuard>
       <div className="flex h-screen overflow-hidden bg-[var(--background)]">
         
         {/* Mobile sidebar backdrop */}
-        {sidebarOpen && (
-          <div 
-            className="fixed inset-0 z-20 bg-black/30 lg:hidden transition-opacity"
-            onClick={() => setSidebarOpen(false)}
-          />
-        )}
+        {sidebarOpen &&
+        <div
+          className="fixed inset-0 z-20 bg-black/30 lg:hidden transition-opacity"
+          onClick={() => setSidebarOpen(false)} />
+
+        }
 
         {/* Sidebar */}
         <aside className={clsx(
@@ -73,17 +73,17 @@ export default function ProtectedLayout() {
                   to={item.href}
                   className={clsx(
                     "flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
-                    isActive 
-                      ? "bg-[var(--color-fog)] text-[var(--color-carbon)] font-semibold" 
-                      : "text-[var(--color-graphite)] hover:bg-[var(--color-fog)] hover:text-[var(--color-carbon)]"
+                    isActive ?
+                    "bg-[var(--color-fog)] text-[var(--color-carbon)] font-semibold" :
+                    "text-[var(--color-graphite)] hover:bg-[var(--color-fog)] hover:text-[var(--color-carbon)]"
                   )}
-                  onClick={() => setSidebarOpen(false)}
-                >
+                  onClick={() => setSidebarOpen(false)}>
+                  
                   <Icon className={clsx("w-5 h-5 mr-3", isActive ? "text-[var(--color-signal-orange)]" : "text-[var(--color-slate)]")} />
                   {item.name}
                   {isActive && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-[var(--color-signal-orange)]" />}
-                </Link>
-              );
+                </Link>);
+
             })}
           </div>
 
@@ -100,8 +100,8 @@ export default function ProtectedLayout() {
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center w-full px-3 py-2 text-sm font-medium text-[var(--color-graphite)] rounded-lg hover:bg-[var(--color-fog)] hover:text-[var(--color-carbon)] transition-all"
-            >
+              className="flex items-center w-full px-3 py-2 text-sm font-medium text-[var(--color-graphite)] rounded-lg hover:bg-[var(--color-fog)] hover:text-[var(--color-carbon)] transition-all">
+              
               <LogOut className="w-5 h-5 mr-3" />
               Sign Out
             </button>
@@ -113,10 +113,10 @@ export default function ProtectedLayout() {
           {/* Topbar — clean, no shadow */}
           <header className="flex items-center justify-between h-14 px-4 sm:px-6 border-b border-[var(--border)] bg-[var(--surface)] z-10">
             <div className="flex items-center">
-              <button 
+              <button
                 className="lg:hidden p-2 -ml-2 text-[var(--color-graphite)] hover:text-[var(--color-carbon)] rounded-lg hover:bg-[var(--color-fog)] focus:outline-none transition-all"
-                onClick={() => setSidebarOpen(true)}
-              >
+                onClick={() => setSidebarOpen(true)}>
+                
                 <Menu className="w-5 h-5" />
               </button>
             </div>
@@ -137,6 +137,6 @@ export default function ProtectedLayout() {
         </div>
 
       </div>
-    </RouteGuard>
-  );
+    </RouteGuard>);
+
 }

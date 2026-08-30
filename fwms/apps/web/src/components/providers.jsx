@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAuthStore } from '../stores/auth';
 
 export function Providers({ children }) {

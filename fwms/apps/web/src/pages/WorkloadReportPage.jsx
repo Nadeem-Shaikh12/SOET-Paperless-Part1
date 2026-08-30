@@ -32,8 +32,8 @@ export default function WorkloadReportPage() {
 
         // Default to first active term
         const activeTerm = (termsList || []).find((t) => t.status === 'active');
-        if (activeTerm) setSelectedTermId(activeTerm.id);
-        else if (termsList && termsList.length > 0) setSelectedTermId(termsList[0].id);
+        if (activeTerm) setSelectedTermId(activeTerm.id);else
+        if (termsList && termsList.length > 0) setSelectedTermId(termsList[0].id);
 
         if (isAdmin) {
           const deptsList = await apiClient('/institutional/departments');
@@ -78,7 +78,7 @@ export default function WorkloadReportPage() {
     try {
       const updated = await apiClient(`/workload-report/${reportId}`, {
         method: 'PUT',
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
       setReport(updated);
     } catch (err) {
@@ -102,7 +102,7 @@ export default function WorkloadReportPage() {
     try {
       const data = await apiClient('/workload-report/generate', {
         method: 'POST',
-        body: JSON.stringify({ deptId, termId: selectedTermId }),
+        body: JSON.stringify({ deptId, termId: selectedTermId })
       });
       setReport(data);
     } catch (err) {
@@ -129,8 +129,8 @@ export default function WorkloadReportPage() {
             </div>
             <Link
               to="/workload-report/ingest"
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--color-carbon)] text-white text-sm font-semibold hover:bg-[var(--color-graphite)] transition-colors"
-            >
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--color-carbon)] text-white text-sm font-semibold hover:bg-[var(--color-graphite)] transition-colors">
+              
               <Sparkles className="w-4 h-4 text-[var(--color-signal-orange)]" />
               AI Import
             </Link>
@@ -144,60 +144,60 @@ export default function WorkloadReportPage() {
             <label className="text-xs font-medium text-[var(--color-slate)]">Term:</label>
             <select
               value={selectedTermId || ''}
-              onChange={e => setSelectedTermId(parseInt(e.target.value))}
-              className="text-sm px-3 py-1.5 border border-[var(--border)] rounded-lg bg-[var(--surface)] text-[var(--foreground)] outline-none focus:border-[var(--color-signal-orange)] transition-colors"
-            >
-              {terms.map(t => (
-                <option key={t.id} value={t.id}>
+              onChange={(e) => setSelectedTermId(parseInt(e.target.value))}
+              className="text-sm px-3 py-1.5 border border-[var(--border)] rounded-lg bg-[var(--surface)] text-[var(--foreground)] outline-none focus:border-[var(--color-signal-orange)] transition-colors">
+              
+              {terms.map((t) =>
+              <option key={t.id} value={t.id}>
                   {t.academicYear} — {t.semester} {t.status === 'active' ? '●' : ''}
                 </option>
-              ))}
+              )}
             </select>
           </div>
 
           {/* Department Selector (Admin only) */}
-          {isAdmin && (
-            <div className="flex items-center gap-2">
+          {isAdmin &&
+          <div className="flex items-center gap-2">
               <label className="text-xs font-medium text-[var(--color-slate)]">Department:</label>
               <select
-                value={selectedDeptId || ''}
-                onChange={e => setSelectedDeptId(parseInt(e.target.value) || null)}
-                className="text-sm px-3 py-1.5 border border-[var(--border)] rounded-lg bg-[var(--surface)] text-[var(--foreground)] outline-none focus:border-[var(--color-signal-orange)] transition-colors"
-              >
+              value={selectedDeptId || ''}
+              onChange={(e) => setSelectedDeptId(parseInt(e.target.value) || null)}
+              className="text-sm px-3 py-1.5 border border-[var(--border)] rounded-lg bg-[var(--surface)] text-[var(--foreground)] outline-none focus:border-[var(--color-signal-orange)] transition-colors">
+              
                 <option value="">Select Department</option>
-                {departments.map(d => (
-                  <option key={d.id} value={d.id}>{d.deptName}</option>
-                ))}
+                {departments.map((d) =>
+              <option key={d.id} value={d.id}>{d.deptName}</option>
+              )}
               </select>
             </div>
-          )}
+          }
         </div>
       </div>
 
       {/* Content */}
-      {loading ? (
-        <div className="flex items-center justify-center py-20 print:hidden">
+      {loading ?
+      <div className="flex items-center justify-center py-20 print:hidden">
           <div className="animate-spin rounded-full h-8 w-8 border-2 border-[var(--color-carbon)] border-t-transparent" />
-        </div>
-      ) : error ? (
-        <div className="bg-red-50 border border-red-200 rounded-[var(--radius-cards)] p-4 text-sm text-red-700 print:hidden">
+        </div> :
+      error ?
+      <div className="bg-red-50 border border-red-200 rounded-[var(--radius-cards)] p-4 text-sm text-red-700 print:hidden">
           {error}
-        </div>
-      ) : !report ? (
-        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-[var(--radius-cards)] p-8 text-center print:hidden">
+        </div> :
+      !report ?
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-[var(--radius-cards)] p-8 text-center print:hidden">
           <FileSpreadsheet className="w-10 h-10 text-[var(--color-slate)] mx-auto mb-3" />
           <p className="text-sm text-[var(--color-graphite)]">
             {isAdmin ? 'Select a department to view the workload report.' : 'No report available for this term.'}
           </p>
-        </div>
-      ) : (
-        <WorkloadReportDocument
-          report={report}
-          onSave={handleSave}
-          onRegenerate={handleRegenerate}
-          saving={saving}
-        />
-      )}
-    </div>
-  );
+        </div> :
+
+      <WorkloadReportDocument
+        report={report}
+        onSave={handleSave}
+        onRegenerate={handleRegenerate}
+        saving={saving} />
+
+      }
+    </div>);
+
 }

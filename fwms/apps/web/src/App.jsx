@@ -1,4 +1,4 @@
-﻿import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAuthStore } from './stores/auth';
 import ProtectedLayout from './layouts/ProtectedLayout';
@@ -14,66 +14,6 @@ import FacultyPage from './pages/FacultyPage';
 import WorkloadReportPage from './pages/WorkloadReportPage';
 import WorkloadIngestPage from './pages/WorkloadIngestPage';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Navigate to="/dashboard" replace />,
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
-    path: '/unauthorized',
-    element: <UnauthorizedPage />,
-  },
-  {
-    element: <ProtectedLayout />,
-    children: [
-      {
-        path: '/dashboard',
-        element: <DashboardPage />,
-      },
-      {
-        path: '/institutional',
-        element: <InstitutionalPage />,
-      },
-      {
-        path: '/master-data',
-        element: <MasterDataPage />,
-      },
-      {
-        path: '/subjects',
-        element: <SubjectsPage />,
-      },
-      {
-        path: '/allocations',
-        element: <AllocationsPage />,
-      },
-      {
-        path: '/approvals',
-        element: <ApprovalsPage />,
-      },
-      {
-        path: '/faculty',
-        element: <FacultyPage />,
-      },
-      {
-        path: '/workload-report',
-        element: <WorkloadReportPage />,
-      },
-      {
-        path: '/workload-report/ingest',
-        element: <WorkloadIngestPage />,
-      },
-    ],
-  },
-  {
-    path: '*',
-    element: <Navigate to="/dashboard" replace />,
-  },
-]);
-
 export default function App() {
   const initAuth = useAuthStore((state) => state.initAuth);
 
@@ -81,5 +21,27 @@ export default function App() {
     initAuth();
   }, [initAuth]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/unauthorized" element={<UnauthorizedPage />} />
+        
+        <Route element={<ProtectedLayout />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/institutional" element={<InstitutionalPage />} />
+          <Route path="/master-data" element={<MasterDataPage />} />
+          <Route path="/subjects" element={<SubjectsPage />} />
+          <Route path="/allocations" element={<AllocationsPage />} />
+          <Route path="/approvals" element={<ApprovalsPage />} />
+          <Route path="/faculty" element={<FacultyPage />} />
+          <Route path="/workload-report" element={<WorkloadReportPage />} />
+          <Route path="/workload-report/ingest" element={<WorkloadIngestPage />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }

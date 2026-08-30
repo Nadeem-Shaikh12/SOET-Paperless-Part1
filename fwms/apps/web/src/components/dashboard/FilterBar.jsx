@@ -10,19 +10,19 @@ export function FilterBar({ role }) {
   const [terms, setTerms] = useState([]);
 
   useEffect(() => {
-    apiClient('/institutional/academic-terms')
-      .then((res) => {
-        setTerms(res);
-        // If there's no termId search parameter and we have an active term, set it
-        const currentParam = searchParams.get('termId');
-        if (!currentParam) {
-          const activeTerm = res.find((t) => t.status === 'active') || res[0];
-          if (activeTerm) {
-            navigate(`${pathname}?termId=${activeTerm.id}`, { replace: true });
-          }
+    apiClient('/institutional/academic-terms').
+    then((res) => {
+      setTerms(res);
+      // If there's no termId search parameter and we have an active term, set it
+      const currentParam = searchParams.get('termId');
+      if (!currentParam) {
+        const activeTerm = res.find((t) => t.status === 'active') || res[0];
+        if (activeTerm) {
+          navigate(`${pathname}?termId=${activeTerm.id}`, { replace: true });
         }
-      })
-      .catch((err) => console.error('Failed to load terms in FilterBar', err));
+      }
+    }).
+    catch((err) => console.error('Failed to load terms in FilterBar', err));
   }, [pathname, navigate, searchParams]);
 
   const createQueryString = useCallback(
@@ -49,47 +49,47 @@ export function FilterBar({ role }) {
         <span className="text-sm font-medium">Filters:</span>
       </div>
 
-      <select 
+      <select
         className={selectClass}
         value={activeTermValue}
-        onChange={(e) => navigate(`${pathname}?${createQueryString('termId', e.target.value)}`)}
-      >
-        {terms.length === 0 ? (
-          <option value="">Loading terms...</option>
-        ) : (
-          terms.map((t) => (
-            <option key={t.id} value={t.id.toString()}>
+        onChange={(e) => navigate(`${pathname}?${createQueryString('termId', e.target.value)}`)}>
+        
+        {terms.length === 0 ?
+        <option value="">Loading terms...</option> :
+
+        terms.map((t) =>
+        <option key={t.id} value={t.id.toString()}>
               {t.semester} Semester, {t.academicYear} {t.status === 'active' ? '(Active)' : ''}
             </option>
-          ))
-        )}
+        )
+        }
       </select>
 
-      {role !== 'faculty' && (
-        <>
-          <select 
-            className={selectClass}
-            value={searchParams.get('designation') || ''}
-            onChange={(e) => navigate(`${pathname}?${createQueryString('designation', e.target.value)}`)}
-          >
+      {role !== 'faculty' &&
+      <>
+          <select
+          className={selectClass}
+          value={searchParams.get('designation') || ''}
+          onChange={(e) => navigate(`${pathname}?${createQueryString('designation', e.target.value)}`)}>
+          
             <option value="">All Designations</option>
             <option value="Professor">Professor</option>
             <option value="Associate_Professor">Associate Professor</option>
             <option value="Assistant_Professor">Assistant Professor</option>
           </select>
 
-          <select 
-            className={selectClass}
-            value={searchParams.get('status') || ''}
-            onChange={(e) => navigate(`${pathname}?${createQueryString('status', e.target.value)}`)}
-          >
+          <select
+          className={selectClass}
+          value={searchParams.get('status') || ''}
+          onChange={(e) => navigate(`${pathname}?${createQueryString('status', e.target.value)}`)}>
+          
             <option value="">All Statuses</option>
             <option value="overloaded">Overloaded (Red)</option>
             <option value="normal">Normal (Green)</option>
             <option value="underloaded">Underloaded (Yellow)</option>
           </select>
         </>
-      )}
-    </div>
-  );
+      }
+    </div>);
+
 }

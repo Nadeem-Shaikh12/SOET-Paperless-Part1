@@ -25,8 +25,8 @@ export default function LoginPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
         <Loader2 className="w-8 h-8 animate-spin text-[var(--color-carbon)]" />
-      </div>
-    );
+      </div>);
+
   }
 
   const handleSubmit = async (e) => {
@@ -37,14 +37,14 @@ export default function LoginPage() {
     try {
       // Validate form
       const data = loginRequestSchema.parse({ email, password });
-      
+
       // Perform login
       await login(data);
       navigate('/dashboard');
     } catch (err) {
       if (err instanceof z.ZodError) {
         const errors = {};
-        (err.issues ?? (err).errors ?? []).forEach((e) => {
+        (err.issues ?? err.errors ?? []).forEach((e) => {
           if (e.path[0]) errors[e.path[0]] = e.message;
         });
         setValidationErrors(errors);
@@ -71,11 +71,11 @@ export default function LoginPage() {
         </div>
 
         {/* Error Banner */}
-        {error && (
-          <div className="mb-6 p-4 bg-[var(--color-fog)] border-l-4 border-[var(--color-signal-orange)] rounded-r-[var(--radius-sm)]">
+        {error &&
+        <div className="mb-6 p-4 bg-[var(--color-fog)] border-l-4 border-[var(--color-signal-orange)] rounded-r-[var(--radius-sm)]">
             <p className="text-sm text-[var(--color-carbon)] font-medium">{error}</p>
           </div>
-        )}
+        }
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -89,14 +89,14 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={`w-full px-4 py-3 rounded-[var(--radius-inputs)] border bg-[var(--color-fog)] text-[var(--foreground)] focus:bg-[var(--surface)] transition-all outline-none focus:ring-2 focus:ring-[var(--color-carbon)] ${
-                validationErrors.email ? 'border-[var(--color-error)] focus:border-[var(--color-error)]' : 'border-[var(--border)] focus:border-transparent'
-              }`}
+              validationErrors.email ? 'border-[var(--color-error)] focus:border-[var(--color-error)]' : 'border-[var(--border)] focus:border-transparent'}`
+              }
               placeholder="name@mgm.edu"
-              autoComplete="email"
-            />
-            {validationErrors.email && (
-              <p className="text-xs text-[var(--color-error)] mt-1.5">{validationErrors.email}</p>
-            )}
+              autoComplete="email" />
+            
+            {validationErrors.email &&
+            <p className="text-xs text-[var(--color-error)] mt-1.5">{validationErrors.email}</p>
+            }
           </div>
 
           <div>
@@ -109,14 +109,14 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className={`w-full px-4 py-3 rounded-[var(--radius-inputs)] border bg-[var(--color-fog)] text-[var(--foreground)] focus:bg-[var(--surface)] transition-all outline-none focus:ring-2 focus:ring-[var(--color-carbon)] ${
-                validationErrors.password ? 'border-[var(--color-error)] focus:border-[var(--color-error)]' : 'border-[var(--border)] focus:border-transparent'
-              }`}
+              validationErrors.password ? 'border-[var(--color-error)] focus:border-[var(--color-error)]' : 'border-[var(--border)] focus:border-transparent'}`
+              }
               placeholder="••••••••"
-              autoComplete="current-password"
-            />
-            {validationErrors.password && (
-              <p className="text-xs text-[var(--color-error)] mt-1.5">{validationErrors.password}</p>
-            )}
+              autoComplete="current-password" />
+            
+            {validationErrors.password &&
+            <p className="text-xs text-[var(--color-error)] mt-1.5">{validationErrors.password}</p>
+            }
           </div>
 
           <div className="flex items-center justify-between mt-2">
@@ -133,16 +133,16 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 px-4 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold rounded-[var(--radius-buttons)] transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed group"
-          >
-            {isLoading ? (
-              <Loader2 className="w-5 h-5 animate-spin" />
-            ) : (
-              <span className="flex items-center space-x-2">
+            className="w-full py-3 px-4 bg-[var(--color-carbon)] hover:bg-[var(--color-graphite)] text-white font-semibold rounded-[var(--radius-buttons)] transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed group">
+            
+            {isLoading ?
+            <Loader2 className="w-5 h-5 animate-spin" /> :
+
+            <span className="flex items-center space-x-2">
                 <span>Sign In</span>
                 <LogIn className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
               </span>
-            )}
+            }
           </button>
         </form>
 
@@ -150,6 +150,6 @@ export default function LoginPage() {
           Secure portal for MGM University Staff
         </div>
       </div>
-    </div>
-  );
+    </div>);
+
 }
