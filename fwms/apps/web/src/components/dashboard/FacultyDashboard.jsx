@@ -42,8 +42,9 @@ export function FacultyDashboard({ data }) {
               </RadialBarChart>
             </ResponsiveContainer>
             <div className="absolute inset-0 flex flex-col items-center justify-center mt-6">
-              <span className="text-3xl font-bold" style={{ color }}>{totalHours}</span>
-              <span className="text-xs text-gray-500">of {maxHours} hrs limit</span>
+              <span className="text-3xl font-bold" style={{ color }}>{totalHours * 24}</span>
+              <span className="text-xs text-gray-500">of {maxHours * 24} hrs/sem limit</span>
+              <span className="text-[10px] text-gray-400 mt-1">({totalHours} hrs/wk)</span>
             </div>
           </div>
           <div className="mt-2 text-sm text-gray-600 font-medium capitalize">

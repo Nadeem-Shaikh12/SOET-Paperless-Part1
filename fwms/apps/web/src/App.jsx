@@ -13,6 +13,7 @@ import ApprovalsPage from './pages/ApprovalsPage';
 import FacultyPage from './pages/FacultyPage';
 import WorkloadReportPage from './pages/WorkloadReportPage';
 import WorkloadIngestPage from './pages/WorkloadIngestPage';
+import FacultySchedulePage from './pages/FacultySchedulePage';
 
 export default function App() {
   const initAuth = useAuthStore((state) => state.initAuth);
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/allocations" element={<AllocationsPage />} />
           <Route path="/approvals" element={<ApprovalsPage />} />
           <Route path="/faculty" element={<FacultyPage />} />
+          <Route path="/faculty-schedule" element={<FacultySchedulePage />} />
           <Route path="/workload-report" element={<WorkloadReportPage />} />
           <Route path="/workload-report/ingest" element={<WorkloadIngestPage />} />
         </Route>

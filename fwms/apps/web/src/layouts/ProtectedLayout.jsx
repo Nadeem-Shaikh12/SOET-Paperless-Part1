@@ -14,7 +14,9 @@ import {
   Menu,
   X,
   Database,
-  FileSpreadsheet } from
+  FileSpreadsheet,
+  CalendarRange
+} from
 'lucide-react';
 
 export default function ProtectedLayout() {
@@ -32,6 +34,7 @@ export default function ProtectedLayout() {
   { name: 'Master Data', href: '/master-data', icon: Database, roles: ['super_admin', 'dept_admin'] },
   { name: 'Subjects & Classes', href: '/subjects', icon: BookOpen, roles: ['super_admin', 'dept_admin'] },
   { name: 'Allocations', href: '/allocations', icon: Calendar, roles: ['super_admin', 'dept_admin', 'faculty'] },
+  { name: 'Faculty Schedule', href: '/faculty-schedule', icon: CalendarRange, roles: ['super_admin', 'dept_admin'] },
   { name: 'Approvals', href: '/approvals', icon: ClipboardList, roles: ['super_admin', 'dept_admin'] },
   { name: 'Faculty Management', href: '/faculty', icon: Users, roles: ['super_admin', 'dept_admin'] },
   { name: 'Workload Report', href: '/workload-report', icon: FileSpreadsheet, roles: ['super_admin', 'dept_admin'] }].

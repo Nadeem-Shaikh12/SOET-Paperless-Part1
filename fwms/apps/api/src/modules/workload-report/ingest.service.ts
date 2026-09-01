@@ -356,18 +356,22 @@ class DualIngestService {
   }
 
   // ── MAIN Excel extraction entry point ─────────────────────────────────────
-  private extractFromExcel(buffer: Buffer): GeminiExtractedPayload {
-    const workbook = xlsx.read(buffer, { type: 'buffer' });
+  private extractFromExcel(fileBuffer: Buffer): GeminiExtractedPayload {
+    const workbook = xlsx.read(fileBuffer, { type: 'buffer' });
+    const sheet = this.pickBestSheet(workbook);
+    const allRows: any[][] = xlsx.utils.sheet_to_json(sheet, { header: 1, defval: '' });
 
-    // ── STEP 1: Smart sheet selection ────────────────────────────────────────
-    const worksheet = this.pickBestSheet(workbook);
-    const allRows: any[][] = xlsx.utils.sheet_to_json(worksheet, {
-      header: 1,
-      defval: null,
-      raw: true,
-    });
+    // "?"? NEW: Detect Faculty Schedule Format "?"?
+    // If the first row looks like ["Faculty Name", "Department", "10:00-11:00"...]
+    const headerRow = allRows.find(row => 
+      row.length > 0 && 
+      this.clean(row[0]).toLowerCase().includes('faculty')
+    );
+    
+    if (headerRow && this.clean(headerRow[0]).toLowerCase().includes('faculty name')) {
+      return this.extractFromScheduleExcel(allRows);
+    }
 
-    // ── STEP 2: Extract metadata from any of the first 10 rows ───────────────
     const { institution, academicYear, school, department } = this.extractMetadata(allRows);
 
     const warnings: string[] = [];
@@ -556,6 +560,94 @@ class DualIngestService {
     }
 
     return parsed;
+  }
+
+  /**
+   * "?"? NEW: Extracts Workload from a Faculty Schedule Daily Timetable Excel "?"?
+   * Calculates the work hour of each faculty for a 6-month semester (24 weeks).
+   */
+  private extractFromScheduleExcel(allRows: any[][]): GeminiExtractedPayload {
+    const facultyMap: Record<string, any> = {};
+    let department = '';
+    const WEEKS_IN_SEMESTER = 24;
+
+    // Start from row 1 (row 0 is header: "Faculty Name", "Department", "10:00-11:00", etc.)
+    for (let i = 1; i < allRows.length; i++) {
+      const row = allRows[i];
+      if (!row || row.length < 2) continue;
+
+      const facultyName = this.clean(row[0]);
+      if (!facultyName) continue;
+
+      if (row[1] && this.clean(row[1]) !== '') {
+        department = this.clean(row[1]);
+      }
+
+      if (!facultyMap[facultyName]) {
+        facultyMap[facultyName] = { facultyName, theoryHours: 0, practicalHours: 0 };
+      }
+
+      // Loop through all time slots (columns 2 onwards)
+      for (let col = 2; col < row.length; col++) {
+        const cellValue = this.clean(row[col]);
+        if (!cellValue) continue;
+
+        const valLower = cellValue.toLowerCase();
+        if (
+          valLower === 'unscheduled' ||
+          valLower === 'available' ||
+          valLower.includes('break')
+        ) {
+          continue;
+        }
+
+        // Check if it's a lab or practical
+        if (valLower.includes('lab') || valLower.includes('practical') || valLower.includes('pr.')) {
+          facultyMap[facultyName].practicalHours += 1;
+        } else {
+          facultyMap[facultyName].theoryHours += 1;
+        }
+      }
+    }
+
+    const subjects = Object.values(facultyMap).map((fac, idx) => {
+      // Multiply by 24 weeks for a 6-month semester
+      const semesterTheory = fac.theoryHours * WEEKS_IN_SEMESTER;
+      const semesterPractical = fac.practicalHours * WEEKS_IN_SEMESTER;
+      const totalSemesterHours = semesterTheory + semesterPractical;
+      
+      return {
+        srNo: idx + 1,
+        programClass: 'Faculty Workload',
+        subjectName: fac.facultyName,
+        noOfDivisions: 1,
+        theoryHrsPerWeek: fac.theoryHours,
+        totalTheoryHrs: semesterTheory,
+        noOfBatches: fac.practicalHours > 0 ? 1 : 0,
+        practicalHrsPerWeek: fac.practicalHours,
+        totalPracticalHrs: semesterPractical,
+        tutorialHrsPerWeek: 0,
+        totalTeachingHours: totalSemesterHours,
+        creditL: semesterTheory,
+        creditP: semesterPractical,
+        creditT: 0,
+        isLoadTakenByOtherDept: false,
+        isLoadFromOtherDept: false,
+        isAuditCourse: false,
+      };
+    });
+
+    return {
+      institution: 'MGM University (Faculty Workload)',
+      academicYear: new Date().getFullYear().toString(),
+      school: 'SOET',
+      department,
+      subjects,
+      extractionMetadata: {
+        model: 'Faculty Schedule Timetable Auto-Parser',
+        warnings: ['Parsed as Faculty Workload. Hours are multiplied by 24 to reflect a 6-month semester.'],
+      },
+    };
   }
 }
 
