@@ -19,6 +19,7 @@ import allocationsRoutes from './modules/allocations/routes.js';
 import approvalsRoutes from './modules/approvals/routes.js';
 import dashboardRoutes from './modules/dashboard/routes.js';
 import workloadReportRoutes from './modules/workload-report/routes.js';
+import scheduleDataRoutes from './modules/schedule-data/routes.js';
 
 const app = express();
 const PORT = process.env.API_PORT || 4000;
@@ -69,6 +70,7 @@ app.use('/api/v1/allocations', allocationsRoutes);
 app.use('/api/v1/approvals', approvalsRoutes);
 app.use('/api/v1/dashboard', dashboardRoutes);
 app.use('/api/v1/workload-report', workloadReportRoutes);
+app.use('/api/v1/schedule-data', scheduleDataRoutes);
 
 // ─── Error Handling ───
 
