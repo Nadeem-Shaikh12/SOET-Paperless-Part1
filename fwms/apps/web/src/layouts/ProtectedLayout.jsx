@@ -39,6 +39,7 @@ export default function ProtectedLayout() {
   { name: 'Schedule Editor',  href: '/schedule-editor',  icon: FilePenLine,   roles: ['super_admin', 'dept_admin'] },
   { name: 'Approvals', href: '/approvals', icon: ClipboardList, roles: ['super_admin', 'dept_admin'] },
   { name: 'Faculty Management', href: '/faculty', icon: Users, roles: ['super_admin', 'dept_admin'] },
+  { name: 'Data Fetcher', href: '/data-fetcher', icon: Database, roles: ['super_admin', 'dept_admin', 'faculty'] },
   { name: 'Workload Report', href: '/workload-report', icon: FileSpreadsheet, roles: ['super_admin', 'dept_admin'] }].
   filter((item) => user && item.roles.includes(user.role));
 
@@ -126,10 +127,6 @@ export default function ProtectedLayout() {
               </button>
             </div>
             
-            <div className="flex items-center space-x-3">
-              {/* Minimal branding in topbar */}
-              <span className="text-xs font-medium text-[var(--color-slate)] tracking-wider uppercase hidden sm:block">Paperless SOET</span>
-            </div>
           </header>
 
           {/* Page Content */}

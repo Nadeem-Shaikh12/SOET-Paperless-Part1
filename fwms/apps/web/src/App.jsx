@@ -15,6 +15,7 @@ import WorkloadReportPage from './pages/WorkloadReportPage';
 import WorkloadIngestPage from './pages/WorkloadIngestPage';
 import FacultySchedulePage from './pages/FacultySchedulePage';
 import ScheduleEditorPage from './pages/ScheduleEditorPage';
+import DataFetcherPage from './pages/DataFetcherPage';
 
 export default function App() {
   const initAuth = useAuthStore((state) => state.initAuth);
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/faculty" element={<FacultyPage />} />
           <Route path="/faculty-schedule" element={<FacultySchedulePage />} />
           <Route path="/schedule-editor" element={<ScheduleEditorPage />} />
+          <Route path="/data-fetcher" element={<DataFetcherPage />} />
           <Route path="/workload-report" element={<WorkloadReportPage />} />
           <Route path="/workload-report/ingest" element={<WorkloadIngestPage />} />
         </Route>

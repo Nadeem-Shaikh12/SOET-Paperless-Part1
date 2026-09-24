@@ -7,5 +7,5 @@ echo   FWMS Web App
 echo   http://localhost:3000
 echo  ==========================================
 echo.
-cd /d "D:\Paperless SOET\fwms\apps\web"
-npx next dev
+cd /d "C:\Users\Shaikh Nadeem\Downloads\SOET-Paperless-Part1-main\SOET-Paperless-Part1-main\fwms\apps\web"
+npm run dev

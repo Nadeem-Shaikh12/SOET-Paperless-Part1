@@ -9,7 +9,8 @@
           "time": "11:00-12:00",
           "activity": "DS & DSA",
           "location": "IC",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I), SE(R)"
         }
       ],
       "WEDNESDAY": [
@@ -17,7 +18,8 @@
           "time": "11:00-12:00",
           "activity": "DS & DSA",
           "location": "IC",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I), SE(R)"
         }
       ],
       "THURSDAY": [
@@ -25,7 +27,8 @@
           "time": "11:00-12:00",
           "activity": "DS & DSA",
           "location": "IC",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I), SE(R)"
         }
       ],
       "FRIDAY": [],
@@ -41,7 +44,8 @@
           "time": "1:45-2:45",
           "activity": "RM",
           "location": "( KMB)",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         }
       ],
       "TUESDAY": [
@@ -49,13 +53,15 @@
           "time": "10:00-11:00",
           "activity": "DBMS-(KMB)-A-(JPR LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "11:00-12:00",
           "activity": "DBMS-(KMB)-A-(JPR LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         }
       ],
       "WEDNESDAY": [
@@ -63,13 +69,15 @@
           "time": "11:00-12:00",
           "activity": "RM",
           "location": "( KMB)",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         },
         {
           "time": "12:45-1:45",
           "activity": "DBMS",
           "location": "C.R. 1",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         }
       ],
       "THURSDAY": [
@@ -77,7 +85,8 @@
           "time": "12:45-1:45",
           "activity": "RM",
           "location": "( KMB)",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         }
       ],
       "FRIDAY": [
@@ -85,13 +94,15 @@
           "time": "11:00-12:00",
           "activity": "RM",
           "location": "( KMB)",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         },
         {
           "time": "12:45-1:45",
           "activity": "DBMS",
           "location": "C.R. 1",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         }
       ],
       "SATURDAY": []
@@ -106,19 +117,15 @@
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "Continuous Assessment",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "PIC",
           "location": "(RSR)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "TUESDAY": [
@@ -126,25 +133,29 @@
           "time": "11:00-12:00",
           "activity": "DSR",
           "location": "(RSR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "12:45-1:45",
           "activity": "PIC-(RSR)-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "PIC-(RSR)-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "DSR- (RSR)-C-",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "WEDNESDAY": [
@@ -152,19 +163,22 @@
           "time": "12:45-1:45",
           "activity": "DSV",
           "location": "(RSR)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "DSR- (RSR)-A- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "DSR- (RSR)-A- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [
@@ -172,19 +186,22 @@
           "time": "10:00-11:00",
           "activity": "DSV- (RSR)-B- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "11:00-12:00",
           "activity": "DSV- (RSR)-B- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "PIC",
           "location": "(RSR)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "FRIDAY": [
@@ -192,19 +209,22 @@
           "time": "11:00-12:00",
           "activity": "DSR",
           "location": "(RSR)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "DSV",
           "location": "(RSR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "DSR- (RSR)-B-",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "SATURDAY": [
@@ -212,13 +232,15 @@
           "time": "10:00-11:00",
           "activity": "DSV- (RSR)-A-STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "11:00-12:00",
           "activity": "DSV- (RSR)-A-STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         }
       ]
     }
@@ -232,7 +254,8 @@
           "time": "10:00-11:00",
           "activity": "MAT-4",
           "location": "C.R. 06",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [],
@@ -241,7 +264,8 @@
           "time": "12:45-1:45",
           "activity": "MAT-4",
           "location": "C.R. 06",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [],
@@ -250,7 +274,8 @@
           "time": "4:00-5:00",
           "activity": "MAT-4",
           "location": "C.R. 06",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "SATURDAY": [
@@ -258,7 +283,8 @@
           "time": "1:45-2:45",
           "activity": "MAT-4",
           "location": "C.R. 06",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -272,17 +298,27 @@
           "time": "4:00-5:00",
           "activity": "IOB",
           "location": "C.R. 06",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [],
-      "WEDNESDAY": [],
+      "WEDNESDAY": [
+        {
+          "time": "09:00-10:00",
+          "activity": "IOB",
+          "location": "C.R. 06",
+          "floor": "",
+          "batch": ""
+        }
+      ],
       "THURSDAY": [
         {
           "time": "3:00-4:00",
           "activity": "IOB",
           "location": "C.R. 06",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [],
@@ -299,7 +335,8 @@
           "time": "11:00-12:00",
           "activity": "PP",
           "location": "C.R. 05",
-          "floor": ""
+          "floor": "",
+          "batch": "FY(R)"
         }
       ],
       "WEDNESDAY": [
@@ -307,13 +344,15 @@
           "time": "12:45-1:45",
           "activity": "PP",
           "location": "C.R. 05",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "PP - (VSM)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [],
@@ -323,7 +362,8 @@
           "time": "12:45-1:45",
           "activity": "PP",
           "location": "C.R. 05",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -338,7 +378,8 @@
           "time": "10:00-11:00",
           "activity": "OOPS",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [],
@@ -348,7 +389,8 @@
           "time": "10:00-11:00",
           "activity": "OOPS",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "SATURDAY": [
@@ -356,7 +398,8 @@
           "time": "10:00-11:00",
           "activity": "OOPS",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -370,7 +413,8 @@
           "time": "10:00-11:00",
           "activity": "OOPS -",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [],
@@ -379,7 +423,8 @@
           "time": "10:00-11:00",
           "activity": "OOPS",
           "location": "C.R. 05",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [],
@@ -396,13 +441,8 @@
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "Continuous Assessment",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -410,7 +450,8 @@
           "time": "10:00-11:00",
           "activity": "DMS",
           "location": "IC",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         }
       ],
       "WEDNESDAY": [
@@ -418,13 +459,15 @@
           "time": "12:45-1:45",
           "activity": "DMS",
           "location": "IC",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         },
         {
           "time": "1:45-2:45",
           "activity": "DMS",
           "location": "IC",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         }
       ],
       "THURSDAY": [],
@@ -441,31 +484,29 @@
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "Continuous Assessment",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "SEN",
           "location": "C.R. 11",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "DSA- (BCB)-B- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "DSA- (BCB)-B- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         }
       ],
       "TUESDAY": [
@@ -473,19 +514,22 @@
           "time": "10:00-11:00",
           "activity": "BC - (BCB )-B- (Prog Lab-II )",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "11:00-12:00",
           "activity": "BC - (BCB )-B- (Prog Lab-II )",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "BC",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         }
       ],
       "WEDNESDAY": [
@@ -493,25 +537,29 @@
           "time": "10:00-11:00",
           "activity": "SEN",
           "location": "C.R. 11",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "BC",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "SEN- (BCB)-B- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "SEN- (BCB)-B- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         }
       ],
       "THURSDAY": [
@@ -519,19 +567,22 @@
           "time": "11:00-12:00",
           "activity": "BC",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I), BE(R)"
         },
         {
           "time": "12:45-1:45",
           "activity": "DSA- (BCB)-A-PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "DSA- (BCB)-A-PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         }
       ],
       "FRIDAY": [
@@ -539,19 +590,22 @@
           "time": "10:00-11:00",
           "activity": "SEN",
           "location": "C.R. 11",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "12:45-1:45",
           "activity": "BC -(BCB)-C- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         },
         {
           "time": "1:45-2:45",
           "activity": "BC -(BCB)-C- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         }
       ],
       "SATURDAY": [
@@ -559,13 +613,15 @@
           "time": "10:00-11:00",
           "activity": "BC - ( BCB )-A- (Prog Lab-II )",
           "location": "BC- (BCB)-A- ( Prog Lab-II)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "11:00-12:00",
           "activity": "BC - ( BCB )-A- (Prog Lab-II )",
           "location": "BC- (BCB)-A- ( Prog Lab-II)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         }
       ]
     }
@@ -579,31 +635,29 @@
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "Continuous Assessment",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "PIC",
           "location": "C.R. 7",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "JPR- (DRR )-C-STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "JPR- (DRR )-C-STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -611,13 +665,15 @@
           "time": "10:00-11:00",
           "activity": "PIC",
           "location": "C.R. 7",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "CS",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         }
       ],
       "WEDNESDAY": [
@@ -625,25 +681,29 @@
           "time": "10:00-11:00",
           "activity": "CS",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         },
         {
           "time": "1:45-2:45",
           "activity": "PIC",
           "location": "C.R. 7",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "DS- ( DRR )-A- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "DS- ( DRR )-A- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [
@@ -651,25 +711,29 @@
           "time": "10:00-11:00",
           "activity": "JPR- (DRR )-A- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "11:00-12:00",
           "activity": "JPR- (DRR )-A- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "DS- ( DRR )-B- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "DS- ( DRR )-B- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [
@@ -677,13 +741,15 @@
           "time": "10:00-11:00",
           "activity": "JPR",
           "location": "CC LAB",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "11:00-12:00",
           "activity": "JPR",
           "location": "CC LAB",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         }
       ],
       "SATURDAY": [
@@ -691,25 +757,29 @@
           "time": "10:00-11:00",
           "activity": "JPR- (DRR )-B- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "11:00-12:00",
           "activity": "JPR- (DRR )-B- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "DS- ( DRR )-C- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "DS- ( DRR )-C- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -723,37 +793,36 @@
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "Continuous Assessment",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "ADBM- (JAK)-B-JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "ADBM- (JAK)-B-JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "SE- ( JAK )-B- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "SE- ( JAK )-B- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -761,7 +830,8 @@
           "time": "12:45-1:45",
           "activity": "SEN",
           "location": "C.R. 10",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         }
       ],
       "WEDNESDAY": [
@@ -769,25 +839,29 @@
           "time": "10:00-11:00",
           "activity": "SEN",
           "location": "C.R. 10",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "12:45-1:45",
           "activity": "ADBM",
           "location": "(JAK)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "HCI- (JAK)-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "HCI- (JAK)-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "THURSDAY": [
@@ -795,19 +869,22 @@
           "time": "10:00-11:00",
           "activity": "SEN- ( JAK )-C- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "11:00-12:00",
           "activity": "SEN- ( JAK )-C- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "HCI",
           "location": "(JAK)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [
@@ -815,19 +892,22 @@
           "time": "12:45-1:45",
           "activity": "HCI",
           "location": "(JAK)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "ADBM- (JAK)-A-JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "ADBM- (JAK)-A-JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         }
       ],
       "SATURDAY": [
@@ -835,19 +915,22 @@
           "time": "10:00-11:00",
           "activity": "SEN- ( JAK )-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "11:00-12:00",
           "activity": "SEN- ( JAK )-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "ADBM",
           "location": "(JAK)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         }
       ]
     }
@@ -861,13 +944,15 @@
           "time": "12:45-1:45",
           "activity": "DPS- (MMK)-A- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "DPS- (MMK)-A- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         }
       ],
       "TUESDAY": [
@@ -875,25 +960,29 @@
           "time": "12:45-1:45",
           "activity": "JPR",
           "location": "(MMK)",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "JPR",
           "location": "(MMK)",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "OS - (MMK)-B- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "OS - (MMK)-B- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "WEDNESDAY": [
@@ -901,13 +990,15 @@
           "time": "3:00-4:00",
           "activity": "OS - (MMK)-C-PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "OS - (MMK)-C-PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "THURSDAY": [
@@ -915,13 +1006,15 @@
           "time": "10:00-11:00",
           "activity": "JPR",
           "location": "(MMK)",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "OS",
           "location": "(MMK)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [
@@ -929,25 +1022,29 @@
           "time": "11:00-12:00",
           "activity": "DPS",
           "location": "(MMK)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "12:45-1:45",
           "activity": "OS",
           "location": "(MMK)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "OS - (MMK)-A-PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "OS - (MMK)-A-PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "SATURDAY": [
@@ -955,19 +1052,22 @@
           "time": "10:00-11:00",
           "activity": "DPS- (MMK)-B- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "11:00-12:00",
           "activity": "DPS- (MMK)-B- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "12:45-1:45",
           "activity": "DPS",
           "location": "(MMK)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         }
       ]
     }
@@ -981,25 +1081,29 @@
           "time": "12:45-1:45",
           "activity": "CN-(KAR)-B-MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I), TE(R)"
         },
         {
           "time": "1:45-2:45",
           "activity": "CN-(KAR)-B-MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I), TE(R)"
         },
         {
           "time": "3:00-4:00",
           "activity": "CN-(KAR)-A- MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "4:00-5:00",
           "activity": "CN-(KAR)-A- MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         }
       ],
       "TUESDAY": [
@@ -1007,13 +1111,15 @@
           "time": "10:00-11:00",
           "activity": "NCS",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "BD",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         }
       ],
       "WEDNESDAY": [
@@ -1021,13 +1127,15 @@
           "time": "10:00-11:00",
           "activity": "BD",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "CN",
           "location": "C.R. 1",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         }
       ],
       "THURSDAY": [
@@ -1035,25 +1143,29 @@
           "time": "10:00-11:00",
           "activity": "BD- (KAR)-A-PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "11:00-12:00",
           "activity": "BD- (KAR)-A-PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "NCS- (KAR)-A- MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "NCS- (KAR)-A- MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "FRIDAY": [
@@ -1061,19 +1173,22 @@
           "time": "11:00-12:00",
           "activity": "NCS",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "BD- (KAR)-B-MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I), FI(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "BD- (KAR)-B-MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I), FI(I)"
         }
       ],
       "SATURDAY": [
@@ -1081,19 +1196,22 @@
           "time": "10:00-11:00",
           "activity": "CN-(KAR)-C- MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "11:00-12:00",
           "activity": "CN-(KAR)-C- MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "12:45-1:45",
           "activity": "CN",
           "location": "C.R. 1",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I), TE(R)"
         }
       ]
     }
@@ -1107,13 +1225,15 @@
           "time": "12:45-1:45",
           "activity": "CDF- (KAR)-A-PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I), TE(R)"
         },
         {
           "time": "1:45-2:45",
           "activity": "CDF- (KAR)-A-PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I), TE(R)"
         }
       ],
       "TUESDAY": [
@@ -1121,19 +1241,22 @@
           "time": "1:45-2:45",
           "activity": "ML",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "AI- (KAR)-A- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "AI- (KAR)-A- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "WEDNESDAY": [
@@ -1141,25 +1264,29 @@
           "time": "12:45-1:45",
           "activity": "ML- (KAR)-A- (MECH CAD LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "ML- (KAR)-A- (MECH CAD LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "AI- (KAR)-B- MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "AI- (KAR)-B- MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "THURSDAY": [
@@ -1167,19 +1294,22 @@
           "time": "10:00-11:00",
           "activity": "CDF",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "12:45-1:45",
           "activity": "AI",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "ML",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         }
       ],
       "FRIDAY": [
@@ -1187,25 +1317,29 @@
           "time": "10:00-11:00",
           "activity": "AI",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "12:45-1:45",
           "activity": "CDF",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "AI- (KAR)-C- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I), FI(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "AI- (KAR)-C- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I), FI(I)"
         }
       ],
       "SATURDAY": [
@@ -1213,19 +1347,22 @@
           "time": "11:00-12:00",
           "activity": "AI",
           "location": "(KAR)",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "12:45-1:45",
           "activity": "SEN- (KAR)-A- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I), TE(R)"
         },
         {
           "time": "1:45-2:45",
           "activity": "SEN- (KAR)-A- PROG LAB-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I), TE(R)"
         }
       ]
     }
@@ -1239,7 +1376,8 @@
           "time": "3:00-4:00",
           "activity": "MDM-I",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -1247,7 +1385,8 @@
           "time": "3:00-4:00",
           "activity": "MDM-III",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
@@ -1255,13 +1394,15 @@
           "time": "10:00-11:00",
           "activity": "CCE",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         },
         {
           "time": "3:00-4:00",
           "activity": "MDM-III",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [
@@ -1269,31 +1410,36 @@
           "time": "10:00-11:00",
           "activity": "CCE",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         },
         {
           "time": "12:45-1:45",
           "activity": "WTL- ( MVV )-A- ( JPR LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "WTL- ( MVV )-A- ( JPR LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "WTL- ( MVV )-B- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "WTL- ( MVV )-B- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [
@@ -1301,25 +1447,29 @@
           "time": "12:45-1:45",
           "activity": "WTL- ( MVV )-B- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "WTL- ( MVV )-B- STE LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "CCE- (MVV)-C- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         },
         {
           "time": "4:00-5:00",
           "activity": "CCE- (MVV)-C- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         }
       ],
       "SATURDAY": [
@@ -1327,13 +1477,15 @@
           "time": "12:45-1:45",
           "activity": "WTL-(MVV)-A-PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "WTL-(MVV)-A-PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -1347,13 +1499,8 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -1361,7 +1508,8 @@
           "time": "10:00-11:00",
           "activity": "PP",
           "location": "(VSM)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
@@ -1369,13 +1517,15 @@
           "time": "12:45-1:45",
           "activity": "PP- (VSM)-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "PP- (VSM)-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [
@@ -1383,13 +1533,15 @@
           "time": "12:45-1:45",
           "activity": "PP- (VSM)-B- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "PP- (VSM)-B- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [],
@@ -1398,13 +1550,15 @@
           "time": "10:00-11:00",
           "activity": "PP",
           "location": "(VSM)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "11:00-12:00",
           "activity": "PP",
           "location": "(VSM)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -1418,7 +1572,8 @@
           "time": "1:45-2:45",
           "activity": "MIC",
           "location": "(KPG)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [],
@@ -1427,19 +1582,22 @@
           "time": "10:00-11:00",
           "activity": "DEL",
           "location": "IC",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         },
         {
           "time": "12:45-1:45",
           "activity": "MIC-( KPG )-B-MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "MIC-( KPG )-B-MIC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [
@@ -1447,19 +1605,22 @@
           "time": "10:00-11:00",
           "activity": "DEL",
           "location": "IC",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         },
         {
           "time": "12:45-1:45",
           "activity": "DEL- ( KPG)-C- ELEC W/C",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "MIC",
           "location": "(KPG)",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         }
       ],
       "FRIDAY": [
@@ -1467,13 +1628,15 @@
           "time": "11:00-12:00",
           "activity": "MIC",
           "location": "(KPG)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "DEL- ( KPG)-A- ELEC W/C",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "SATURDAY": [
@@ -1481,7 +1644,8 @@
           "time": "12:45-1:45",
           "activity": "DEL- ( KPG )-B- ELEC W/C",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -1495,19 +1659,22 @@
           "time": "1:45-2:45",
           "activity": "IDS",
           "location": "C.R. 07",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "IDS- (SVV)-A-ME CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "IDS- (SVV)-A-ME CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -1515,7 +1682,8 @@
           "time": "11:00-12:00",
           "activity": "IDS",
           "location": "C.R.7",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
@@ -1523,31 +1691,36 @@
           "time": "10:00-11:00",
           "activity": "FAI (NPTEL)",
           "location": "C.R. 07",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "WTL- (SVV)-A,B,C- (JPR Lab)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "WTL- (SVV)-A,B,C- (JPR Lab)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "WTL- (SVV)-C- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         },
         {
           "time": "4:00-5:00",
           "activity": "WTL- (SVV)-C- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(R)"
         }
       ],
       "THURSDAY": [
@@ -1555,25 +1728,29 @@
           "time": "10:00-11:00",
           "activity": "WTL- (SVV)-A,B,C- (CC LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "11:00-12:00",
           "activity": "WTL- (SVV)-A,B,C- (CC LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FO(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "WTL- (SVV)-C- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "WTL- (SVV)-C- PROG LAB-II",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [
@@ -1581,13 +1758,15 @@
           "time": "10:00-11:00",
           "activity": "IDS",
           "location": "C.R. 7",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "IAD",
           "location": "C.R. 04",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "SATURDAY": [
@@ -1595,13 +1774,15 @@
           "time": "10:00-11:00",
           "activity": "IAD",
           "location": "C.R. 04",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "FAI - (SVV)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -1615,19 +1796,22 @@
           "time": "12:45-1:45",
           "activity": "PSI",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         },
         {
           "time": "3:00-4:00",
           "activity": "JPR- ( RSA)-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "JPR- ( RSA)-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -1635,31 +1819,36 @@
           "time": "10:00-11:00",
           "activity": "BCC-(RSA)-A-JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "11:00-12:00",
           "activity": "BCC-(RSA)-A-JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "BCC",
           "location": "(RSA)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "JPR- ( RSA )-B- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "JPR- ( RSA )-B- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
@@ -1667,25 +1856,29 @@
           "time": "11:00-12:00",
           "activity": "BCC",
           "location": "(RSA)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "CES",
           "location": "(RSA)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "JPR- ( MMK )-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "JPR- ( MMK )-A- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [
@@ -1693,19 +1886,22 @@
           "time": "1:45-2:45",
           "activity": "PSI",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         },
         {
           "time": "3:00-4:00",
           "activity": "BCC-(RSA)-A-(JPR LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I), TE(R)"
         },
         {
           "time": "4:00-5:00",
           "activity": "BCC-(RSA)-A-(JPR LAB)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I), TE(R)"
         }
       ],
       "FRIDAY": [
@@ -1713,25 +1909,29 @@
           "time": "11:00-12:00",
           "activity": "CES",
           "location": "(RSA)",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "BCC",
           "location": "(RSA)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "BCC-(RSA)-B-ME CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I), TE(R)"
         },
         {
           "time": "4:00-5:00",
           "activity": "BCC-(RSA)-B-ME CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FI(I), TE(R)"
         }
       ],
       "SATURDAY": [
@@ -1739,13 +1939,15 @@
           "time": "12:45-1:45",
           "activity": "JPR- (RSA)-B- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "JPR- (RSA)-B- JPR LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -1759,31 +1961,29 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
           "activity": "DBMS-(APT)-C- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "1:45-2:45",
           "activity": "DBMS-(APT)-C- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "3:00-4:00",
           "activity": "EE",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -1791,25 +1991,29 @@
           "time": "10:00-11:00",
           "activity": "DBMS-(APT)-B- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "11:00-12:00",
           "activity": "DBMS-(APT)-B- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(R)"
         },
         {
           "time": "12:45-1:45",
           "activity": "PIC-C-(APT) ME CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "PIC-C-(APT) ME CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
@@ -1817,13 +2021,15 @@
           "time": "11:00-12:00",
           "activity": "IAD",
           "location": "(APT)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "EE",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [
@@ -1831,7 +2037,8 @@
           "time": "11:00-12:00",
           "activity": "PIC",
           "location": "C.R. 04",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [
@@ -1839,19 +2046,22 @@
           "time": "11:00-12:00",
           "activity": "PIC",
           "location": "C.R. 04",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "PIC-(APT)-B- (CC LAB )",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "PIC-(APT)-B- (CC LAB )",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "SATURDAY": [
@@ -1859,31 +2069,36 @@
           "time": "10:00-11:00",
           "activity": "PIC-(APT)-C- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "11:00-12:00",
           "activity": "PIC-(APT)-C- CC LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "IAD",
           "location": "(APT)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "PIC- ( APT)-A- ME CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "PIC- ( APT)-A- ME CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }
@@ -1897,13 +2112,8 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -1911,19 +2121,22 @@
           "time": "10:00-11:00",
           "activity": "DOP- I-(V2)-A-(CC Lab)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "11:00-12:00",
           "activity": "DOP- I-(V2)-A-(CC Lab)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "DOP-I & BCC",
           "location": "(V2 &V1)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
@@ -1931,7 +2144,8 @@
           "time": "11:00-12:00",
           "activity": "DOP-I & BCC",
           "location": "(V2 &V1)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [
@@ -1939,13 +2153,15 @@
           "time": "3:00-4:00",
           "activity": "DOP- I-(V2)-B-E CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "DOP- I-(V2)-B-E CAD LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [
@@ -1953,19 +2169,22 @@
           "time": "1:45-2:45",
           "activity": "DOP-I & BCC",
           "location": "(V2 &V1)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "DOP- I-(V2)-A-(STE Lab)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "4:00-5:00",
           "activity": "DOP- I-(V2)-A-(STE Lab)",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "SATURDAY": []
@@ -1980,13 +2199,8 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -1994,13 +2208,15 @@
           "time": "12:45-1:45",
           "activity": "BEEE-(JMS)-C- PEL LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "BEEE-(JMS)-C- PEL LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "WEDNESDAY": [
@@ -2008,7 +2224,8 @@
           "time": "1:45-2:45",
           "activity": "BEEE",
           "location": "(JMS)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "THURSDAY": [
@@ -2016,19 +2233,22 @@
           "time": "10:00-11:00",
           "activity": "BEEE-(JMS)-B-PEL LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "11:00-12:00",
           "activity": "BEEE-(JMS)-B-PEL LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "12:45-1:45",
           "activity": "BEEE",
           "location": "(JMS)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "FRIDAY": [
@@ -2036,19 +2256,22 @@
           "time": "10:00-11:00",
           "activity": "BEEE",
           "location": "(JMS)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "BEEE-(JMS)-A- PEL LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "BEEE-(JMS)-A- PEL LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "SATURDAY": [
@@ -2056,7 +2279,8 @@
           "time": "12:45-1:45",
           "activity": "BEEE",
           "location": "(JMS)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ]
     }
@@ -2070,13 +2294,8 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [
@@ -2084,7 +2303,8 @@
           "time": "12:45-1:45",
           "activity": "SLS-(KRT)-B-",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "WEDNESDAY": [],
@@ -2094,25 +2314,29 @@
           "time": "12:45-1:45",
           "activity": "SLS-(KRT)-A-ENG LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "1:45-2:45",
           "activity": "SLS-(KRT)-A-ENG LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         },
         {
           "time": "3:00-4:00",
           "activity": "SLS-(KRT)-C- ENG LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "CLASS-2, SE(I)"
         },
         {
           "time": "4:00-5:00",
           "activity": "SLS-(KRT)-C- ENG LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "CLASS-2, SE(I)"
         }
       ],
       "SATURDAY": []
@@ -2127,13 +2351,8 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [],
@@ -2144,13 +2363,15 @@
           "time": "12:45-1:45",
           "activity": "SLS-(GKG)-A-ENG LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FY(R)"
         },
         {
           "time": "1:45-2:45",
           "activity": "SLS-(GKG)-A-ENG LAB",
           "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "FY(R)"
         }
       ],
       "SATURDAY": []
@@ -2165,13 +2386,8 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [],
@@ -2181,7 +2397,8 @@
           "time": "10:00-11:00",
           "activity": "I 4.0",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         }
       ],
       "FRIDAY": [
@@ -2189,7 +2406,8 @@
           "time": "10:00-11:00",
           "activity": "I 4.0",
           "location": "C.R. 12",
-          "floor": ""
+          "floor": "",
+          "batch": "BE(R)"
         }
       ],
       "SATURDAY": []
@@ -2204,19 +2422,15 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": "CLASS-1"
         },
         {
           "time": "3:00-4:00",
           "activity": "M-III",
           "location": "(AMN)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "TUESDAY": [
@@ -2224,7 +2438,8 @@
           "time": "11:00-12:00",
           "activity": "M-III",
           "location": "(AMN)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "WEDNESDAY": [
@@ -2232,7 +2447,8 @@
           "time": "12:45-1:45",
           "activity": "M-III",
           "location": "(AMN)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "THURSDAY": [],
@@ -2241,7 +2457,8 @@
           "time": "11:00-12:00",
           "activity": "M-III",
           "location": "(AMN)",
-          "floor": ""
+          "floor": "",
+          "batch": "SE(I)"
         }
       ],
       "SATURDAY": []
@@ -2256,19 +2473,15 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "SAP",
           "location": "(PED)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [],
@@ -2279,7 +2492,8 @@
           "time": "11:00-12:00",
           "activity": "SAP",
           "location": "(PED)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "SATURDAY": [
@@ -2287,7 +2501,8 @@
           "time": "3:00-4:00",
           "activity": "SAP",
           "location": "(PED)",
-          "floor": ""
+          "floor": "",
+          "batch": "TE(I)"
         }
       ]
     }
@@ -2301,13 +2516,8 @@
           "time": "10:00-11:00",
           "activity": "CONTINUOUS ASSESSMENT",
           "location": "",
-          "floor": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CONTINUOUS ASSESSMENT",
-          "location": "",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "TUESDAY": [],
@@ -2316,7 +2526,8 @@
           "time": "11:00-12:00",
           "activity": "COI",
           "location": "(KSA)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [],
@@ -2325,13 +2536,15 @@
           "time": "11:00-12:00",
           "activity": "COI",
           "location": "C.R. IC",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
           "activity": "COI",
           "location": "(KSA)",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ],
       "SATURDAY": [
@@ -2339,7 +2552,8 @@
           "time": "11:00-12:00",
           "activity": "COI",
           "location": "C.R. IC",
-          "floor": ""
+          "floor": "",
+          "batch": ""
         }
       ]
     }

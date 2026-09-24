@@ -344,7 +344,7 @@ export function FacultyScheduleReport() {
                               <p className="text-[10px] text-[var(--color-slate)]">{faculty.department}</p>
                             </td>
 
-                            {timeSlots.map((time) => {
+                            {timeSlots.map((time, index) => {
                               // Break slots
                               if (time === '12:00-12:45') {
                                 return (
@@ -372,11 +372,30 @@ export function FacultyScheduleReport() {
                               }
 
                               const cellData = dailySchedule.find((e) => e.time === time);
+                              const isLab = cellData && cellData.activity && (cellData.activity.toLowerCase().includes('lab') || cellData.activity.toLowerCase().includes('practical') || cellData.activity.toLowerCase().includes('pr.'));
+
+                              // Check if previous slot was the exact same lab
+                              const prevTime = index > 0 ? timeSlots[index - 1] : null;
+                              const prevCellData = prevTime ? dailySchedule.find((e) => e.time === prevTime) : null;
+                              const isPrevRecess = prevTime === '12:00-12:45' || prevTime === '2:45-3:00';
+
+                              if (isLab && prevCellData && prevCellData.activity === cellData.activity && !isPrevRecess) {
+                                // Skip rendering because the previous cell will span across this column
+                                return null;
+                              }
+
+                              // Check if NEXT slot is the same lab
+                              const nextTime = index < timeSlots.length - 1 ? timeSlots[index + 1] : null;
+                              const nextCellData = nextTime ? dailySchedule.find((e) => e.time === nextTime) : null;
+                              const isNextRecess = nextTime === '12:00-12:45' || nextTime === '2:45-3:00';
+
+                              const spanTwo = isLab && nextCellData && nextCellData.activity === cellData.activity && !isNextRecess;
 
                               return (
                                 <td
                                   key={`${faculty.facultyName}-${time}`}
                                   className="sch-td text-center align-middle"
+                                  colSpan={spanTwo ? 2 : 1}
                                 >
                                   {editing ? (
                                     <div className="space-y-1">
@@ -394,6 +413,13 @@ export function FacultyScheduleReport() {
                                         onChange={(e) => updateCell(faculty.facultyName, time, 'location', e.target.value)}
                                         className="sch-input w-full"
                                       />
+                                      <input
+                                        type="text"
+                                        value={cellData?.batch || ''}
+                                        placeholder="Batch"
+                                        onChange={(e) => updateCell(faculty.facultyName, time, 'batch', e.target.value)}
+                                        className="sch-input w-full"
+                                      />
                                     </div>
                                   ) : (
                                     cellData && cellData.activity ? (
@@ -402,6 +428,9 @@ export function FacultyScheduleReport() {
                                         {cellData.activity !== 'Available' && (
                                           <div className="flex flex-col items-center opacity-80 mt-1">
                                             <span className="text-[10px] truncate">{cellData.location}</span>
+                                            {cellData.batch && (
+                                              <span className="text-[9px] font-medium opacity-70 mt-0.5">{cellData.batch}</span>
+                                            )}
                                           </div>
                                         )}
                                       </div>
