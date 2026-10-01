@@ -6,10 +6,13 @@ const ACADEMIC_YEARS = ['2023-2024', '2024-2025', '2025-2026', '2026-2027'];
 const TERMS = ['Odd', 'Even'];
 const DEPARTMENTS = ['Computer Science', 'Mechanical', 'Electrical', 'Civil', 'Electronics'];
 const PROGRAMS = [
-  { id: 'regular', name: 'Regular (4 Year Program)' },
-  { id: 'integrated', name: 'Integrated (6 Year Program)' }
+  { id: 'regular', name: 'Regular (4 Year Program)' }
 ];
 const SEMESTERS = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th'];
+const SEMESTER_ROMAN_MAP = {
+  '1st': 'I', '2nd': 'II', '3rd': 'III', '4th': 'IV', '5th': 'V', '6th': 'VI',
+  '7th': 'VII', '8th': 'VIII', '9th': 'IX', '10th': 'X', '11th': 'XI', '12th': 'XII'
+};
 
 export default function DataFetcherPage() {
   const tableRef = useRef(null);
@@ -25,7 +28,7 @@ export default function DataFetcherPage() {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    if (formData.program.length === 0) {
+    if (formData.program.length === 0 || formData.semester.length === 0) {
       setRows([]);
       return;
     }
@@ -42,15 +45,27 @@ export default function DataFetcherPage() {
       return true;
     });
 
-    setRows(filtered.map(row => ({
-      ...row,
-      id: Math.random().toString(),
-      isCore: true,
-      deptAndTeacher: '',
-      divisions: row.divisions || 1,
-      students: row.students || 60,
-      prBatches: row.prBatches !== undefined ? row.prBatches : (row.prHrs > 0 ? 3 : 0)
-    })));
+    setRows(filtered.map(row => {
+      let finalClassLabel = row.classLabel;
+      if (row.program && row.program.startsWith('regular')) {
+        finalClassLabel = finalClassLabel.replace(/\s*\([^)]*\)/, '');
+      } else if (row.program && row.program.includes('integrated')) {
+        finalClassLabel = finalClassLabel.replace(/\s*\([^)]*\)/, '(I)');
+        finalClassLabel = finalClassLabel.replace(/4th\s*Y(?:ea)?r\(I\)/i, 'FO(I)');
+        finalClassLabel = finalClassLabel.replace(/5th\s*Y(?:ea)?r\(I\)/i, 'FI(I)');
+        finalClassLabel = finalClassLabel.replace(/6\s*th\s*Y(?:ea)?r\(I\)/i, 'BE(I)');
+      }
+      return {
+        ...row,
+        classLabel: finalClassLabel,
+        id: Math.random().toString(),
+        isCore: true,
+        deptAndTeacher: '',
+        divisions: row.divisions || 1,
+        students: row.students || 60,
+        prBatches: row.prBatches !== undefined ? row.prBatches : (row.prHrs > 0 ? 3 : 0)
+      };
+    }));
   }, [formData]);
 
   const handleChange = (e) => {
@@ -76,8 +91,8 @@ export default function DataFetcherPage() {
       const next = { ...prev, [field]: nextArr };
       
       if (field === 'program') {
-        const hasRegular = nextArr.some(p => p.startsWith('regular'));
-        if (hasRegular) {
+        const hasIntegrated = nextArr.some(p => p.includes('integrated'));
+        if (!hasIntegrated) {
           next.semester = next.semester.filter(s => !['9th', '10th', '11th', '12th'].includes(s));
         }
       }
@@ -111,7 +126,23 @@ export default function DataFetcherPage() {
   const handleRowChange = (id, field, value) => {
     setRows(rows.map(row => {
       if (row.id === id) {
-        return { ...row, [field]: value };
+        const updatedRow = { ...row, [field]: value };
+        
+        // Auto-calculate related fields
+        if (field === 'divisions') {
+          const divs = Number(value) || 0;
+          updatedRow.students = divs * 60;
+          if (updatedRow.prHrs > 0) {
+            updatedRow.prBatches = Math.ceil(updatedRow.students / 20);
+          }
+        } else if (field === 'students') {
+          const studentCount = Number(value) || 0;
+          if (updatedRow.prHrs > 0) {
+            updatedRow.prBatches = Math.ceil(studentCount / 20);
+          }
+        }
+        
+        return updatedRow;
       }
       return row;
     }));
@@ -127,19 +158,36 @@ export default function DataFetcherPage() {
     { id: 'regular_ma', name: 'B.Tech Mechanical and Automation' }
   ] : PROGRAMS;
 
-  const hasRegular = formData.program.some(p => p.startsWith('regular'));
-  let baseSemesters = hasRegular ? SEMESTERS.slice(0, 8) : SEMESTERS;
-  let availableSemesters = [];
-  
-  if (formData.term.includes('Odd')) {
-    availableSemesters = [...availableSemesters, ...baseSemesters.filter((_, i) => i % 2 === 0)];
-  }
-  if (formData.term.includes('Even')) {
-    availableSemesters = [...availableSemesters, ...baseSemesters.filter((_, i) => i % 2 !== 0)];
-  }
-  
-  // Keep semesters perfectly sorted
-  availableSemesters = availableSemesters.sort((a, b) => SEMESTERS.indexOf(a) - SEMESTERS.indexOf(b));
+  const getSemestersForProgram = (programId) => {
+    const isIntegrated = programId.includes('integrated');
+    const baseSemesters = isIntegrated ? SEMESTERS : SEMESTERS.slice(0, 8);
+    let sems = [];
+    if (formData.term.includes('Odd')) {
+      sems = [...sems, ...baseSemesters.filter((_, i) => i % 2 === 0)];
+    }
+    if (formData.term.includes('Even')) {
+      sems = [...sems, ...baseSemesters.filter((_, i) => i % 2 !== 0)];
+    }
+    return sems.sort((a, b) => SEMESTERS.indexOf(a) - SEMESTERS.indexOf(b));
+  };
+
+  const handleSelectAllSemesters = (programId) => {
+    const available = getSemestersForProgram(programId);
+    setFormData(prev => {
+      const currentSems = prev.semester;
+      const allSelected = available.length > 0 && available.every(s => currentSems.includes(s));
+      
+      let nextSems;
+      if (allSelected) {
+        nextSems = currentSems.filter(s => !available.includes(s));
+      } else {
+        const semsToAdd = available.filter(s => !currentSems.includes(s));
+        nextSems = [...currentSems, ...semsToAdd];
+      }
+      
+      return { ...prev, semester: nextSems };
+    });
+  };
 
   // Real-time calculated display data
   const displayData = rows.map((row) => {
@@ -161,14 +209,14 @@ export default function DataFetcherPage() {
     };
   });
 
-  // Calculations for TOTAL row
-  const sumThTotal = displayData.reduce((s, r) => s + r.thTotal, 0);
-  const sumPrTotal = displayData.reduce((s, r) => s + r.prTotal, 0);
-  const sumTutHrs = displayData.reduce((s, r) => s + (Number(r.tutHrs) || 0), 0);
-  const sumTotalHrs = displayData.reduce((s, r) => s + r.totalHrs, 0);
-  const sumCredL = displayData.reduce((s, r) => s + (Number(r.credL) || 0), 0);
-  const sumCredP = displayData.reduce((s, r) => s + (Number(r.credP) || 0), 0);
-  const sumCredT = displayData.reduce((s, r) => s + (Number(r.credT) || 0), 0);
+  // Calculations for TOTAL row (Excluding non-core faculty)
+  const sumThTotal = displayData.reduce((s, r) => s + (r.isCore !== false ? r.thTotal : 0), 0);
+  const sumPrTotal = displayData.reduce((s, r) => s + (r.isCore !== false ? r.prTotal : 0), 0);
+  const sumTutHrs = displayData.reduce((s, r) => s + (r.isCore !== false ? (Number(r.tutHrs) || 0) : 0), 0);
+  const sumTotalHrs = displayData.reduce((s, r) => s + (r.isCore !== false ? r.totalHrs : 0), 0);
+  const sumCredL = displayData.reduce((s, r) => s + (r.isCore !== false ? (Number(r.credL) || 0) : 0), 0);
+  const sumCredP = displayData.reduce((s, r) => s + (r.isCore !== false ? (Number(r.credP) || 0) : 0), 0);
+  const sumCredT = displayData.reduce((s, r) => s + (r.isCore !== false ? (Number(r.credT) || 0) : 0), 0);
 
   const handleExport = () => {
     if (!tableRef.current) return;
@@ -179,6 +227,12 @@ export default function DataFetcherPage() {
     // Remove the Action column completely from the clone
     const trs = tableClone.querySelectorAll('tr');
     trs.forEach(tr => {
+      // Highlight non-core rows for Excel
+      if (tr.classList.contains('export-highlight')) {
+        tr.style.backgroundColor = '#fffbeb'; // yellow-50 highlight
+        tr.style.opacity = '1'; // Ensure it's not faded in Excel
+      }
+      
       // If it's a data row, the last cell is the action button
       if (tr.parentElement.tagName === 'TBODY' && !tr.classList.contains('bg-gray-50')) {
         tr.removeChild(tr.lastElementChild);
@@ -326,55 +380,57 @@ export default function DataFetcherPage() {
 
           <div className="w-px h-4 bg-[var(--border)] hidden sm:block mx-1"></div>
 
-          {/* Program Checkbox Dropdown */}
+          {/* Program & Semester Cascading Dropdown */}
           <div className="relative group">
             <button type="button"
               className="appearance-none bg-transparent border-0 px-3 py-2 pr-8 text-sm font-medium text-[var(--color-graphite)] hover:text-[var(--color-carbon)] hover:bg-[var(--color-fog)] rounded-md cursor-pointer focus:ring-0 focus:outline-none transition-colors flex items-center min-w-[160px]"
             >
               <span className="truncate">
-                {formData.program.length === 0 ? 'Program' : `Programs (${formData.program.length})`}
+                {formData.program.length === 0 ? 'Program & Sem' : `Programs (${formData.program.length})`}
               </span>
               <ChevronDown className="w-4 h-4 absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--color-slate)] pointer-events-none group-hover:text-[var(--color-carbon)]" />
             </button>
             <div className="absolute left-0 top-full mt-0 hidden group-hover:block w-[280px] bg-white border border-[var(--border)] shadow-xl rounded-md z-50 py-2">
               {availablePrograms.map(p => (
-                <label key={p.id} className="flex items-center px-4 py-2 hover:bg-[var(--color-fog)] cursor-pointer">
-                  <input type="checkbox" checked={formData.program.includes(p.id)} onChange={() => handleToggle('program', p.id)}
-                    className="mr-3 w-4 h-4 rounded border-gray-300 text-[var(--color-signal-orange)] focus:ring-[var(--color-signal-orange)]"
-                  />
-                  <span className="text-sm text-[var(--color-graphite)]">{p.name}</span>
-                </label>
+                <div key={p.id} className="relative group/sub">
+                  <div className="flex items-center px-4 py-2 hover:bg-[var(--color-fog)] cursor-pointer justify-between">
+                    <label className="flex items-center cursor-pointer flex-1">
+                      <input type="checkbox" checked={formData.program.includes(p.id)} onChange={() => handleToggle('program', p.id)}
+                        className="mr-3 w-4 h-4 rounded border-gray-300 text-[var(--color-signal-orange)] focus:ring-[var(--color-signal-orange)]"
+                      />
+                      <span className="text-sm text-[var(--color-graphite)]">{p.name}</span>
+                    </label>
+                    {formData.program.includes(p.id) && (
+                      <span className="text-gray-400 text-xs font-bold ml-2 group-hover/sub:text-black">&gt;</span>
+                    )}
+                  </div>
+                  
+                  {/* Sub-menu for Semesters */}
+                  {formData.program.includes(p.id) && (
+                    <div className="absolute left-full top-0 hidden group-hover/sub:block w-[160px] max-h-[300px] overflow-y-auto bg-white border border-[var(--border)] shadow-xl rounded-md z-50 py-2 -ml-1">
+                      <div className="px-4 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider border-b border-gray-100 mb-1">Semesters</div>
+                      {getSemestersForProgram(p.id).length > 0 && (
+                        <label className="flex items-center px-4 py-2 hover:bg-[var(--color-fog)] cursor-pointer border-b border-gray-100 bg-gray-50">
+                          <input type="checkbox" checked={getSemestersForProgram(p.id).every(s => formData.semester.includes(s))} onChange={() => handleSelectAllSemesters(p.id)}
+                            className="mr-3 w-4 h-4 rounded border-gray-300 text-[var(--color-signal-orange)] focus:ring-[var(--color-signal-orange)]"
+                          />
+                          <span className="text-sm font-semibold text-[var(--color-graphite)]">Select All</span>
+                        </label>
+                      )}
+                      {getSemestersForProgram(p.id).map(s => (
+                        <label key={s} className="flex items-center px-4 py-2 hover:bg-[var(--color-fog)] cursor-pointer">
+                          <input type="checkbox" checked={formData.semester.includes(s)} onChange={() => handleToggle('semester', s)}
+                            className="mr-3 w-4 h-4 rounded border-gray-300 text-[var(--color-signal-orange)] focus:ring-[var(--color-signal-orange)]"
+                          />
+                          <span className="text-sm text-[var(--color-graphite)]">{SEMESTER_ROMAN_MAP[s] || s}</span>
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </div>
-
-          {(formData.program.length > 0 && availableSemesters.length > 0) && (
-            <>
-              <div className="w-px h-4 bg-[var(--border)] hidden sm:block mx-1"></div>
-              
-              {/* Semester Checkbox Dropdown */}
-              <div className="relative group">
-                <button type="button"
-                  className="appearance-none bg-transparent border-0 px-3 py-2 pr-8 text-sm font-medium text-[var(--color-graphite)] hover:text-[var(--color-carbon)] hover:bg-[var(--color-fog)] rounded-md cursor-pointer focus:ring-0 focus:outline-none transition-colors flex items-center min-w-[140px]"
-                >
-                  <span className="truncate">
-                    {formData.semester.length === 0 ? 'Semester' : `Semesters (${formData.semester.length})`}
-                  </span>
-                  <ChevronDown className="w-4 h-4 absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--color-slate)] pointer-events-none group-hover:text-[var(--color-carbon)]" />
-                </button>
-                <div className="absolute left-0 top-full mt-0 hidden group-hover:block w-[160px] max-h-[300px] overflow-y-auto bg-white border border-[var(--border)] shadow-xl rounded-md z-50 py-2">
-                  {availableSemesters.map(s => (
-                    <label key={s} className="flex items-center px-4 py-2 hover:bg-[var(--color-fog)] cursor-pointer">
-                      <input type="checkbox" checked={formData.semester.includes(s)} onChange={() => handleToggle('semester', s)}
-                        className="mr-3 w-4 h-4 rounded border-gray-300 text-[var(--color-signal-orange)] focus:ring-[var(--color-signal-orange)]"
-                      />
-                      <span className="text-sm text-[var(--color-graphite)]">{s}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
         </div>
       </div>
 
@@ -386,7 +442,11 @@ export default function DataFetcherPage() {
 
         {displayData.length === 0 ? (
           <div className="text-center py-12 text-gray-500 font-sans border-2 border-dashed border-gray-200 rounded-lg">
-            No subjects found for the selected program.
+            {formData.program.length === 0 
+              ? "Please select a program." 
+              : formData.semester.length === 0 
+                ? "Please select a semester." 
+                : "No subjects found for the selected criteria."}
           </div>
         ) : (
           <div className="mb-8 min-w-max">
@@ -470,7 +530,7 @@ export default function DataFetcherPage() {
                   }
 
                   return (
-                  <tr key={row.id} className="hover:bg-gray-50/50">
+                  <tr key={row.id} className={`hover:bg-gray-50/50 ${!row.isCore ? 'export-highlight opacity-60 bg-gray-100/50' : ''}`}>
                     {showSrNo && (
                       <td rowSpan={srNoRowSpan} className="border border-black px-1 py-1 align-middle">{row.srNo}</td>
                     )}
