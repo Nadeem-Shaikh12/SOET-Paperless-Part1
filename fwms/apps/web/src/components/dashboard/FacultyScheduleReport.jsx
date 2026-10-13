@@ -5,8 +5,11 @@ import {
 } from 'lucide-react';
 import * as xlsx from 'xlsx';
 import { apiClient } from '../../lib/api-client';
+import { useAuthStore } from '../../stores/auth';
 
 export function FacultyScheduleReport() {
+  const { user } = useAuthStore();
+  const canEdit = user && ['super_admin', 'dept_admin'].includes(user.role);
   const [scheduleData, setScheduleData] = useState([]);
   const [loading,      setLoading]      = useState(true);
   const [fetchError,   setFetchError]   = useState(null);
@@ -242,12 +245,14 @@ export function FacultyScheduleReport() {
                   >
                     <Printer className="w-4 h-4" /> Print
                   </button>
-                  <button
-                    onClick={() => setEditing(true)}
-                    className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg bg-[var(--color-carbon)] text-white hover:bg-[var(--color-graphite)] transition-all"
-                  >
-                    <Pencil className="w-4 h-4" /> Edit
-                  </button>
+                  {canEdit && (
+                    <button
+                      onClick={() => setEditing(true)}
+                      className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg bg-[var(--color-carbon)] text-white hover:bg-[var(--color-graphite)] transition-all"
+                    >
+                      <Pencil className="w-4 h-4" /> Edit
+                    </button>
+                  )}
                 </>
               )}
             </div>

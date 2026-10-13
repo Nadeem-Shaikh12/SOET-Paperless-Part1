@@ -1,34 +1,64 @@
 [
   {
+    "sheetName": "Kaur Mam",
     "facultyName": "Dr. Parminder Kaur (PKD)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 3,
+    "theoryWeeklyHours": 3,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 48,
+    "courses": [
+      {
+        "code": "DS",
+        "title": "Data Structure",
+        "theoryHrs": 3,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 3,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 48
+      },
+      {
+        "code": "DSA",
+        "title": "Data Structure and Algorithm",
+        "theoryHrs": 0,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 0,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 0
+      }
+    ],
     "schedule": {
       "MONDAY": [],
       "TUESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "DS & DSA",
-          "location": "IC",
-          "floor": "",
-          "batch": "TE(I), SE(R)"
+          "activity": "DS & DSA (PKD) IC",
+          "type": "theory",
+          "location": "",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "DS & DSA",
-          "location": "IC",
-          "floor": "",
-          "batch": "TE(I), SE(R)"
+          "activity": "DS & DSA (PKD) IC",
+          "type": "theory",
+          "location": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "DS & DSA",
-          "location": "IC",
-          "floor": "",
-          "batch": "TE(I), SE(R)"
+          "activity": "DS & DSA (PKD) IC",
+          "type": "theory",
+          "location": "",
+          "batch": ""
         }
       ],
       "FRIDAY": [],
@@ -36,225 +66,309 @@
     }
   },
   {
+    "sheetName": "KMB",
     "facultyName": "Dr. Kawarkhe M. B.",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 8,
+    "theoryWeeklyHours": 6,
+    "practicalWeeklyHours": 2,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 128,
+    "courses": [
+      {
+        "code": "RM",
+        "title": "Research Methodology",
+        "theoryHrs": 4,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "C.R. 12"
+        ],
+        "batches": [],
+        "totalSemesterHours": 64
+      },
+      {
+        "code": "DBMS",
+        "title": "Data Base Management System",
+        "theoryHrs": 2,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "JPR LAB",
+          "C.R. 1"
+        ],
+        "batches": [
+          "Batch A"
+        ],
+        "totalSemesterHours": 64
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "1:45-2:45",
-          "activity": "RM",
-          "location": "( KMB)",
-          "floor": "",
-          "batch": "BE(R)"
+          "activity": "RM ( KMB) C.R. 12",
+          "type": "theory",
+          "location": "C.R. 12",
+          "batch": ""
         }
       ],
       "TUESDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "DBMS-(KMB)-A-(JPR LAB)",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "DBMS-(KMB)-A-(JPR LAB)",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         }
       ],
       "WEDNESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "RM",
-          "location": "( KMB)",
-          "floor": "",
-          "batch": "BE(R)"
+          "activity": "RM ( KMB) C.R. 12",
+          "type": "theory",
+          "location": "C.R. 12",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "DBMS",
+          "activity": "DBMS (KMB) C.R. 1",
+          "type": "theory",
           "location": "C.R. 1",
-          "floor": "",
-          "batch": "TE(R)"
+          "batch": ""
         }
       ],
       "THURSDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "RM",
-          "location": "( KMB)",
-          "floor": "",
-          "batch": "BE(R)"
+          "activity": "RM ( KMB) C.R. 12",
+          "type": "theory",
+          "location": "C.R. 12",
+          "batch": ""
         }
       ],
       "FRIDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "RM",
-          "location": "( KMB)",
-          "floor": "",
-          "batch": "BE(R)"
+          "activity": "RM ( KMB) C.R. 12",
+          "type": "theory",
+          "location": "C.R. 12",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "DBMS",
+          "activity": "DBMS (KMB) C.R. 1",
+          "type": "theory",
           "location": "C.R. 1",
-          "floor": "",
-          "batch": "TE(R)"
+          "batch": ""
         }
       ],
       "SATURDAY": []
     }
   },
   {
+    "sheetName": "RSR",
     "facultyName": "Mrs.Rathi S. R. (RSR)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 18,
+    "theoryWeeklyHours": 6,
+    "practicalWeeklyHours": 12,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 288,
+    "courses": [
+      {
+        "code": "DSV",
+        "title": "Data Story Telling and Visualization",
+        "theoryHrs": 2,
+        "practicalHrs": 4,
+        "tutorialHrs": 0,
+        "totalHrs": 6,
+        "locations": [
+          "C.R. 3",
+          "JPR LAB",
+          "STE LAB"
+        ],
+        "batches": [
+          "Batch B",
+          "Batch A"
+        ],
+        "totalSemesterHours": 96
+      },
+      {
+        "code": "DSR",
+        "title": "Data Science with R",
+        "theoryHrs": 2,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 8,
+        "locations": [
+          "C.R. 2",
+          "STE LAB",
+          "PROG LAB"
+        ],
+        "batches": [
+          "Batch C",
+          "Batch A",
+          "Batch B"
+        ],
+        "totalSemesterHours": 128
+      },
+      {
+        "code": "PIC",
+        "title": "Programming in C Language",
+        "theoryHrs": 2,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "C.R. 10",
+          "JPR LAB"
+        ],
+        "batches": [
+          "Batch A"
+        ],
+        "totalSemesterHours": 64
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "PIC",
-          "location": "(RSR)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "PIC (RSR) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         }
       ],
       "TUESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "DSR",
-          "location": "(RSR)",
-          "floor": "",
-          "batch": "FO(I)"
+          "activity": "DSR (RSR) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
+          "batch": ""
         },
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "PIC-(RSR)-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         },
         {
-          "time": "1:45-2:45",
-          "activity": "PIC-(RSR)-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
-        },
-        {
-          "time": "3:00-4:00",
-          "activity": "DSR- (RSR)-C-",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "time": "3:00-5:00",
+          "activity": "DSR- (RSR)-C- STE LAB",
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch C"
         }
       ],
       "WEDNESDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "DSV",
-          "location": "(RSR)",
-          "floor": "",
+          "activity": "DSV (RSR) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "DSR- (RSR)-A- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "DSR- (RSR)-A- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch A"
         }
       ],
       "THURSDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "DSV- (RSR)-B- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "DSV- (RSR)-B- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch B"
         },
         {
           "time": "1:45-2:45",
-          "activity": "PIC",
-          "location": "(RSR)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "PIC (RSR) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         }
       ],
       "FRIDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "DSR",
-          "location": "(RSR)",
-          "floor": "",
+          "activity": "DSR (RSR) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
           "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "DSV",
-          "location": "(RSR)",
-          "floor": "",
-          "batch": "FI(I)"
+          "activity": "DSV (RSR) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
+          "batch": ""
         },
         {
-          "time": "3:00-4:00",
-          "activity": "DSR- (RSR)-B-",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "time": "3:00-5:00",
+          "activity": "DSR- (RSR)-B- STE LAB",
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch B"
         }
       ],
       "SATURDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "DSV- (RSR)-A-STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "DSV- (RSR)-A-STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch A"
         }
       ]
     }
   },
   {
+    "sheetName": "PED",
     "facultyName": "Mr.Pawar E.D. (PED)",
     "department": "Mechanical Engineering Department",
+    "totalWeeklyHours": 4,
+    "theoryWeeklyHours": 3,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 1,
+    "totalSemesterHours": 64,
+    "courses": [
+      {
+        "code": "M -IV",
+        "title": "Mathematics-IV",
+        "theoryHrs": 3,
+        "practicalHrs": 0,
+        "tutorialHrs": 1,
+        "totalHrs": 4,
+        "locations": [
+          "C.R. 06"
+        ],
+        "batches": [],
+        "totalSemesterHours": 64
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "MAT-4",
+          "activity": "MAT-4 (PED) C.R. 06",
+          "type": "theory",
           "location": "C.R. 06",
-          "floor": "",
           "batch": ""
         }
       ],
@@ -262,9 +376,9 @@
       "WEDNESDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "MAT-4",
+          "activity": "MAT-4 (PED) C.R. 06",
+          "type": "theory",
           "location": "C.R. 06",
-          "floor": "",
           "batch": ""
         }
       ],
@@ -272,52 +386,65 @@
       "FRIDAY": [
         {
           "time": "4:00-5:00",
-          "activity": "MAT-4",
+          "activity": "MAT-4 (TU) (PED) C.R. 06",
+          "type": "tutorial",
           "location": "C.R. 06",
-          "floor": "",
           "batch": ""
         }
       ],
       "SATURDAY": [
         {
           "time": "1:45-2:45",
-          "activity": "MAT-4",
+          "activity": "MAT-4 (PED) C.R. 06",
+          "type": "theory",
           "location": "C.R. 06",
-          "floor": "",
           "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "PSS",
     "facultyName": "Ms.Patil S.S. (PSS)",
     "department": "Mechanical Engineering Department",
+    "totalWeeklyHours": 2,
+    "theoryWeeklyHours": 2,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 32,
+    "courses": [
+      {
+        "code": "IOB",
+        "title": "Introduction of Biology",
+        "theoryHrs": 2,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [
+          "C.R. 06"
+        ],
+        "batches": [],
+        "totalSemesterHours": 32
+      }
+    ],
     "schedule": {
-      "MONDAY": [
-        {
-          "time": "4:00-5:00",
-          "activity": "IOB",
-          "location": "C.R. 06",
-          "floor": "",
-          "batch": ""
-        }
-      ],
+      "MONDAY": [],
       "TUESDAY": [],
       "WEDNESDAY": [
         {
-          "time": "09:00-10:00",
-          "activity": "IOB",
+          "time": "10:00-11:00",
+          "activity": "IOB (PSS) C.R. 06",
+          "type": "theory",
           "location": "C.R. 06",
-          "floor": "",
           "batch": ""
         }
       ],
       "THURSDAY": [
         {
-          "time": "3:00-4:00",
-          "activity": "IOB",
+          "time": "4:00-5:00",
+          "activity": "IOB (PSS) C.R. 06",
+          "type": "theory",
           "location": "C.R. 06",
-          "floor": "",
           "batch": ""
         }
       ],
@@ -326,32 +453,54 @@
     }
   },
   {
+    "sheetName": "VSM",
     "facultyName": "Mr.Vaijwade S.M. (VSM)",
     "department": "Mechanical Engineering Department",
+    "totalWeeklyHours": 5,
+    "theoryWeeklyHours": 3,
+    "practicalWeeklyHours": 2,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 80,
+    "courses": [
+      {
+        "code": "PP",
+        "title": "Python Programming",
+        "theoryHrs": 3,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 5,
+        "locations": [
+          "C.R. 05",
+          "EE CAD LAB"
+        ],
+        "batches": [],
+        "totalSemesterHours": 80
+      }
+    ],
     "schedule": {
       "MONDAY": [],
       "TUESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "PP",
+          "activity": "PP (VSM) C.R. 05",
+          "type": "theory",
           "location": "C.R. 05",
-          "floor": "",
-          "batch": "FY(R)"
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "PP",
+          "activity": "PP ( VSM) C.R. 05",
+          "type": "theory",
           "location": "C.R. 05",
-          "floor": "",
-          "batch": "TE(I)"
+          "batch": ""
         },
         {
-          "time": "3:00-4:00",
-          "activity": "PP - (VSM)",
-          "location": "",
-          "floor": "",
+          "time": "3:00-5:00",
+          "activity": "PP - (VSM) - (EE CAD LAB)",
+          "type": "practical",
+          "location": "EE CAD LAB",
           "batch": ""
         }
       ],
@@ -360,25 +509,46 @@
       "SATURDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "PP",
+          "activity": "PP ( VSM) C.R. 05",
+          "type": "theory",
           "location": "C.R. 05",
-          "floor": "",
           "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "PKD",
     "facultyName": "Dr.Parminder Kaur. (PKD)",
     "department": "Mechanical Engineering Department",
+    "totalWeeklyHours": 3,
+    "theoryWeeklyHours": 3,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 48,
+    "courses": [
+      {
+        "code": "OOPS",
+        "title": "Object Oriented Programming using C++",
+        "theoryHrs": 3,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 3,
+        "locations": [
+          "C.R. 12"
+        ],
+        "batches": [],
+        "totalSemesterHours": 48
+      }
+    ],
     "schedule": {
       "MONDAY": [],
       "TUESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "OOPS",
+          "activity": "OOPS (PKD) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
           "batch": ""
         }
       ],
@@ -387,33 +557,55 @@
       "FRIDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "OOPS",
+          "activity": "OOPS (PKD) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
           "batch": ""
         }
       ],
       "SATURDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "OOPS",
+          "activity": "OOPS (PKD) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
           "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "VSR",
     "facultyName": "Ms.Vibhute S.R. (VSR)",
     "department": "Mechanical Engineering Department",
+    "totalWeeklyHours": 3,
+    "theoryWeeklyHours": 1,
+    "practicalWeeklyHours": 2,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 48,
+    "courses": [
+      {
+        "code": "OOPS",
+        "title": "Object Oriented Programming using C++",
+        "theoryHrs": 1,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 3,
+        "locations": [
+          "MIC LAB",
+          "C.R. 05"
+        ],
+        "batches": [],
+        "totalSemesterHours": 48
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
-          "time": "10:00-11:00",
-          "activity": "OOPS -",
-          "location": "",
-          "floor": "",
+          "time": "10:00-12:00",
+          "activity": "OOPS - VSR ) - (MIC LAB)",
+          "type": "practical",
+          "location": "MIC LAB",
           "batch": ""
         }
       ],
@@ -421,9 +613,9 @@
       "WEDNESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "OOPS",
+          "activity": "OOPS (VSR) C.R. 05",
+          "type": "theory",
           "location": "C.R. 05",
-          "floor": "",
           "batch": ""
         }
       ],
@@ -433,41 +625,60 @@
     }
   },
   {
+    "sheetName": "AKC",
     "facultyName": "Mrs.Agrawal K. C.(AKC)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 3,
+    "theoryWeeklyHours": 3,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 48,
+    "courses": [
+      {
+        "code": "DMS",
+        "title": "Discrete Mathematics",
+        "theoryHrs": 3,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 3,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 48
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
       "TUESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "DMS",
-          "location": "IC",
-          "floor": "",
-          "batch": "SE(R)"
+          "activity": "DMS (AKC) IC",
+          "type": "theory",
+          "location": "",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "DMS",
-          "location": "IC",
-          "floor": "",
-          "batch": "SE(R)"
+          "activity": "DMS (AKC) IC",
+          "type": "theory",
+          "location": "",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
-          "activity": "DMS",
-          "location": "IC",
-          "floor": "",
-          "batch": "SE(R)"
+          "activity": "DMS (AKC) IC",
+          "type": "theory",
+          "location": "",
+          "batch": ""
         }
       ],
       "THURSDAY": [],
@@ -476,907 +687,1074 @@
     }
   },
   {
+    "sheetName": "BCB",
     "facultyName": "Ms.Bhagat C. B.(BCB)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 18,
+    "theoryWeeklyHours": 6,
+    "practicalWeeklyHours": 12,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 288,
+    "courses": [
+      {
+        "code": "SEN",
+        "title": "Software Engineering",
+        "theoryHrs": 3,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 5,
+        "locations": [
+          "C.R. 11",
+          "CC LAB"
+        ],
+        "batches": [
+          "Batch B"
+        ],
+        "totalSemesterHours": 80
+      },
+      {
+        "code": "DSA",
+        "title": "Data Structure and Algorithm",
+        "theoryHrs": 0,
+        "practicalHrs": 4,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "PROG LAB"
+        ],
+        "batches": [
+          "Batch B",
+          "Batch A"
+        ],
+        "totalSemesterHours": 64
+      },
+      {
+        "code": "BC",
+        "title": "Blockchain",
+        "theoryHrs": 3,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 9,
+        "locations": [
+          "Prog Lab",
+          "C.R. 12",
+          "PROG LAB"
+        ],
+        "batches": [
+          "Batch B",
+          "Batch C",
+          "Batch A"
+        ],
+        "totalSemesterHours": 144
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "SEN",
+          "activity": "SEN (BCB) C.R. 11",
+          "type": "theory",
           "location": "C.R. 11",
-          "floor": "",
-          "batch": "TE(I)"
+          "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "DSA- (BCB)-B- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "TE(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "DSA- (BCB)-B- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "TE(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch B"
         }
       ],
       "TUESDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "BC - (BCB )-B- (Prog Lab-II )",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "BC - (BCB )-B- (Prog Lab-II )",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "Prog Lab",
+          "batch": "Batch B"
         },
         {
           "time": "12:45-1:45",
-          "activity": "BC",
+          "activity": "BC (BCB) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "BE(R)"
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "SEN",
+          "activity": "SEN (BCB) C.R. 11",
+          "type": "theory",
           "location": "C.R. 11",
-          "floor": "",
-          "batch": "TE(I)"
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
-          "activity": "BC",
+          "activity": "BC (BCB) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "FI(I)"
+          "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "SEN- (BCB)-B- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "SEN- (BCB)-B- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(I)"
+          "type": "practical",
+          "location": "CC LAB",
+          "batch": "Batch B"
         }
       ],
       "THURSDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "BC",
+          "activity": "BC (BCB) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "FI(I), BE(R)"
+          "batch": ""
         },
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "DSA- (BCB)-A-PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "TE(I)"
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "DSA- (BCB)-A-PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "TE(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch A"
         }
       ],
       "FRIDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "SEN",
+          "activity": "SEN (BCB) C.R. 11",
+          "type": "theory",
           "location": "C.R. 11",
-          "floor": "",
-          "batch": "TE(I)"
+          "batch": ""
         },
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "BC -(BCB)-C- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "BE(R)"
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "BC -(BCB)-C- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "BE(R)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch C"
         }
       ],
       "SATURDAY": [
         {
-          "time": "10:00-11:00",
-          "activity": "BC - ( BCB )-A- (Prog Lab-II )",
-          "location": "BC- (BCB)-A- ( Prog Lab-II)",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "BC - ( BCB )-A- (Prog Lab-II )",
-          "location": "BC- (BCB)-A- ( Prog Lab-II)",
-          "floor": "",
-          "batch": "FI(I)"
+          "time": "10:00-12:00",
+          "activity": "BC - ( BCB )-A- (Prog Lab-II ) BC- (BCB)-A- ( Prog Lab-II)",
+          "type": "practical",
+          "location": "Prog Lab",
+          "batch": "Batch A"
         }
       ]
     }
   },
   {
+    "sheetName": "DRR",
     "facultyName": "Mrs. Deshmukh R. R. (DRR)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 13,
+    "theoryWeeklyHours": 5,
+    "practicalWeeklyHours": 8,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 208,
+    "courses": [
+      {
+        "code": "JPR",
+        "title": "Java Programming",
+        "theoryHrs": 0,
+        "practicalHrs": 8,
+        "tutorialHrs": 0,
+        "totalHrs": 8,
+        "locations": [
+          "STE LAB",
+          "CC LAB"
+        ],
+        "batches": [
+          "Batch C",
+          "Batch A",
+          "Batch B"
+        ],
+        "totalSemesterHours": 128
+      },
+      {
+        "code": "CS",
+        "title": "Cyber Security",
+        "theoryHrs": 2,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [
+          "C.R. 12"
+        ],
+        "batches": [],
+        "totalSemesterHours": 32
+      },
+      {
+        "code": "PIC",
+        "title": "Programming in C Language",
+        "theoryHrs": 3,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 3,
+        "locations": [
+          "C.R. 7"
+        ],
+        "batches": [],
+        "totalSemesterHours": 48
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         },
         {
           "time": "1:45-2:45",
-          "activity": "PIC",
+          "activity": "PIC (DRR) C.R. 7",
+          "type": "theory",
           "location": "C.R. 7",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "JPR- (DRR )-C-STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "JPR- (DRR )-C-STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch C"
         }
       ],
       "TUESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "PIC",
+          "activity": "PIC (DRR) C.R. 7",
+          "type": "theory",
           "location": "C.R. 7",
-          "floor": "",
           "batch": ""
         },
         {
           "time": "1:45-2:45",
-          "activity": "CS",
+          "activity": "CS (DRR) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "BE(R)"
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CS",
+          "activity": "CS (DRR) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "BE(R)"
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
-          "activity": "PIC",
+          "activity": "PIC (DRR) C.R. 7",
+          "type": "theory",
           "location": "C.R. 7",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "DS- ( DRR )-A- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "DS- ( DRR )-A- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch A"
         }
       ],
       "THURSDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "JPR- (DRR )-A- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch A"
         },
         {
-          "time": "11:00-12:00",
-          "activity": "JPR- (DRR )-A- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "DS- ( DRR )-B- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "DS- ( DRR )-B- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch B"
         }
       ],
       "FRIDAY": [
         {
-          "time": "10:00-11:00",
-          "activity": "JPR",
+          "time": "10:00-12:00",
+          "activity": "JPR (DRR) CC LAB",
+          "type": "practical",
           "location": "CC LAB",
-          "floor": "",
-          "batch": "TE(R)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "JPR",
-          "location": "CC LAB",
-          "floor": "",
-          "batch": "TE(R)"
+          "batch": ""
         }
       ],
       "SATURDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "JPR- (DRR )-B- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch B"
         },
         {
-          "time": "11:00-12:00",
-          "activity": "JPR- (DRR )-B- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "DS- ( DRR )-C- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "DS- ( DRR )-C- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch C"
         }
       ]
     }
   },
   {
+    "sheetName": "JAK",
     "facultyName": "Ms.Jadhav A. K.(JAK)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 10,
+    "theoryWeeklyHours": 4,
+    "practicalWeeklyHours": 6,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 160,
+    "courses": [
+      {
+        "code": "SEN",
+        "title": "Software Engineering",
+        "theoryHrs": 2,
+        "practicalHrs": 4,
+        "tutorialHrs": 0,
+        "totalHrs": 6,
+        "locations": [
+          "C.R. 10",
+          "PROG LAB",
+          "JPR LAB"
+        ],
+        "batches": [
+          "Batch C",
+          "Batch A"
+        ],
+        "totalSemesterHours": 96
+      },
+      {
+        "code": "DPS",
+        "title": "Data Privacy and Security",
+        "theoryHrs": 0,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 0,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 0
+      },
+      {
+        "code": "CES",
+        "title": "Cyber Law Ethics and Security Policies",
+        "theoryHrs": 0,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 0,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 0
+      },
+      {
+        "code": "HCI",
+        "title": "Human Computer Interatction",
+        "theoryHrs": 2,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "JPR LAB",
+          "C.R. 2"
+        ],
+        "batches": [
+          "Batch A"
+        ],
+        "totalSemesterHours": 64
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
           "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "ADBM- (JAK)-B-JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch B"
         },
         {
-          "time": "1:45-2:45",
-          "activity": "ADBM- (JAK)-B-JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "SE- ( JAK )-B- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "SE- ( JAK )-B- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch B"
         }
       ],
       "TUESDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "SEN",
+          "activity": "SEN (JAK) C.R. 10",
+          "type": "theory",
           "location": "C.R. 10",
-          "floor": "",
-          "batch": "TE(R)"
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "SEN",
+          "activity": "SEN (JAK) C.R. 10",
+          "type": "theory",
           "location": "C.R. 10",
-          "floor": "",
-          "batch": "TE(R)"
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "ADBM",
-          "location": "(JAK)",
-          "floor": "",
-          "batch": "FI(I)"
+          "activity": "ADBM (JAK) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
+          "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "HCI- (JAK)-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "HCI- (JAK)-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         }
       ],
       "THURSDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "SEN- ( JAK )-C- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "SEN- ( JAK )-C- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch C"
         },
         {
           "time": "1:45-2:45",
-          "activity": "HCI",
-          "location": "(JAK)",
-          "floor": "",
+          "activity": "HCI (JAK) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
           "batch": ""
         }
       ],
       "FRIDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "HCI",
-          "location": "(JAK)",
-          "floor": "",
+          "activity": "HCI (JAK) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "ADBM- (JAK)-A-JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "ADBM- (JAK)-A-JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         }
       ],
       "SATURDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "SEN- ( JAK )-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "SEN- ( JAK )-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         },
         {
           "time": "1:45-2:45",
-          "activity": "ADBM",
-          "location": "(JAK)",
-          "floor": "",
-          "batch": "FI(I)"
+          "activity": "ADBM (JAK) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
+          "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "MMK",
     "facultyName": "Ms. Maid M. K.(MMK)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 12,
+    "theoryWeeklyHours": 2,
+    "practicalWeeklyHours": 10,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 192,
+    "courses": [
+      {
+        "code": "JPR",
+        "title": "Java Programming",
+        "theoryHrs": 0,
+        "practicalHrs": 4,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "CC LAB"
+        ],
+        "batches": [],
+        "totalSemesterHours": 64
+      },
+      {
+        "code": "OS",
+        "title": "Operating System",
+        "theoryHrs": 2,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 8,
+        "locations": [
+          "PROG LAB",
+          "C.R. 2"
+        ],
+        "batches": [
+          "Batch B",
+          "Batch C",
+          "Batch A"
+        ],
+        "totalSemesterHours": 128
+      },
+      {
+        "code": "ADBM",
+        "title": "Advance Database Managemet",
+        "theoryHrs": 0,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 0,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 0
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "DPS- (MMK)-A- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "DPS- (MMK)-A- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch A"
         }
       ],
       "TUESDAY": [
         {
-          "time": "12:45-1:45",
-          "activity": "JPR",
-          "location": "(MMK)",
-          "floor": "",
-          "batch": "TE(I)"
+          "time": "12:45-2:45",
+          "activity": "JPR (MMK) CC LAB",
+          "type": "practical",
+          "location": "CC LAB",
+          "batch": ""
         },
         {
-          "time": "1:45-2:45",
-          "activity": "JPR",
-          "location": "(MMK)",
-          "floor": "",
-          "batch": "TE(I)"
-        },
-        {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "OS - (MMK)-B- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "OS - (MMK)-B- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch B"
         }
       ],
       "WEDNESDAY": [
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "OS - (MMK)-C-PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "OS - (MMK)-C-PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch C"
         }
       ],
       "THURSDAY": [
         {
-          "time": "10:00-11:00",
-          "activity": "JPR",
-          "location": "(MMK)",
-          "floor": "",
-          "batch": "TE(I)"
+          "time": "10:00-12:00",
+          "activity": "JPR (MMK) CC LAB",
+          "type": "practical",
+          "location": "CC LAB",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
-          "activity": "OS",
-          "location": "(MMK)",
-          "floor": "",
+          "activity": "OS (MMK) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
           "batch": ""
         }
       ],
       "FRIDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "DPS",
-          "location": "(MMK)",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "12:45-1:45",
-          "activity": "OS",
-          "location": "(MMK)",
-          "floor": "",
+          "activity": "DPS (MMK) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
-          "activity": "OS - (MMK)-A-PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "time": "12:45-1:45",
+          "activity": "OS (MMK) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
+          "batch": ""
         },
         {
-          "time": "4:00-5:00",
+          "time": "3:00-5:00",
           "activity": "OS - (MMK)-A-PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch A"
         }
       ],
       "SATURDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "DPS- (MMK)-B- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "DPS- (MMK)-B- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch B"
         },
         {
           "time": "12:45-1:45",
-          "activity": "DPS",
-          "location": "(MMK)",
-          "floor": "",
-          "batch": "FI(I)"
+          "activity": "DPS (MMK) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
+          "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "KAR",
     "facultyName": "Ms.Kachare A.R.(KAR)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 18,
+    "theoryWeeklyHours": 6,
+    "practicalWeeklyHours": 12,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 288,
+    "courses": [
+      {
+        "code": "CN",
+        "title": "Computer Network",
+        "theoryHrs": 2,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 8,
+        "locations": [
+          "MIC LAB",
+          "C.R. 1"
+        ],
+        "batches": [
+          "Batch B",
+          "Batch A",
+          "Batch C"
+        ],
+        "totalSemesterHours": 128
+      },
+      {
+        "code": "BD",
+        "title": "Big Data",
+        "theoryHrs": 2,
+        "practicalHrs": 4,
+        "tutorialHrs": 0,
+        "totalHrs": 6,
+        "locations": [
+          "C.R. 3",
+          "C.R. 4",
+          "PROG LAB",
+          "MIC LAB"
+        ],
+        "batches": [
+          "Batch A",
+          "Batch B"
+        ],
+        "totalSemesterHours": 96
+      },
+      {
+        "code": "NCS",
+        "title": "Network and Cyber Security",
+        "theoryHrs": 2,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "C.R. 2",
+          "MIC LAB"
+        ],
+        "batches": [
+          "Batch A"
+        ],
+        "totalSemesterHours": 64
+      },
+      {
+        "code": "IDS",
+        "title": "Introduction to Data science",
+        "theoryHrs": 0,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 0,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 0
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "CN-(KAR)-B-MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I), TE(R)"
+          "type": "practical",
+          "location": "MIC LAB",
+          "batch": "Batch B"
         },
         {
-          "time": "1:45-2:45",
-          "activity": "CN-(KAR)-B-MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I), TE(R)"
-        },
-        {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "CN-(KAR)-A- MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "CN-(KAR)-A- MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
+          "type": "practical",
+          "location": "MIC LAB",
+          "batch": "Batch A"
         }
       ],
       "TUESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "NCS",
-          "location": "(KAR)",
-          "floor": "",
+          "activity": "NCS (KAR) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
           "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "BD",
-          "location": "(KAR)",
-          "floor": "",
-          "batch": "FI(I)"
+          "activity": "BD (KAR) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "BD",
-          "location": "(KAR)",
-          "floor": "",
-          "batch": "FI(I)"
+          "activity": "BD (KAR) C.R. 4",
+          "type": "theory",
+          "location": "C.R. 4",
+          "batch": ""
         },
         {
           "time": "1:45-2:45",
-          "activity": "CN",
+          "activity": "CN (KAR) C.R. 1",
+          "type": "theory",
           "location": "C.R. 1",
-          "floor": "",
-          "batch": "TE(R)"
+          "batch": ""
         }
       ],
       "THURSDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "BD- (KAR)-A-PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch A"
         },
         {
-          "time": "11:00-12:00",
-          "activity": "BD- (KAR)-A-PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "NCS- (KAR)-A- MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "NCS- (KAR)-A- MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "type": "practical",
+          "location": "MIC LAB",
+          "batch": "Batch A"
         }
       ],
       "FRIDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "NCS",
-          "location": "(KAR)",
-          "floor": "",
+          "activity": "NCS (KAR) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "BD- (KAR)-B-MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I), FI(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "BD- (KAR)-B-MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I), FI(I)"
+          "type": "practical",
+          "location": "MIC LAB",
+          "batch": "Batch B"
         }
       ],
       "SATURDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "CN-(KAR)-C- MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "CN-(KAR)-C- MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
+          "type": "practical",
+          "location": "MIC LAB",
+          "batch": "Batch C"
         },
         {
           "time": "12:45-1:45",
-          "activity": "CN",
+          "activity": "CN (KAR) C.R. 1",
+          "type": "theory",
           "location": "C.R. 1",
-          "floor": "",
-          "batch": "TE(I), TE(R)"
+          "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "KAR1",
     "facultyName": "Mrs.Kothimbire A. R.(KAR)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 19,
+    "theoryWeeklyHours": 7,
+    "practicalWeeklyHours": 12,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 304,
+    "courses": [
+      {
+        "code": "SEN",
+        "title": "Software Engineering",
+        "theoryHrs": 0,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [
+          "PROG LAB"
+        ],
+        "batches": [
+          "Batch A"
+        ],
+        "totalSemesterHours": 32
+      },
+      {
+        "code": "AI",
+        "title": "Artificial Intelligence",
+        "theoryHrs": 3,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 9,
+        "locations": [
+          "PROG LAB",
+          "MIC LAB",
+          "C.R. 2"
+        ],
+        "batches": [
+          "Batch A",
+          "Batch B",
+          "Batch C"
+        ],
+        "totalSemesterHours": 144
+      },
+      {
+        "code": "CDF",
+        "title": "Cyber Law and Digital Forensic",
+        "theoryHrs": 2,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "PROG LAB",
+          "C.R. 2",
+          "C.R. 12"
+        ],
+        "batches": [
+          "Batch A"
+        ],
+        "totalSemesterHours": 64
+      },
+      {
+        "code": "ML",
+        "title": "Machine Learning",
+        "theoryHrs": 2,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "C.R.7",
+          "MECH CAD LAB",
+          "C.R. 7"
+        ],
+        "batches": [
+          "Batch A"
+        ],
+        "totalSemesterHours": 64
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "CDF- (KAR)-A-PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I), TE(R)"
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "CDF- (KAR)-A-PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I), TE(R)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch A"
         }
       ],
       "TUESDAY": [
         {
           "time": "1:45-2:45",
-          "activity": "ML",
-          "location": "(KAR)",
-          "floor": "",
+          "activity": "ML (KAR) C.R.7",
+          "type": "theory",
+          "location": "C.R.7",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "AI- (KAR)-A- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "AI- (KAR)-A- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch A"
         }
       ],
       "WEDNESDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "ML- (KAR)-A- (MECH CAD LAB)",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "MECH CAD LAB",
+          "batch": "Batch A"
         },
         {
-          "time": "1:45-2:45",
-          "activity": "ML- (KAR)-A- (MECH CAD LAB)",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "AI- (KAR)-B- MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "AI- (KAR)-B- MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "type": "practical",
+          "location": "MIC LAB",
+          "batch": "Batch B"
         }
       ],
       "THURSDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CDF",
-          "location": "(KAR)",
-          "floor": "",
-          "batch": "FI(I)"
+          "activity": "CDF (KAR) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "AI",
-          "location": "(KAR)",
-          "floor": "",
-          "batch": "FO(I)"
+          "activity": "AI (KAR) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
-          "activity": "ML",
-          "location": "(KAR)",
-          "floor": "",
-          "batch": "FO(I)"
+          "activity": "ML (KAR) C.R. 7",
+          "type": "theory",
+          "location": "C.R. 7",
+          "batch": ""
         }
       ],
       "FRIDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "AI",
-          "location": "(KAR)",
-          "floor": "",
-          "batch": "FO(I)"
+          "activity": "AI (KAR) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
+          "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "CDF",
-          "location": "(KAR)",
-          "floor": "",
-          "batch": "FI(I)"
+          "activity": "CDF (KAR) C.R. 12",
+          "type": "theory",
+          "location": "C.R. 12",
+          "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "AI- (KAR)-C- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I), FI(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "AI- (KAR)-C- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I), FI(I)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch C"
         }
       ],
       "SATURDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "AI",
-          "location": "(KAR)",
-          "floor": "",
-          "batch": "FO(I)"
+          "activity": "AI (KAR) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
+          "batch": ""
         },
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "SEN- (KAR)-A- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "TE(I), TE(R)"
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "SEN- (KAR)-A- PROG LAB-I",
-          "location": "",
-          "floor": "",
-          "batch": "TE(I), TE(R)"
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch A"
         }
       ]
     }
   },
   {
+    "sheetName": "MVV",
     "facultyName": "Ms. Mantri V. V. (MVV)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 12,
+    "theoryWeeklyHours": 2,
+    "practicalWeeklyHours": 10,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 192,
+    "courses": [
+      {
+        "code": "CCE",
+        "title": "CodeLock:Cybersecurity & Cryptography Essentials",
+        "theoryHrs": 2,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "C.R. 12",
+          "JPR LAB"
+        ],
+        "batches": [
+          "Batch C"
+        ],
+        "totalSemesterHours": 64
+      },
+      {
+        "code": "WTL",
+        "title": "Web Technology Lab (Field Project)",
+        "theoryHrs": 0,
+        "practicalHrs": 8,
+        "tutorialHrs": 0,
+        "totalHrs": 8,
+        "locations": [
+          "JPR LAB",
+          "STE LAB",
+          "PROG LAB"
+        ],
+        "batches": [
+          "Batch A",
+          "Batch B"
+        ],
+        "totalSemesterHours": 128
+      },
+      {
+        "code": "WTL",
+        "title": "Web Technology Lab",
+        "theoryHrs": 0,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 0,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 0
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "3:00-4:00",
           "activity": "MDM-I",
+          "type": "theory",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
@@ -1384,195 +1762,206 @@
         {
           "time": "3:00-4:00",
           "activity": "MDM-III",
+          "type": "theory",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CCE",
+          "activity": "CCE (MVV) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "SE(R)"
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
           "activity": "MDM-III",
+          "type": "theory",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
       "THURSDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CCE",
+          "activity": "CCE (MVV) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "SE(R)"
+          "batch": ""
         },
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "WTL- ( MVV )-A- ( JPR LAB)",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         },
         {
-          "time": "1:45-2:45",
-          "activity": "WTL- ( MVV )-A- ( JPR LAB)",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "WTL- ( MVV )-B- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "WTL- ( MVV )-B- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch B"
         }
       ],
       "FRIDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "WTL- ( MVV )-B- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "STE LAB",
+          "batch": "Batch B"
         },
         {
-          "time": "1:45-2:45",
-          "activity": "WTL- ( MVV )-B- STE LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "CCE- (MVV)-C- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(R)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "CCE- (MVV)-C- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(R)"
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch C"
         }
       ],
       "SATURDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "WTL-(MVV)-A-PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "WTL-(MVV)-A-PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch A"
         }
       ]
     }
   },
   {
+    "sheetName": "Sujit",
     "facultyName": "Mr. Vaijwade S. M.",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 7,
+    "theoryWeeklyHours": 1,
+    "practicalWeeklyHours": 6,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 112,
+    "courses": [
+      {
+        "code": "PP",
+        "title": "Programming in Python",
+        "theoryHrs": 1,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 7,
+        "locations": [
+          "C.R. 11",
+          "JPR LAB",
+          "CC LAB"
+        ],
+        "batches": [
+          "Batch A",
+          "Batch B"
+        ],
+        "totalSemesterHours": 112
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
       "TUESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "PP",
-          "location": "(VSM)",
-          "floor": "",
+          "activity": "PP (VSM) C.R. 11",
+          "type": "theory",
+          "location": "C.R. 11",
           "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "PP- (VSM)-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "PP- (VSM)-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         }
       ],
       "THURSDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "PP- (VSM)-B- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "PP- (VSM)-B- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "CC LAB",
+          "batch": "Batch B"
         }
       ],
       "FRIDAY": [],
       "SATURDAY": [
         {
-          "time": "10:00-11:00",
-          "activity": "PP",
-          "location": "(VSM)",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "PP",
-          "location": "(VSM)",
-          "floor": "",
+          "time": "10:00-12:00",
+          "activity": "PP (VSM) CC LAB",
+          "type": "practical",
+          "location": "CC LAB",
           "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "KPG",
     "facultyName": "Mr. Kale P. G. (KPG)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 14,
+    "theoryWeeklyHours": 4,
+    "practicalWeeklyHours": 10,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 224,
+    "courses": [
+      {
+        "code": "DEL",
+        "title": "Digital Electronics*",
+        "theoryHrs": 2,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 8,
+        "locations": [],
+        "batches": [
+          "Batch C",
+          "Batch A",
+          "Batch B"
+        ],
+        "totalSemesterHours": 128
+      },
+      {
+        "code": "MIC",
+        "title": "Microprocessor and Microcontroller*",
+        "theoryHrs": 2,
+        "practicalHrs": 4,
+        "tutorialHrs": 0,
+        "totalHrs": 6,
+        "locations": [
+          "C.R. 2",
+          "MIC LAB",
+          "C.R. 3",
+          "PROG LAB"
+        ],
+        "batches": [
+          "Batch B"
+        ],
+        "totalSemesterHours": 96
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "1:45-2:45",
-          "activity": "MIC",
-          "location": "(KPG)",
-          "floor": "",
+          "activity": "MIC (KPG) C.R. 2",
+          "type": "theory",
+          "location": "C.R. 2",
           "batch": ""
         }
       ],
@@ -1580,778 +1969,879 @@
       "WEDNESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "DEL",
-          "location": "IC",
-          "floor": "",
-          "batch": "SE(R)"
-        },
-        {
-          "time": "12:45-1:45",
-          "activity": "MIC-( KPG )-B-MIC LAB",
+          "activity": "DEL (KPG) IC",
+          "type": "theory",
           "location": "",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "1:45-2:45",
+          "time": "12:45-2:45",
           "activity": "MIC-( KPG )-B-MIC LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "MIC LAB",
+          "batch": "Batch B"
         }
       ],
       "THURSDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "DEL",
-          "location": "IC",
-          "floor": "",
-          "batch": "SE(R)"
-        },
-        {
-          "time": "12:45-1:45",
-          "activity": "DEL- ( KPG)-C- ELEC W/C",
+          "activity": "DEL (KPG) IC",
+          "type": "theory",
           "location": "",
-          "floor": "",
           "batch": ""
         },
         {
+          "time": "12:45-2:45",
+          "activity": "DEL- ( KPG)-C- ELEC W/C",
+          "type": "practical",
+          "location": "",
+          "batch": "Batch C"
+        },
+        {
           "time": "3:00-4:00",
-          "activity": "MIC",
-          "location": "(KPG)",
-          "floor": "",
-          "batch": "TE(I)"
+          "activity": "MIC (KPG) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
+          "batch": ""
         }
       ],
       "FRIDAY": [
         {
-          "time": "11:00-12:00",
-          "activity": "MIC",
-          "location": "(KPG)",
-          "floor": "",
+          "time": "10:00-12:00",
+          "activity": "MIC (KPG) PROG LAB-II",
+          "type": "practical",
+          "location": "PROG LAB",
           "batch": ""
         },
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "DEL- ( KPG)-A- ELEC W/C",
+          "type": "practical",
           "location": "",
-          "floor": "",
-          "batch": ""
+          "batch": "Batch A"
         }
       ],
       "SATURDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "DEL- ( KPG )-B- ELEC W/C",
+          "type": "practical",
           "location": "",
-          "floor": "",
-          "batch": ""
+          "batch": "Batch B"
         }
       ]
     }
   },
   {
+    "sheetName": "SVV",
     "facultyName": "Mr. Saswade V.V.",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 2,
+    "theoryWeeklyHours": 2,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 32,
+    "courses": [
+      {
+        "code": "PSI",
+        "title": "Privacy & Security in IoT",
+        "theoryHrs": 0,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 0,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 0
+      },
+      {
+        "code": "BCC",
+        "title": "Basics of CC",
+        "theoryHrs": 0,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 0,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 0
+      },
+      {
+        "code": "DBMS",
+        "title": "Data Base Management System",
+        "theoryHrs": 0,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 0,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 0
+      },
+      {
+        "code": "IAD",
+        "title": "Introduction to AI & Data Science",
+        "theoryHrs": 2,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [
+          "C.R. 04"
+        ],
+        "batches": [],
+        "totalSemesterHours": 32
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "1:45-2:45",
-          "activity": "IDS",
+          "activity": "IDS (SVV) C.R. 07",
+          "type": "theory",
           "location": "C.R. 07",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "IDS- (SVV)-A-ME CAD LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "IDS- (SVV)-A-ME CAD LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "ME CAD LAB",
+          "batch": "Batch A"
         }
       ],
       "TUESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "IDS",
+          "activity": "IDS (SVV) C.R.7",
+          "type": "theory",
           "location": "C.R.7",
-          "floor": "",
           "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "FAI (NPTEL)",
+          "activity": "FAI (NPTEL) (SVV) C.R. 07",
+          "type": "theory",
           "location": "C.R. 07",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "WTL- (SVV)-A,B,C- (JPR Lab)",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
+          "type": "practical",
+          "location": "JPR Lab",
+          "batch": ""
         },
         {
-          "time": "1:45-2:45",
-          "activity": "WTL- (SVV)-A,B,C- (JPR Lab)",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
-        },
-        {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "WTL- (SVV)-C- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(R)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "WTL- (SVV)-C- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(R)"
+          "type": "practical",
+          "location": "CC LAB",
+          "batch": "Batch C"
         }
       ],
       "THURSDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "WTL- (SVV)-A,B,C- (CC LAB)",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "WTL- (SVV)-A,B,C- (CC LAB)",
-          "location": "",
-          "floor": "",
-          "batch": "FO(I)"
-        },
-        {
-          "time": "3:00-4:00",
-          "activity": "WTL- (SVV)-C- PROG LAB-II",
-          "location": "",
-          "floor": "",
+          "type": "practical",
+          "location": "CC LAB",
           "batch": ""
         },
         {
-          "time": "4:00-5:00",
+          "time": "3:00-5:00",
           "activity": "WTL- (SVV)-C- PROG LAB-II",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "PROG LAB",
+          "batch": "Batch C"
         }
       ],
       "FRIDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "IDS",
+          "activity": "IDS (SVV) C.R. 7",
+          "type": "theory",
           "location": "C.R. 7",
-          "floor": "",
           "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "IAD",
+          "activity": "IAD (SVV) C.R. 04",
+          "type": "theory",
           "location": "C.R. 04",
-          "floor": "",
           "batch": ""
         }
       ],
       "SATURDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "IAD",
+          "activity": "IAD (SVV) C.R. 04",
+          "type": "theory",
           "location": "C.R. 04",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
-          "activity": "FAI - (SVV)",
-          "location": "",
-          "floor": "",
+          "time": "3:00-5:00",
+          "activity": "FAI - (SVV) -ME CAD LAB",
+          "type": "practical",
+          "location": "ME CAD LAB",
           "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "RSA",
     "facultyName": "Mrs. Ratnaparkhi S. A.",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 21,
+    "theoryWeeklyHours": 7,
+    "practicalWeeklyHours": 14,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 336,
+    "courses": [
+      {
+        "code": "CES",
+        "title": "Cyber Law Ethics and Security Policies",
+        "theoryHrs": 2,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [
+          "C.R. 3"
+        ],
+        "batches": [],
+        "totalSemesterHours": 32
+      },
+      {
+        "code": "BCC",
+        "title": "Basics of CC",
+        "theoryHrs": 3,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 9,
+        "locations": [
+          "JPR LAB",
+          "C.R. 1",
+          "ME CAD LAB"
+        ],
+        "batches": [
+          "Batch A",
+          "Batch B"
+        ],
+        "totalSemesterHours": 144
+      },
+      {
+        "code": "JPR",
+        "title": "Java Programming",
+        "theoryHrs": 0,
+        "practicalHrs": 8,
+        "tutorialHrs": 0,
+        "totalHrs": 8,
+        "locations": [
+          "JPR LAB"
+        ],
+        "batches": [
+          "Batch A",
+          "Batch B"
+        ],
+        "totalSemesterHours": 128
+      },
+      {
+        "code": "PSI",
+        "title": "Privacy & Security in IoT",
+        "theoryHrs": 2,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [
+          "C.R. 12"
+        ],
+        "batches": [],
+        "totalSemesterHours": 32
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "PSI",
+          "activity": "PSI (RSA) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "BE(R)"
-        },
-        {
-          "time": "3:00-4:00",
-          "activity": "JPR- ( RSA)-A- JPR LAB",
-          "location": "",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "4:00-5:00",
+          "time": "3:00-5:00",
           "activity": "JPR- ( RSA)-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         }
       ],
       "TUESDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "BCC-(RSA)-A-JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "BCC-(RSA)-A-JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I)"
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         },
         {
           "time": "1:45-2:45",
-          "activity": "BCC",
-          "location": "(RSA)",
-          "floor": "",
+          "activity": "BCC (RSA) C.R. 1",
+          "type": "theory",
+          "location": "C.R. 1",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "JPR- ( RSA )-B- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "JPR- ( RSA )-B- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch B"
         }
       ],
       "WEDNESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "BCC",
-          "location": "(RSA)",
-          "floor": "",
+          "activity": "BCC (RSA) C.R. 1",
+          "type": "theory",
+          "location": "C.R. 1",
           "batch": ""
         },
         {
           "time": "12:45-1:45",
-          "activity": "CES",
-          "location": "(RSA)",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "3:00-4:00",
-          "activity": "JPR- ( MMK )-A- JPR LAB",
-          "location": "",
-          "floor": "",
+          "activity": "CES (RSA) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
           "batch": ""
         },
         {
-          "time": "4:00-5:00",
+          "time": "3:00-5:00",
           "activity": "JPR- ( MMK )-A- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         }
       ],
       "THURSDAY": [
         {
           "time": "1:45-2:45",
-          "activity": "PSI",
+          "activity": "PSI (RSA) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "BE(R)"
+          "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "BCC-(RSA)-A-(JPR LAB)",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I), TE(R)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "BCC-(RSA)-A-(JPR LAB)",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I), TE(R)"
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch A"
         }
       ],
       "FRIDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "CES",
-          "location": "(RSA)",
-          "floor": "",
-          "batch": "FI(I)"
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "BCC",
-          "location": "(RSA)",
-          "floor": "",
+          "activity": "CES (RSA) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
-          "activity": "BCC-(RSA)-B-ME CAD LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I), TE(R)"
+          "time": "1:45-2:45",
+          "activity": "BCC (RSA) C.R. 1",
+          "type": "theory",
+          "location": "C.R. 1",
+          "batch": ""
         },
         {
-          "time": "4:00-5:00",
+          "time": "3:00-5:00",
           "activity": "BCC-(RSA)-B-ME CAD LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FI(I), TE(R)"
+          "type": "practical",
+          "location": "ME CAD LAB",
+          "batch": "Batch B"
         }
       ],
       "SATURDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "JPR- (RSA)-B- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "JPR- (RSA)-B- JPR LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "JPR LAB",
+          "batch": "Batch B"
         }
       ]
     }
   },
   {
+    "sheetName": "APT",
     "facultyName": "Mrs. Avhad P.T.",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 18,
+    "theoryWeeklyHours": 6,
+    "practicalWeeklyHours": 12,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 288,
+    "courses": [
+      {
+        "code": "PIC",
+        "title": "Programming in C Language",
+        "theoryHrs": 2,
+        "practicalHrs": 8,
+        "tutorialHrs": 0,
+        "totalHrs": 10,
+        "locations": [
+          "ME CAD LAB",
+          "C.R. 04",
+          "CC LAB"
+        ],
+        "batches": [
+          "Batch C",
+          "Batch B",
+          "Batch A"
+        ],
+        "totalSemesterHours": 160
+      },
+      {
+        "code": "DBMS",
+        "title": "Data Base Management System",
+        "theoryHrs": 0,
+        "practicalHrs": 4,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "CC LAB"
+        ],
+        "batches": [
+          "Batch C",
+          "Batch B"
+        ],
+        "totalSemesterHours": 64
+      },
+      {
+        "code": "IAD",
+        "title": "Introduction to AI & Data Science",
+        "theoryHrs": 2,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [
+          "C.R. 9"
+        ],
+        "batches": [],
+        "totalSemesterHours": 32
+      },
+      {
+        "code": "EE",
+        "title": "Engineering Exploration",
+        "theoryHrs": 2,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [],
+        "batches": [],
+        "totalSemesterHours": 32
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "DBMS-(APT)-C- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "DBMS-(APT)-C- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
+          "type": "practical",
+          "location": "CC LAB",
+          "batch": "Batch C"
         },
         {
           "time": "3:00-4:00",
-          "activity": "EE",
+          "activity": "EE (APT) IC",
+          "type": "theory",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
       "TUESDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "DBMS-(APT)-B- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
+          "type": "practical",
+          "location": "CC LAB",
+          "batch": "Batch B"
         },
         {
-          "time": "11:00-12:00",
-          "activity": "DBMS-(APT)-B- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "TE(R)"
-        },
-        {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "PIC-C-(APT) ME CAD LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "PIC-C-(APT) ME CAD LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "ME CAD LAB",
+          "batch": "Batch C"
         }
       ],
       "WEDNESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "IAD",
-          "location": "(APT)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "IAD (APT) C.R. 9",
+          "type": "theory",
+          "location": "C.R. 9",
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
-          "activity": "EE",
+          "activity": "EE (APT) IC",
+          "type": "theory",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
       "THURSDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "PIC",
+          "activity": "PIC (APT) C.R. 04",
+          "type": "theory",
           "location": "C.R. 04",
-          "floor": "",
           "batch": ""
         }
       ],
       "FRIDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "PIC",
+          "activity": "PIC (APT) C.R. 04",
+          "type": "theory",
           "location": "C.R. 04",
-          "floor": "",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "PIC-(APT)-B- (CC LAB )",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "PIC-(APT)-B- (CC LAB )",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
+          "type": "practical",
+          "location": "CC LAB",
+          "batch": "Batch B"
         }
       ],
       "SATURDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "PIC-(APT)-C- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "PIC-(APT)-C- CC LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
+          "type": "practical",
+          "location": "CC LAB",
+          "batch": "Batch C"
         },
         {
           "time": "1:45-2:45",
-          "activity": "IAD",
-          "location": "(APT)",
-          "floor": "",
-          "batch": "SE(I)"
-        },
-        {
-          "time": "3:00-4:00",
-          "activity": "PIC- ( APT)-A- ME CAD LAB",
-          "location": "",
-          "floor": "",
+          "activity": "IAD (APT) C.R. 9",
+          "type": "theory",
+          "location": "C.R. 9",
           "batch": ""
         },
         {
-          "time": "4:00-5:00",
+          "time": "3:00-5:00",
           "activity": "PIC- ( APT)-A- ME CAD LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "ME CAD LAB",
+          "batch": "Batch A"
         }
       ]
     }
   },
   {
+    "sheetName": "V1",
     "facultyName": "Industry Expert",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 9,
+    "theoryWeeklyHours": 3,
+    "practicalWeeklyHours": 6,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 144,
+    "courses": [
+      {
+        "code": "DOP-I",
+        "title": "DevOps-I",
+        "theoryHrs": 3,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 9,
+        "locations": [
+          "CC Lab",
+          "C.R. 3",
+          "E CAD LAB",
+          "STE Lab"
+        ],
+        "batches": [
+          "Batch A",
+          "Batch B"
+        ],
+        "totalSemesterHours": 144
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
       "TUESDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "DOP- I-(V2)-A-(CC Lab)",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "DOP- I-(V2)-A-(CC Lab)",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "CC Lab",
+          "batch": "Batch A"
         },
         {
           "time": "1:45-2:45",
-          "activity": "DOP-I & BCC",
-          "location": "(V2 &V1)",
-          "floor": "",
+          "activity": "DOP-I & BCC (V2 &V1) C.R. 3 C.R. 10",
+          "type": "theory",
+          "location": "C.R. 3",
           "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "DOP-I & BCC",
-          "location": "(V2 &V1)",
-          "floor": "",
+          "activity": "DOP-I & BCC (V2 &V1) C.R. 3 C.R. 10",
+          "type": "theory",
+          "location": "C.R. 3",
           "batch": ""
         }
       ],
       "THURSDAY": [
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "DOP- I-(V2)-B-E CAD LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "DOP- I-(V2)-B-E CAD LAB",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "E CAD LAB",
+          "batch": "Batch B"
         }
       ],
       "FRIDAY": [
         {
           "time": "1:45-2:45",
-          "activity": "DOP-I & BCC",
-          "location": "(V2 &V1)",
-          "floor": "",
+          "activity": "DOP-I & BCC (V2 &V1) C.R. 3 C.R. 10",
+          "type": "theory",
+          "location": "C.R. 3",
           "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "DOP- I-(V2)-A-(STE Lab)",
-          "location": "",
-          "floor": "",
-          "batch": ""
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "DOP- I-(V2)-A-(STE Lab)",
-          "location": "",
-          "floor": "",
-          "batch": ""
+          "type": "practical",
+          "location": "STE Lab",
+          "batch": "Batch A"
         }
       ],
       "SATURDAY": []
     }
   },
   {
+    "sheetName": "JMS",
     "facultyName": "Mr. Jadhav M. S. (JMS)",
     "department": "Computer Science and Engineering",
+    "totalWeeklyHours": 10,
+    "theoryWeeklyHours": 4,
+    "practicalWeeklyHours": 6,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 160,
+    "courses": [
+      {
+        "code": "BEEE",
+        "title": "Basic Electrical and Electronics Engineering",
+        "theoryHrs": 4,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 10,
+        "locations": [
+          "PEL LAB",
+          "C.R. 10"
+        ],
+        "batches": [
+          "Batch C",
+          "Batch B",
+          "Batch A"
+        ],
+        "totalSemesterHours": 160
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
       "TUESDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "BEEE-(JMS)-C- PEL LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "BEEE-(JMS)-C- PEL LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
+          "type": "practical",
+          "location": "PEL LAB",
+          "batch": "Batch C"
         }
       ],
       "WEDNESDAY": [
         {
           "time": "1:45-2:45",
-          "activity": "BEEE",
-          "location": "(JMS)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "BEEE (JMS) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         }
       ],
       "THURSDAY": [
         {
-          "time": "10:00-11:00",
+          "time": "10:00-12:00",
           "activity": "BEEE-(JMS)-B-PEL LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
-        },
-        {
-          "time": "11:00-12:00",
-          "activity": "BEEE-(JMS)-B-PEL LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
+          "type": "practical",
+          "location": "PEL LAB",
+          "batch": "Batch B"
         },
         {
           "time": "12:45-1:45",
-          "activity": "BEEE",
-          "location": "(JMS)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "BEEE (JMS) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         }
       ],
       "FRIDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "BEEE",
-          "location": "(JMS)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "BEEE (JMS) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         },
         {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "BEEE-(JMS)-A- PEL LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "BEEE-(JMS)-A- PEL LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
+          "type": "practical",
+          "location": "PEL LAB",
+          "batch": "Batch A"
         }
       ],
       "SATURDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "BEEE",
-          "location": "(JMS)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "BEEE (JMS) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "KRT",
     "facultyName": "Mr. Kadam R.T. (KRT)",
     "department": "Applied Science",
+    "totalWeeklyHours": 6,
+    "theoryWeeklyHours": 0,
+    "practicalWeeklyHours": 6,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 96,
+    "courses": [
+      {
+        "code": "SLS",
+        "title": "Social and Life Skill Lab",
+        "theoryHrs": 0,
+        "practicalHrs": 6,
+        "tutorialHrs": 0,
+        "totalHrs": 6,
+        "locations": [
+          "ENG LAB"
+        ],
+        "batches": [
+          "Batch B",
+          "Batch A",
+          "Batch C"
+        ],
+        "totalSemesterHours": 96
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
       "TUESDAY": [
         {
-          "time": "12:45-1:45",
-          "activity": "SLS-(KRT)-B-",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
+          "time": "12:45-2:45",
+          "activity": "SLS-(KRT)-B- ENG LAB",
+          "type": "practical",
+          "location": "ENG LAB",
+          "batch": "Batch B"
         }
       ],
       "WEDNESDAY": [],
       "THURSDAY": [],
       "FRIDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "SLS-(KRT)-A-ENG LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
+          "type": "practical",
+          "location": "ENG LAB",
+          "batch": "Batch A"
         },
         {
-          "time": "1:45-2:45",
-          "activity": "SLS-(KRT)-A-ENG LAB",
-          "location": "",
-          "floor": "",
-          "batch": "SE(I)"
-        },
-        {
-          "time": "3:00-4:00",
+          "time": "3:00-5:00",
           "activity": "SLS-(KRT)-C- ENG LAB",
-          "location": "",
-          "floor": "",
-          "batch": "CLASS-2, SE(I)"
-        },
-        {
-          "time": "4:00-5:00",
-          "activity": "SLS-(KRT)-C- ENG LAB",
-          "location": "",
-          "floor": "",
-          "batch": "CLASS-2, SE(I)"
+          "type": "practical",
+          "location": "ENG LAB",
+          "batch": "Batch C"
         }
       ],
       "SATURDAY": []
     }
   },
   {
+    "sheetName": "GKG",
     "facultyName": "Mr. Gaikwad K.G.(GKG)",
     "department": "Applied Science",
+    "totalWeeklyHours": 2,
+    "theoryWeeklyHours": 0,
+    "practicalWeeklyHours": 2,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 32,
+    "courses": [
+      {
+        "code": "SLS",
+        "title": "Social and Life Skill Lab",
+        "theoryHrs": 0,
+        "practicalHrs": 2,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [
+          "ENG LAB"
+        ],
+        "batches": [
+          "Batch A"
+        ],
+        "totalSemesterHours": 32
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
@@ -2360,33 +2850,47 @@
       "THURSDAY": [],
       "FRIDAY": [
         {
-          "time": "12:45-1:45",
+          "time": "12:45-2:45",
           "activity": "SLS-(GKG)-A-ENG LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FY(R)"
-        },
-        {
-          "time": "1:45-2:45",
-          "activity": "SLS-(GKG)-A-ENG LAB",
-          "location": "",
-          "floor": "",
-          "batch": "FY(R)"
+          "type": "practical",
+          "location": "ENG LAB",
+          "batch": "Batch A"
         }
       ],
       "SATURDAY": []
     }
   },
   {
+    "sheetName": "LUS",
     "facultyName": "Mr. Lahane U.S. (LUS)",
     "department": "Mechanical Engineeing",
+    "totalWeeklyHours": 2,
+    "theoryWeeklyHours": 2,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 32,
+    "courses": [
+      {
+        "code": "I 4.0",
+        "title": "Industry 4.0",
+        "theoryHrs": 2,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 2,
+        "locations": [
+          "C.R. 12"
+        ],
+        "batches": [],
+        "totalSemesterHours": 32
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
@@ -2395,92 +2899,134 @@
       "THURSDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "I 4.0",
+          "activity": "I 4.0 (LUS) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "BE(R)"
+          "batch": ""
         }
       ],
       "FRIDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "I 4.0",
+          "activity": "I 4.0 (LUS) C.R. 12",
+          "type": "theory",
           "location": "C.R. 12",
-          "floor": "",
-          "batch": "BE(R)"
+          "batch": ""
         }
       ],
       "SATURDAY": []
     }
   },
   {
+    "sheetName": "AMN",
     "facultyName": "Ms. Ahankari M.N (AMN)",
     "department": "Applied Science",
+    "totalWeeklyHours": 4,
+    "theoryWeeklyHours": 4,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 64,
+    "courses": [
+      {
+        "code": "M-III",
+        "title": "Mathematics-III",
+        "theoryHrs": 4,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "C.R. 10"
+        ],
+        "batches": [],
+        "totalSemesterHours": 64
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
-          "batch": "CLASS-1"
+          "batch": ""
         },
         {
           "time": "3:00-4:00",
-          "activity": "M-III",
-          "location": "(AMN)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "M-III (AMN) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         }
       ],
       "TUESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "M-III",
-          "location": "(AMN)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "M-III (AMN) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         }
       ],
       "WEDNESDAY": [
         {
           "time": "12:45-1:45",
-          "activity": "M-III",
-          "location": "(AMN)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "M-III (AMN) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         }
       ],
       "THURSDAY": [],
       "FRIDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "M-III",
-          "location": "(AMN)",
-          "floor": "",
-          "batch": "SE(I)"
+          "activity": "M-III (AMN) C.R. 10",
+          "type": "theory",
+          "location": "C.R. 10",
+          "batch": ""
         }
       ],
       "SATURDAY": []
     }
   },
   {
+    "sheetName": "Pawar Sir",
     "facultyName": "Dr. Pawar E.D. (PED)",
     "department": "Applied Science",
+    "totalWeeklyHours": 3,
+    "theoryWeeklyHours": 3,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 48,
+    "courses": [
+      {
+        "code": "SAP",
+        "title": "Statistics and Probability",
+        "theoryHrs": 3,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 3,
+        "locations": [
+          "C.R. 3"
+        ],
+        "batches": [],
+        "totalSemesterHours": 48
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         },
         {
           "time": "1:45-2:45",
-          "activity": "SAP",
-          "location": "(PED)",
-          "floor": "",
+          "activity": "SAP (PED) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
           "batch": ""
         }
       ],
@@ -2490,33 +3036,54 @@
       "FRIDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "SAP",
-          "location": "(PED)",
-          "floor": "",
+          "activity": "SAP (PED) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
           "batch": ""
         }
       ],
       "SATURDAY": [
         {
           "time": "3:00-4:00",
-          "activity": "SAP",
-          "location": "(PED)",
-          "floor": "",
-          "batch": "TE(I)"
+          "activity": "SAP (PED) C.R. 3",
+          "type": "theory",
+          "location": "C.R. 3",
+          "batch": ""
         }
       ]
     }
   },
   {
+    "sheetName": "Sapna Kapoor",
     "facultyName": "Ms. Kavya Goyal",
     "department": "SoLSR",
+    "totalWeeklyHours": 4,
+    "theoryWeeklyHours": 4,
+    "practicalWeeklyHours": 0,
+    "tutorialWeeklyHours": 0,
+    "totalSemesterHours": 64,
+    "courses": [
+      {
+        "code": "COI",
+        "title": "Constitution of India*",
+        "theoryHrs": 4,
+        "practicalHrs": 0,
+        "tutorialHrs": 0,
+        "totalHrs": 4,
+        "locations": [
+          "C.R. 2"
+        ],
+        "batches": [],
+        "totalSemesterHours": 64
+      }
+    ],
     "schedule": {
       "MONDAY": [
         {
           "time": "10:00-11:00",
-          "activity": "CONTINUOUS ASSESSMENT",
+          "activity": "Continuous Assessment",
+          "type": "mentoring",
           "location": "",
-          "floor": "",
           "batch": ""
         }
       ],
@@ -2524,9 +3091,9 @@
       "WEDNESDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "COI",
-          "location": "(KSA)",
-          "floor": "",
+          "activity": "COI (KSA) C.R. 2 FO(I)_CSE(DS)(ICBT)",
+          "type": "theory",
+          "location": "C.R. 2",
           "batch": ""
         }
       ],
@@ -2534,25 +3101,25 @@
       "FRIDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "COI",
-          "location": "C.R. IC",
-          "floor": "",
+          "activity": "COI (KSA) C.R. IC SE_CSE_(ICBT)(CS) FO(I)_RAI",
+          "type": "theory",
+          "location": "",
           "batch": ""
         },
         {
           "time": "1:45-2:45",
-          "activity": "COI",
-          "location": "(KSA)",
-          "floor": "",
+          "activity": "COI (KSA) C.R. 2 FO(I)_CSE(DS)(ICBT)",
+          "type": "theory",
+          "location": "C.R. 2",
           "batch": ""
         }
       ],
       "SATURDAY": [
         {
           "time": "11:00-12:00",
-          "activity": "COI",
-          "location": "C.R. IC",
-          "floor": "",
+          "activity": "COI (KSA) C.R. IC SE_CSE_(ICBT)(CS) FO(I)_RAI",
+          "type": "theory",
+          "location": "",
           "batch": ""
         }
       ]

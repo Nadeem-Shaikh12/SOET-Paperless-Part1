@@ -103,7 +103,7 @@ export function requireSelfOrAdmin(req: Request, res: Response, next: NextFuncti
     return;
   }
 
-  const facultyId = parseInt(req.params.facultyId || req.params.id, 10);
+  const facultyId = parseInt(String(req.params.facultyId || req.params.id), 10);
 
   if (facultyId && req.user.facultyId && facultyId !== req.user.facultyId) {
     res.status(403).json({ error: { code: 'FORBIDDEN', message: 'Cannot access another faculty member\'s data' } });

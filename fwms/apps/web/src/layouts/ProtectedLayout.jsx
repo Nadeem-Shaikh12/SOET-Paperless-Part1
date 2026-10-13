@@ -35,7 +35,7 @@ export default function ProtectedLayout() {
   { name: 'Master Data', href: '/master-data', icon: Database, roles: ['super_admin', 'dept_admin'] },
   { name: 'Subjects & Classes', href: '/subjects', icon: BookOpen, roles: ['super_admin', 'dept_admin'] },
   { name: 'Allocations', href: '/allocations', icon: Calendar, roles: ['super_admin', 'dept_admin', 'faculty'] },
-  { name: 'Faculty Schedule', href: '/faculty-schedule', icon: CalendarRange, roles: ['super_admin', 'dept_admin'] },
+  { name: 'Faculty Schedule', href: '/faculty-schedule', icon: CalendarRange, roles: ['super_admin', 'dept_admin', 'faculty'] },
   { name: 'Schedule Editor',  href: '/schedule-editor',  icon: FilePenLine,   roles: ['super_admin', 'dept_admin'] },
   { name: 'Approvals', href: '/approvals', icon: ClipboardList, roles: ['super_admin', 'dept_admin'] },
   { name: 'Faculty Management', href: '/faculty', icon: Users, roles: ['super_admin', 'dept_admin'] },

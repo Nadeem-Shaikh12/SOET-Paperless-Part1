@@ -20,7 +20,7 @@ router.get('/', requireRole('super_admin', 'dept_admin', 'faculty'), async (req:
 
 router.get('/:id', requireRole('super_admin', 'dept_admin', 'faculty'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const subjectId = parseInt(req.params.id);
+    const subjectId = parseInt(String(req.params.id), 10);
     const subject = await subjectService.getSubject(subjectId);
     if (req.user!.role === 'dept_admin' && req.user!.deptId !== subject.deptId) {
        res.status(403).json({ error: { code: 'FORBIDDEN', message: 'Cannot access another department\'s subject' } });
@@ -43,7 +43,7 @@ router.post('/', requireRole('super_admin', 'dept_admin'), requireDeptScope, val
 
 router.put('/:id', requireRole('super_admin', 'dept_admin'), validateBody(updateSubjectSchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const subjectId = parseInt(req.params.id);
+    const subjectId = parseInt(String(req.params.id), 10);
     const subject = await subjectService.getSubject(subjectId);
     if (req.user!.role === 'dept_admin' && req.user!.deptId !== subject.deptId) {
       res.status(403).json({ error: { code: 'FORBIDDEN', message: 'Cannot update subject in another department' } });
@@ -56,7 +56,7 @@ router.put('/:id', requireRole('super_admin', 'dept_admin'), validateBody(update
 
 router.delete('/:id', requireRole('super_admin', 'dept_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const subjectId = parseInt(req.params.id);
+    const subjectId = parseInt(String(req.params.id), 10);
     const subject = await subjectService.getSubject(subjectId);
     if (req.user!.role === 'dept_admin' && req.user!.deptId !== subject.deptId) {
       res.status(403).json({ error: { code: 'FORBIDDEN', message: 'Cannot deactivate subject in another department' } });

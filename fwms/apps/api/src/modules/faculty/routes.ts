@@ -24,7 +24,7 @@ router.get('/', requireRole('super_admin', 'dept_admin'), requireDeptScope, asyn
 
 router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const facultyId = parseInt(req.params.id);
+    const facultyId = parseInt(String(req.params.id), 10);
     // Role check: F can only see self, HOD can see own dept, SA can see all
     if (req.user!.role === 'faculty' && req.user!.facultyId !== facultyId) {
       res.status(403).json({ error: { code: 'FORBIDDEN', message: 'Cannot access another faculty member\'s data' } });
@@ -55,7 +55,7 @@ router.post('/', requireRole('super_admin', 'dept_admin'), requireDeptScope, val
 
 router.put('/:id', requireRole('super_admin', 'dept_admin'), validateBody(updateFacultySchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const facultyId = parseInt(req.params.id);
+    const facultyId = parseInt(String(req.params.id), 10);
     const faculty = await facultyService.getFaculty(facultyId);
     
     if (req.user!.role === 'dept_admin' && req.user!.deptId !== faculty.deptId) {
@@ -70,7 +70,7 @@ router.put('/:id', requireRole('super_admin', 'dept_admin'), validateBody(update
 
 router.patch('/:id/status', requireRole('super_admin', 'dept_admin'), validateBody(deactivateFacultySchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const facultyId = parseInt(req.params.id);
+    const facultyId = parseInt(String(req.params.id), 10);
     const faculty = await facultyService.getFaculty(facultyId);
     
     if (req.user!.role === 'dept_admin' && req.user!.deptId !== faculty.deptId) {

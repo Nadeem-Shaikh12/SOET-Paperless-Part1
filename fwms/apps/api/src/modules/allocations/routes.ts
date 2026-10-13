@@ -21,7 +21,7 @@ router.get('/', requireRole('super_admin', 'dept_admin', 'faculty'), async (req:
 
 router.get('/:id', requireRole('super_admin', 'dept_admin', 'faculty'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = parseInt(String(req.params.id), 10);
     const allocation = await allocationsService.getAllocation(id);
     
     if (req.user!.role === 'faculty' && req.user!.facultyId !== allocation.facultyId) {
@@ -47,14 +47,14 @@ router.post('/', requireRole('dept_admin', 'super_admin'), validateBody(createAl
 
 router.put('/:id', requireRole('dept_admin', 'super_admin'), validateBody(updateAllocationSchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const allocation = await allocationsService.updateAllocation(parseInt(req.params.id), req.body, req.user!.userId);
+    const allocation = await allocationsService.updateAllocation(parseInt(String(req.params.id), 10), req.body, req.user!.userId);
     res.json(allocation);
   } catch (err) { next(err); }
 });
 
 router.delete('/:id', requireRole('dept_admin', 'super_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await allocationsService.deleteAllocation(parseInt(req.params.id), req.user!.userId);
+    await allocationsService.deleteAllocation(parseInt(String(req.params.id), 10), req.user!.userId);
     res.json({ message: 'Allocation deleted' });
   } catch (err) { next(err); }
 });

@@ -15,7 +15,11 @@ class AuthService {
   async login(email: string, password: string, ipAddress?: string) {
     const user = await prisma.userAuth.findUnique({
       where: { username: email },
-      include: { linkedFaculty: true },
+      include: {
+        linkedFaculty: {
+          include: { department: true }
+        }
+      },
     });
 
     // Generic error to avoid email enumeration
@@ -94,6 +98,7 @@ class AuthService {
         role: user.role,
         name: user.linkedFaculty?.name ?? 'Super Admin',
         deptId,
+        deptName: user.linkedFaculty?.department?.deptName ?? null,
         facultyId: user.linkedId,
         mustChangePassword: user.mustChangePassword,
       },

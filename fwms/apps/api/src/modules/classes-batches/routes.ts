@@ -49,14 +49,14 @@ router.get('/classes/batches', requireRole('super_admin', 'dept_admin', 'faculty
 
 router.get('/classes/:id/batches', requireRole('super_admin', 'dept_admin', 'faculty'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const batches = await classesBatchesService.listBatches(parseInt(req.params.id));
+    const batches = await classesBatchesService.listBatches(parseInt(String(req.params.id), 10));
     res.json(batches);
   } catch (err) { next(err); }
 });
 
 router.post('/classes/:id/batches', requireRole('super_admin', 'dept_admin'), validateBody(createBatchSchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const classId = parseInt(req.params.id);
+    const classId = parseInt(String(req.params.id), 10);
     // Ideally we should check deptScope here, ensuring the class belongs to req.user!.deptId
     const { batch, isOversized } = await classesBatchesService.createBatch(classId, req.body);
     res.status(201).json({ batch, isOversized });
@@ -85,21 +85,21 @@ router.post('/student-strength', requireRole('super_admin', 'dept_admin', 'facul
 // ─── Delete Routes ───
 router.delete('/classes/:id', requireRole('super_admin', 'dept_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await prisma.classDivision.delete({ where: { id: parseInt(req.params.id) } });
+    await prisma.classDivision.delete({ where: { id: parseInt(String(req.params.id), 10) } });
     res.json({ success: true });
   } catch (err) { next(err); }
 });
 
 router.delete('/classes/batches/:id', requireRole('super_admin', 'dept_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await prisma.batch.delete({ where: { id: parseInt(req.params.id) } });
+    await prisma.batch.delete({ where: { id: parseInt(String(req.params.id), 10) } });
     res.json({ success: true });
   } catch (err) { next(err); }
 });
 
 router.delete('/student-strength/:id', requireRole('super_admin', 'dept_admin', 'faculty'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await prisma.studentStrength.delete({ where: { id: parseInt(req.params.id) } });
+    await prisma.studentStrength.delete({ where: { id: parseInt(String(req.params.id), 10) } });
     res.json({ success: true });
   } catch (err) { next(err); }
 });

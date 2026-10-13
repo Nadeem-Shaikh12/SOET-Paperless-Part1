@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Navigate } from 'react-router-dom';
 import {
   Plus, Trash2, Save, Loader2, CheckCircle,
   AlertCircle, UserPlus, X
 } from 'lucide-react';
 import { apiClient } from '../lib/api-client';
+import { useAuthStore } from '../stores/auth';
 
 const DAYS    = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
 const TIMES   = ['10:00-11:00', '11:00-12:00', '12:45-1:45', '1:45-2:45', '3:00-4:00', '4:00-5:00'];
@@ -23,6 +25,11 @@ function emptyFaculty() {
 // ─── component ──────────────────────────────────────────────────────────────
 
 export default function ScheduleEditorPage() {
+  const { user } = useAuthStore();
+  if (user && user.role === 'faculty') {
+    return <Navigate to="/faculty-schedule" replace />;
+  }
+
   const [data,      setData]      = useState([]);
   const [loading,   setLoading]   = useState(true);
   const [fetchErr,  setFetchErr]  = useState(null);

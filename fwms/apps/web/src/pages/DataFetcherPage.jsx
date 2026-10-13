@@ -1,6 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { ChevronDown, Download } from 'lucide-react';
-import subjectsData from '../data/mechanical_subjects.json';
+import mechanicalSubjectsData from '../data/mechanical_subjects.json';
+import cseSubjectsData from '../data/cse_subjects.json';
+import { useAuthStore } from '../stores/auth';
 
 const ACADEMIC_YEARS = ['2023-2024', '2024-2025', '2025-2026', '2026-2027'];
 const TERMS = ['Odd', 'Even'];
@@ -16,15 +18,64 @@ const SEMESTER_ROMAN_MAP = {
 
 export default function DataFetcherPage() {
   const tableRef = useRef(null);
-  
+  const { user } = useAuthStore();
+
+  const userDept = useMemo(() => {
+    if (!user) return null;
+    const name = (user.deptName || user.department || '').toLowerCase();
+    if (name.includes('computer') || user.deptId === 1) return 'Computer Science';
+    if (name.includes('mechanical')) return 'Mechanical';
+    if (name.includes('electrical')) return 'Electrical';
+    if (name.includes('civil')) return 'Civil';
+    if (name.includes('electronics')) return 'Electronics';
+    return null;
+  }, [user]);
+
+  const isFaculty = user?.role === 'faculty';
+  const allowedDepartments = useMemo(() => {
+    if (user?.role === 'super_admin') {
+      return DEPARTMENTS;
+    }
+    if (userDept) {
+      return [userDept];
+    }
+    return DEPARTMENTS;
+  }, [user, userDept]);
+
+  const initialDept = userDept || (isFaculty ? 'Computer Science' : 'Mechanical');
+  const initialProg = initialDept === 'Computer Science' ? ['regular_cse'] : ['regular_ra'];
+  const initialSem  = initialDept === 'Computer Science' ? ['1st'] : ['3rd'];
+
   const [formData, setFormData] = useState({
     academicYear: '2026-2027',
     term: ['Odd'],
-    department: 'Mechanical',
-    program: ['regular_ra'],
-    semester: ['3rd']
+    department: initialDept,
+    program: initialProg,
+    semester: initialSem
   });
-  
+
+  // Keep department in sync if userDept resolves after initial render
+  useEffect(() => {
+    if (isFaculty && userDept && formData.department !== userDept) {
+      setFormData(prev => ({
+        ...prev,
+        department: userDept,
+        program: userDept === 'Computer Science' ? ['regular_cse'] : ['regular_ra'],
+        semester: userDept === 'Computer Science' ? ['1st'] : ['3rd']
+      }));
+    }
+  }, [isFaculty, userDept]);
+
+  const activeSubjectsData = useMemo(() => {
+    if (formData.department === 'Computer Science' || formData.department === 'Computer Science and Engineering') {
+      return cseSubjectsData;
+    }
+    if (formData.department === 'Mechanical') {
+      return mechanicalSubjectsData;
+    }
+    return [];
+  }, [formData.department]);
+
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
@@ -33,7 +84,7 @@ export default function DataFetcherPage() {
       return;
     }
 
-    const filtered = subjectsData.filter(s => {
+    const filtered = activeSubjectsData.filter(s => {
       const matches = formData.program.some(selectedP => {
         if (selectedP === s.program) return true;
         if (s.program === 'regular' && selectedP.startsWith('regular')) return true;
@@ -46,7 +97,7 @@ export default function DataFetcherPage() {
     });
 
     setRows(filtered.map(row => {
-      let finalClassLabel = row.classLabel;
+      let finalClassLabel = row.classLabel || '';
       if (row.program && row.program.startsWith('regular')) {
         finalClassLabel = finalClassLabel.replace(/\s*\([^)]*\)/, '');
       } else if (row.program && row.program.includes('integrated')) {
@@ -59,22 +110,31 @@ export default function DataFetcherPage() {
         ...row,
         classLabel: finalClassLabel,
         id: Math.random().toString(),
-        isCore: true,
-        deptAndTeacher: '',
+        isCore: row.isCore !== undefined ? row.isCore : true,
+        deptAndTeacher: row.deptAndTeacher || '',
         divisions: row.divisions || 1,
         students: row.students || 60,
         prBatches: row.prBatches !== undefined ? row.prBatches : (row.prHrs > 0 ? 3 : 0)
       };
     }));
-  }, [formData]);
+  }, [formData, activeSubjectsData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === 'department' && isFaculty) return; // Prevent department tampering for faculty
     setFormData(prev => {
       const next = { ...prev, [name]: value };
       if (name === 'department') {
-        next.program = [];
-        next.semester = [];
+        if (value === 'Computer Science' || value === 'Computer Science and Engineering') {
+          next.program = ['regular_cse'];
+          next.semester = ['1st'];
+        } else if (value === 'Mechanical') {
+          next.program = ['regular_ra'];
+          next.semester = ['3rd'];
+        } else {
+          next.program = [];
+          next.semester = [];
+        }
       }
       return next;
     });
@@ -152,11 +212,22 @@ export default function DataFetcherPage() {
     setRows(rows.filter(row => row.id !== id));
   };
 
-  const availablePrograms = formData.department === 'Mechanical' ? [
-    { id: 'integrated', name: 'B.Tech Integrated Robotics and AI' },
-    { id: 'regular_ra', name: 'B.Tech Robotic and automation' },
-    { id: 'regular_ma', name: 'B.Tech Mechanical and Automation' }
-  ] : PROGRAMS;
+  const availablePrograms = useMemo(() => {
+    if (formData.department === 'Computer Science' || formData.department === 'Computer Science and Engineering') {
+      return [
+        { id: 'regular_cse', name: 'B.Tech Computer Science and Engineering' },
+        { id: 'integrated', name: 'B.Tech Integrated Computer Science' }
+      ];
+    }
+    if (formData.department === 'Mechanical') {
+      return [
+        { id: 'integrated', name: 'B.Tech Integrated Robotics and AI' },
+        { id: 'regular_ra', name: 'B.Tech Robotic and automation' },
+        { id: 'regular_ma', name: 'B.Tech Mechanical and Automation' }
+      ];
+    }
+    return PROGRAMS;
+  }, [formData.department]);
 
   const getSemestersForProgram = (programId) => {
     const isIntegrated = programId.includes('integrated');
@@ -369,13 +440,19 @@ export default function DataFetcherPage() {
 
           {/* Department */}
           <div className="relative group">
-            <select name="department" value={formData.department} onChange={handleChange}
-              className="appearance-none bg-transparent border-0 px-3 py-2 pr-8 text-sm font-medium text-[var(--color-graphite)] hover:text-[var(--color-carbon)] hover:bg-[var(--color-fog)] rounded-md cursor-pointer focus:ring-0 focus:outline-none transition-colors max-w-[150px] truncate"
+            <select
+              name="department"
+              value={formData.department}
+              onChange={handleChange}
+              disabled={isFaculty}
+              className={`appearance-none bg-transparent border-0 px-3 py-2 pr-8 text-sm font-medium text-[var(--color-graphite)] ${isFaculty ? 'cursor-not-allowed opacity-80' : 'hover:text-[var(--color-carbon)] hover:bg-[var(--color-fog)] cursor-pointer'} rounded-md focus:ring-0 focus:outline-none transition-colors max-w-[150px] truncate`}
             >
               <option value="" disabled>Department</option>
-              {DEPARTMENTS.map(d => <option key={d} value={d}>{d}</option>)}
+              {allowedDepartments.map(d => <option key={d} value={d}>{d}</option>)}
             </select>
-            <ChevronDown className="w-4 h-4 absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--color-slate)] pointer-events-none group-hover:text-[var(--color-carbon)]" />
+            {!isFaculty && (
+              <ChevronDown className="w-4 h-4 absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--color-slate)] pointer-events-none group-hover:text-[var(--color-carbon)]" />
+            )}
           </div>
 
           <div className="w-px h-4 bg-[var(--border)] hidden sm:block mx-1"></div>
@@ -458,7 +535,7 @@ export default function DataFetcherPage() {
                     Chhatrapati Sambhajinagar<br/>
                     <span className="font-normal text-sm">Academic year {formData.academicYear} ({formData.term === 'Odd' ? 'Part 1' : 'Part 2'})</span><br/>
                     School of Engineering and Technology<br/>
-                    Mechanical Engineering Department<br/>
+                    {formData.department.includes('Engineering') || formData.department.includes('Department') ? formData.department : `${formData.department} Department`}<br/>
                     <span className="underline">Teaching Workload</span>
                   </th>
                 </tr>

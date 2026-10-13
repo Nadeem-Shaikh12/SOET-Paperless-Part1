@@ -38,6 +38,9 @@ export default function WorkloadReportPage() {
         if (isAdmin) {
           const deptsList = await apiClient('/institutional/departments');
           setDepartments(deptsList || []);
+          if (deptsList && deptsList.length > 0) {
+            setSelectedDeptId((prev) => prev || deptsList[0].id);
+          }
         } else if (user?.deptId) {
           setSelectedDeptId(user.deptId);
         }

@@ -135,14 +135,18 @@ function ForcePasswordChange() {
 // Maps URL path prefixes to which roles are allowed to visit them.
 // Any authenticated user not in the allowed list is redirected to /unauthorized.
 const ROUTE_ROLE_MAP = [
-{ prefix: '/institutional', roles: ['super_admin'] },
-{ prefix: '/master-data', roles: ['super_admin', 'dept_admin'] },
-{ prefix: '/subjects', roles: ['super_admin', 'dept_admin'] },
-{ prefix: '/approvals', roles: ['super_admin', 'dept_admin'] },
-{ prefix: '/faculty', roles: ['super_admin', 'dept_admin'] },
-{ prefix: '/workload-report', roles: ['super_admin', 'dept_admin'] },
-{ prefix: '/allocations', roles: ['super_admin', 'dept_admin', 'faculty'] },
-{ prefix: '/dashboard', roles: ['super_admin', 'dept_admin', 'faculty'] }];
+  { prefix: '/institutional', roles: ['super_admin'] },
+  { prefix: '/master-data', roles: ['super_admin', 'dept_admin'] },
+  { prefix: '/subjects', roles: ['super_admin', 'dept_admin'] },
+  { prefix: '/approvals', roles: ['super_admin', 'dept_admin'] },
+  { prefix: '/faculty-schedule', roles: ['super_admin', 'dept_admin', 'faculty'] },
+  { prefix: '/faculty', roles: ['super_admin', 'dept_admin'] },
+  { prefix: '/schedule-editor', roles: ['super_admin', 'dept_admin'] },
+  { prefix: '/data-fetcher', roles: ['super_admin', 'dept_admin', 'faculty'] },
+  { prefix: '/workload-report', roles: ['super_admin', 'dept_admin'] },
+  { prefix: '/allocations', roles: ['super_admin', 'dept_admin', 'faculty'] },
+  { prefix: '/dashboard', roles: ['super_admin', 'dept_admin', 'faculty'] }
+];
 
 
 export function RouteGuard({ children, allowedRoles }) {

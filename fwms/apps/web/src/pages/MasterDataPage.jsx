@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
-import { apiClient } from '..\/lib/api-client';
-import { useAuthStore } from '..\/stores/auth';
-import { Badge } from '..\/components/ui/Badge';
-import { AccessDenied } from '..\/components/ui/AccessDenied';
+import { apiClient } from '../lib/api-client';
+import { useAuthStore } from '../stores/auth';
+import { Badge } from '../components/ui/Badge';
+import { AccessDenied } from '../components/ui/AccessDenied';
 import { Calendar, Gauge, Loader2 } from 'lucide-react';
 
 export default function MasterDataPage() {

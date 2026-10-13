@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback } from 'react';
-import { apiClient } from '..\/lib/api-client';
-import { useAuthStore } from '..\/stores/auth';
-import { DataTable } from '..\/components/ui/DataTable';
-import { Modal } from '..\/components/ui/Modal';
-import { Badge } from '..\/components/ui/Badge';
-import { AccessDenied } from '..\/components/ui/AccessDenied';
+import { apiClient } from '../lib/api-client';
+import { useAuthStore } from '../stores/auth';
+import { DataTable } from '../components/ui/DataTable';
+import { Modal } from '../components/ui/Modal';
+import { Badge } from '../components/ui/Badge';
+import { AccessDenied } from '../components/ui/AccessDenied';
 import { Plus, Pencil, Trash2, Building2, GraduationCap, Calendar, Gauge, Loader2 } from 'lucide-react';
 
 

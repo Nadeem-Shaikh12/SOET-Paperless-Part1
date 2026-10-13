@@ -27,7 +27,7 @@ router.get('/schools', requireRole('super_admin', 'dept_admin'), async (req: Req
 
 router.get('/schools/:id', requireRole('super_admin', 'dept_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const school = await institutionalService.getSchool(parseInt(req.params.id));
+    const school = await institutionalService.getSchool(parseInt(String(req.params.id), 10));
     res.json(school);
   } catch (err) { next(err); }
 });
@@ -41,14 +41,14 @@ router.post('/schools', requireRole('super_admin'), validateBody(createSchoolSch
 
 router.put('/schools/:id', requireRole('super_admin'), validateBody(updateSchoolSchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const school = await institutionalService.updateSchool(parseInt(req.params.id), req.body);
+    const school = await institutionalService.updateSchool(parseInt(String(req.params.id), 10), req.body);
     res.json(school);
   } catch (err) { next(err); }
 });
 
 router.delete('/schools/:id', requireRole('super_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await institutionalService.deactivateSchool(parseInt(req.params.id));
+    await institutionalService.deactivateSchool(parseInt(String(req.params.id), 10));
     res.json({ message: 'School deactivated' });
   } catch (err) { next(err); }
 });
@@ -65,7 +65,7 @@ router.get('/departments', requireRole('super_admin', 'dept_admin'), async (req:
 
 router.get('/departments/:id', requireRole('super_admin', 'dept_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const department = await institutionalService.getDepartment(parseInt(req.params.id));
+    const department = await institutionalService.getDepartment(parseInt(String(req.params.id), 10));
     res.json(department);
   } catch (err) { next(err); }
 });
@@ -79,23 +79,23 @@ router.post('/departments', requireRole('super_admin'), validateBody(createDepar
 
 router.put('/departments/:id', requireRole('super_admin'), validateBody(updateDepartmentSchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const department = await institutionalService.updateDepartment(parseInt(req.params.id), req.body);
+    const department = await institutionalService.updateDepartment(parseInt(String(req.params.id), 10), req.body);
     res.json(department);
   } catch (err) { next(err); }
 });
 
 // ─── Academic Terms ───
 
-router.get('/academic-terms', requireRole('super_admin', 'dept_admin'), async (req: Request, res: Response, next: NextFunction) => {
+router.get('/academic-terms', requireRole('super_admin', 'dept_admin', 'faculty'), async (req: Request, res: Response, next: NextFunction) => {
   try {
     const terms = await institutionalService.listAcademicTerms();
     res.json(terms);
   } catch (err) { next(err); }
 });
 
-router.get('/academic-terms/:id', requireRole('super_admin', 'dept_admin'), async (req: Request, res: Response, next: NextFunction) => {
+router.get('/academic-terms/:id', requireRole('super_admin', 'dept_admin', 'faculty'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const term = await institutionalService.getAcademicTerm(parseInt(req.params.id));
+    const term = await institutionalService.getAcademicTerm(parseInt(String(req.params.id), 10));
     res.json(term);
   } catch (err) { next(err); }
 });
@@ -109,7 +109,7 @@ router.post('/academic-terms', requireRole('super_admin'), validateBody(createAc
 
 // ─── Norms ───
 
-router.get('/norms', requireRole('super_admin', 'dept_admin'), async (req: Request, res: Response, next: NextFunction) => {
+router.get('/norms', requireRole('super_admin', 'dept_admin', 'faculty'), async (req: Request, res: Response, next: NextFunction) => {
   try {
     const termId = req.query.termId ? parseInt(req.query.termId as string) : undefined;
     const norms = await institutionalService.listNorms(termId);
@@ -127,21 +127,21 @@ router.put('/norms', requireRole('super_admin'), validateBody(normsSchema), asyn
 // ─── Delete Routes ───
 router.delete('/departments/:id', requireRole('super_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await import('../../lib/prisma.js').then(m => m.default.department.delete({ where: { id: parseInt(req.params.id as string) } }));
+    await import('../../lib/prisma.js').then(m => m.default.department.delete({ where: { id: parseInt(String(req.params.id), 10) } }));
     res.json({ success: true });
   } catch (err) { next(err); }
 });
 
 router.delete('/academic-terms/:id', requireRole('super_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await import('../../lib/prisma.js').then(m => m.default.academicTerm.delete({ where: { id: parseInt(req.params.id) } }));
+    await import('../../lib/prisma.js').then(m => m.default.academicTerm.delete({ where: { id: parseInt(String(req.params.id), 10) } }));
     res.json({ success: true });
   } catch (err) { next(err); }
 });
 
 router.delete('/norms/:id', requireRole('super_admin'), async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await import('../../lib/prisma.js').then(m => m.default.norms.delete({ where: { id: parseInt(req.params.id) } }));
+    await import('../../lib/prisma.js').then(m => m.default.norms.delete({ where: { id: parseInt(String(req.params.id), 10) } }));
     res.json({ success: true });
   } catch (err) { next(err); }
 });
