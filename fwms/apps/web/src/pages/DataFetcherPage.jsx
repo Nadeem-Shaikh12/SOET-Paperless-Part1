@@ -631,14 +631,7 @@ export default function DataFetcherPage() {
                         onChange={e => handleRowChange(row.id, 'students', e.target.value)} 
                       />
                     </td>
-                    <td className="border border-black px-1 py-1">
-                      <input 
-                        type="number" min="0" 
-                        className="w-full text-center border border-gray-300 rounded p-0.5 text-[13px] focus:ring-1 focus:ring-[var(--color-signal-orange)] outline-none" 
-                        value={row.thHrs} 
-                        onChange={e => handleRowChange(row.id, 'thHrs', e.target.value)} 
-                      />
-                    </td>
+                    <td className="border border-black px-1 py-1">{row.thHrs}</td>
                     <td className="border border-black px-1 py-1 font-bold bg-gray-50/50">{row.thTotal}</td>
                     <td className="border border-black px-1 py-1">
                       <input 
@@ -648,23 +641,9 @@ export default function DataFetcherPage() {
                         onChange={e => handleRowChange(row.id, 'prBatches', e.target.value)} 
                       />
                     </td>
-                    <td className="border border-black px-1 py-1">
-                      <input 
-                        type="number" min="0" 
-                        className="w-full text-center border border-gray-300 rounded p-0.5 text-[13px] focus:ring-1 focus:ring-[var(--color-signal-orange)] outline-none" 
-                        value={row.prHrs} 
-                        onChange={e => handleRowChange(row.id, 'prHrs', e.target.value)} 
-                      />
-                    </td>
+                    <td className="border border-black px-1 py-1">{row.prHrs}</td>
                     <td className="border border-black px-1 py-1 font-bold bg-gray-50/50">{row.prTotal}</td>
-                    <td className="border border-black px-1 py-1">
-                      <input 
-                        type="number" min="0" 
-                        className="w-full text-center border border-gray-300 rounded p-0.5 text-[13px] focus:ring-1 focus:ring-[var(--color-signal-orange)] outline-none" 
-                        value={row.tutHrs} 
-                        onChange={e => handleRowChange(row.id, 'tutHrs', e.target.value)} 
-                      />
-                    </td>
+                    <td className="border border-black px-1 py-1">{row.tutHrs}</td>
                     <td className="border border-black px-1 py-1 font-bold bg-gray-50">{row.totalHrs}</td>
                     <td className="border border-black px-1 py-1">{row.credL}</td>
                     <td className="border border-black px-1 py-1">{row.credP}</td>
